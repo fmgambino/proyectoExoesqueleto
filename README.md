@@ -160,3 +160,38 @@ Aquí puedes ver el modelo 3D del exoesqueleto pediátrico desde diferentes áng
 
 ### Perfil
 ![Modelo 3D Exoesqueleto Pediátrico Perfil](https://i.ibb.co/TTpMn74/model3-D-exoesqueleto-Pediatrico-perfil.png)
+
+## Ubicación Recomendada de los Sensores EMG
+
+Para maximizar la efectividad del exoesqueleto pediátrico, es crucial ubicar estratégicamente los sensores EMG en áreas específicas del cuerpo del niño o niña. Se recomienda colocar los sensores en los siguientes lugares:
+
+1. **Músculos Cuádriceps y Femorales**: 💪 Estos músculos son fundamentales para el movimiento de las piernas y el equilibrio al estar de pie. Colocar los sensores en esta área permitirá detectar la intención de movimiento de las piernas y activar los motores del exoesqueleto en consecuencia.
+
+2. **Músculos Tibiales Anteriores**: 🦵 Estos músculos están involucrados en la flexión dorsal del pie y son esenciales para mantener la estabilidad al caminar. Colocar sensores aquí ayudará a detectar los cambios en el equilibrio y ajustar el soporte proporcionado por el exoesqueleto.
+
+3. **Músculos Glúteos**: 🍑 Los músculos glúteos son importantes para la estabilidad de la pelvis y el movimiento de las caderas. Colocar sensores en esta área puede ayudar a detectar la intención de movimiento de las caderas y mejorar la marcha del niño o niña.
+
+4. **Zona Lumbar**: 🤸‍♀️ La zona lumbar es crucial para mantener la postura erguida y la estabilidad del tronco. Colocar sensores aquí permitirá monitorear la actividad muscular central y proporcionar soporte adecuado para la columna vertebral.
+
+5. **Antebrazos y Bíceps**: 💪 Estos músculos son importantes para el equilibrio y la estabilidad al estar de pie. Colocar sensores en esta área puede ayudar a detectar los cambios en la postura de los brazos y ajustar el soporte proporcionado por el exoesqueleto.
+
+## Consideraciones Adicionales para el Diseño del Hardware
+
+Además de la ubicación de los sensores EMG, hay varias consideraciones adicionales que deben tenerse en cuenta en el diseño del hardware del exoesqueleto pediátrico:
+
+- **Ergonomía**: 🪑 El diseño del exoesqueleto debe ser ergonómico y cómodo para el niño o niña, permitiendo un rango completo de movimiento y evitando puntos de presión incómodos.
+
+- **Ajustabilidad**: 📏 Se debe permitir cierto grado de ajuste en el exoesqueleto para adaptarse al crecimiento del niño o niña y para permitir modificaciones según las necesidades individuales.
+
+- **Seguridad**: ⚠️ El exoesqueleto debe ser seguro de usar, con mecanismos de seguridad para evitar lesiones y sensores de detección de fallos para garantizar un funcionamiento seguro.
+
+- **Peso y Tamaño**: 📦 El exoesqueleto debe ser lo más liviano y compacto posible para facilitar el uso diario y minimizar la fatiga del usuario.
+
+- **Facilidad de Uso**: 🎈 El exoesqueleto debe ser fácil de poner y quitar, con controles intuitivos y claros para el usuario y cuidador.
+
+Considerar estas variables durante el diseño del hardware garantizará que el exoesqueleto pediátrico sea efectivo, seguro y cómodo para su uso continuo.
+
+## 📚 Bibliografía y Referencias
+
+- [Artículo científico sobre la ubicación de sensores EMG para exoesqueletos](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5378727/)
+- [Investigación sobre diseño ergonómico de exoesqueletos](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5699460/)
