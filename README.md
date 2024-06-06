@@ -34,10 +34,63 @@ El firmware se desarrollará utilizando PlatformIO con el framework Arduino medi
 
 El firmware controla los motores paso a paso en respuesta a las señales de los sensores mioeléctricos. Además, establece la conexión WiFi y BLE para el monitoreo biométrico y la comunicación IoT.
 
-## Contribuciones
+## Código de Prueba
 
-¡Las contribuciones son bienvenidas! Si deseas contribuir al proyecto, por favor abre un *issue* para discutir tus ideas o envía una *pull request*.
+A continuación se muestra un ejemplo básico del código para controlar los motores paso a paso en el ESP32:
 
-## Contacto
+```cpp
+#include <WiFi.h>
+#include <BLEDevice.h>
+#include <Stepper.h>
 
-Para más información, ponte en contacto con nosotros en [info@electronicagambino.com](mailto:info@electronicagambino.com).
+// Definición de pines para los motores paso a paso
+#define MOTOR_1_STEP_PIN 2
+#define MOTOR_1_DIR_PIN 3
+#define MOTOR_2_STEP_PIN 4
+#define MOTOR_2_DIR_PIN 5
+
+// Definición de constantes para la configuración de los motores paso a paso
+#define STEPS_PER_REVOLUTION 200
+#define MOTOR_SPEED 200 // Velocidad en pasos por segundo
+
+// Declaración de objetos Stepper para controlar los motores
+Stepper stepperMotor1(STEPS_PER_REVOLUTION, MOTOR_1_STEP_PIN, MOTOR_1_DIR_PIN);
+Stepper stepperMotor2(STEPS_PER_REVOLUTION, MOTOR_2_STEP_PIN, MOTOR_2_DIR_PIN);
+
+// Variable para almacenar el estado del movimiento
+bool isMoving = false;
+
+// Función para inicializar la conexión WiFi
+void setupWiFi() {
+  // Coloca aquí tu código de inicialización de WiFi
+}
+
+// Función para inicializar la conexión BLE (Bluetooth Low Energy)
+void setupBLE() {
+  // Coloca aquí tu código de inicialización de BLE
+}
+
+// Función para mover los motores paso a paso
+void moveMotors() {
+  // Coloca aquí tu código para controlar los motores según las señales de los sensores mioeléctricos
+}
+
+// Función de inicialización
+void setup() {
+  // Inicialización de los pines de dirección de los motores
+  pinMode(MOTOR_1_DIR_PIN, OUTPUT);
+  pinMode(MOTOR_2_DIR_PIN, OUTPUT);
+
+  // Inicialización de la conexión WiFi
+  setupWiFi();
+
+  // Inicialización de la conexión BLE
+  setupBLE();
+}
+
+// Función principal de bucle
+void loop() {
+  // Coloca aquí tu código principal de control de bucle
+  moveMotors();
+}
+```
