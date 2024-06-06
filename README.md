@@ -6,14 +6,14 @@ Este proyecto tiene como objetivo desarrollar un exoesqueleto pediátrico para n
 
 ## Descripción del Firmware
 
-El firmware se desarrollará utilizando PlatformIO con el framework Arduino mediante Visual Studio Code. Se utilizará el microcontrolador ESP32-WROOM-32U para controlar los motores paso a paso y gestionar la comunicación IoT.
+El firmware se desarrollará utilizando PlatformIO con el framework Arduino mediante Visual Studio Code. Se utilizará el microcontrolador ESP32-WROOM-32U para controlar los motores paso a paso, gestionar la comunicación IoT y monitorear la actividad muscular mediante el sensor ECG EMG AD8832.
 
 ## Componentes Principales
 
 - Microcontrolador ESP32-WROOM-32U
 - Motores Paso a Paso Nema 17
 - Sensores Mioeléctricos para detección de movimiento
-- Sensores Biométricos para monitoreo de salud
+- Sensor ECG EMG AD8832 para monitoreo de actividad muscular
 - Conexión WiFi y Bluetooth Low Energy (BLE) para comunicación IoT
 
 ## Configuración del Entorno de Desarrollo
@@ -32,11 +32,17 @@ El firmware se desarrollará utilizando PlatformIO con el framework Arduino medi
 
 ## Uso del Firmware
 
-El firmware controla los motores paso a paso en respuesta a las señales de los sensores mioeléctricos. Además, establece la conexión WiFi y BLE para el monitoreo biométrico y la comunicación IoT.
+El firmware controla los motores paso a paso en respuesta a las señales de los sensores mioeléctricos. Además, monitorea la actividad muscular utilizando el sensor ECG EMG AD8832. A continuación se describe cómo implementar y usar este sensor:
 
-## Código de Prueba
+### Implementación del Sensor ECG EMG AD8832
 
-A continuación se muestra un ejemplo básico del código para controlar los motores paso a paso en el ESP32:
+1. Conecta el sensor ECG EMG AD8832 al pin analógico A0 del ESP32.
+2. Proporciona la potencia adecuada al sensor según las especificaciones del fabricante.
+3. Asegúrate de tener una buena conexión a tierra para reducir el ruido eléctrico.
+
+### Forma de Uso del Sensor
+
+El sensor ECG EMG AD8832 mide la actividad eléctrica de los músculos y proporciona una salida de voltaje proporcional a la actividad muscular. Puedes utilizar la siguiente función en tu código para medir esta actividad:
 
 ```cpp
 #include <WiFi.h>
@@ -48,6 +54,9 @@ A continuación se muestra un ejemplo básico del código para controlar los mot
 #define MOTOR_1_DIR_PIN 3
 #define MOTOR_2_STEP_PIN 4
 #define MOTOR_2_DIR_PIN 5
+
+// Definición de pines para el sensor muscular ECG EMG AD8832
+#define EMG_SENSOR_PIN A0
 
 // Definición de constantes para la configuración de los motores paso a paso
 #define STEPS_PER_REVOLUTION 200
@@ -70,6 +79,23 @@ void setupBLE() {
   // Coloca aquí tu código de inicialización de BLE
 }
 
+// Función para inicializar el sensor muscular EMG
+void setupEMGSensor() {
+  pinMode(EMG_SENSOR_PIN, INPUT);
+}
+
+// Función para medir la actividad muscular con el sensor EMG
+float measureMuscleActivity() {
+  // Leer el valor del sensor EMG
+  int emgValue = analogRead(EMG_SENSOR_PIN);
+
+  // Convertir el valor a voltaje
+  float voltage = emgValue * (3.3 / 4095.0); // 3.3V de referencia, 12 bits de resolución
+
+  // Devolver el voltaje medido
+  return voltage;
+}
+
 // Función para mover los motores paso a paso
 void moveMotors() {
   // Coloca aquí tu código para controlar los motores según las señales de los sensores mioeléctricos
@@ -86,11 +112,25 @@ void setup() {
 
   // Inicialización de la conexión BLE
   setupBLE();
+
+  // Inicialización del sensor muscular EMG
+  setupEMGSensor();
 }
 
 // Función principal de bucle
 void loop() {
   // Coloca aquí tu código principal de control de bucle
   moveMotors();
+
+  // Medir la actividad muscular con el sensor EMG
+  float muscleActivity = measureMuscleActivity();
+
+  // Imprimir el valor medido en el puerto serie
+  Serial.print("Actividad Muscular: ");
+  Serial.print(muscleActivity);
+  Serial.println(" V");
+  
+  // Agrega un retraso para evitar lecturas demasiado rápidas
+  delay(1000);
 }
 ```
