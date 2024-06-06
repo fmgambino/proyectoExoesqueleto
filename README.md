@@ -30,6 +30,17 @@ El firmware se desarrollará utilizando PlatformIO con el framework Arduino medi
 - **/docs**: Documentación adicional del proyecto.
 - **/hardware**: Esquemáticos y diseño de hardware.
 
+## Diagramas y Esquemáticos
+
+### Diagrama de Ingeniería Simplificado
+![Diagrama de Ingeniería Simplificado](https://raw.githubusercontent.com/fmgambino/proyectoExoesqueleto/dev/img/diagramaIng.png)
+
+### Diagrama de Conectividad IoT mediante Broker EMQX
+![Diagrama de Conectividad IoT](https://github.com/fmgambino/proyectoExoesqueleto/blob/dev/img/diagramaSimplificado.png)
+
+### Esquemático del Proyecto
+![Esquemático](https://grupoelectrostore.com/wp-content/uploads/2020/07/m4.jpg)
+
 ## Uso del Firmware
 
 El firmware controla los motores paso a paso en respuesta a las señales de los sensores mioeléctricos. Además, monitorea la actividad muscular utilizando el sensor ECG EMG AD8832. A continuación se describe cómo implementar y usar este sensor:
@@ -39,6 +50,12 @@ El firmware controla los motores paso a paso en respuesta a las señales de los 
 1. Conecta el sensor ECG EMG AD8832 al pin analógico A0 del ESP32.
 2. Proporciona la potencia adecuada al sensor según las especificaciones del fabricante.
 3. Asegúrate de tener una buena conexión a tierra para reducir el ruido eléctrico.
+
+### Detalles del Sensor
+
+La medición de la actividad muscular se ha utilizado tradicionalmente en la investigación médica mediante la detección de la electromiografía (EMG). Sin embargo, con el advenimiento de microcontroladores más pequeños pero más potentes y circuitos integrados, los circuitos y sensores EMG se pueden utilizar en una variedad de aplicaciones de control de sistemas.
+
+El sensor medirá la actividad eléctrica filtrada y rectificada de la salida muscular en un rango de 0 a Vs volts, donde la magnitud de la salida dependerá de la cantidad de actividad en el músculo seleccionado. Es fácil de usar con el controlador Arduino para detectar la actividad muscular.
 
 ### Forma de Uso del Sensor
 
