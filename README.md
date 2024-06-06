@@ -151,3 +151,12 @@ void loop() {
   delay(1000);
 }
 ```
+## Modelo 3D del Exoesqueleto Pediátrico
+
+Aquí puedes ver el modelo 3D del exoesqueleto pediátrico desde diferentes ángulos:
+
+### Frente
+![Modelo 3D Exoesqueleto Pediátrico Frontal](https://i.ibb.co/f2h2Kbc/model3-D-exoesqueleto-Pediatrico-frontal.png)
+
+### Perfil
+![Modelo 3D Exoesqueleto Pediátrico Perfil](https://i.ibb.co/TTpMn74/model3-D-exoesqueleto-Pediatrico-perfil.png)
