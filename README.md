@@ -195,3 +195,167 @@ Considerar estas variables durante el diseño del hardware garantizará que el e
 
 - [Artículo científico sobre la ubicación de sensores EMG para exoesqueletos](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5378727/)
 - [Investigación sobre diseño ergonómico de exoesqueletos](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5699460/)
+
+# Tutorial: Control de Exoesqueleto con Sensores y PID 🤖📡
+
+En este tutorial, aprenderás a utilizar un ESP32 junto con sensores de acelerómetro y giroscopio (MPU6050) para controlar un exoesqueleto, manteniéndolo en equilibrio mediante un controlador PID (Proporcional-Integral-Derivativo).
+
+## Materiales necesarios 🛠️
+
+- ESP32
+- Sensor MPU6050 (acelerómetro y giroscopio)
+- Motores Nema 17 (4 unidades)
+- Driver A4988 (4 unidades)
+- Placa de circuito impreso (PCB)
+- Batería
+- Cables de conexión
+- Herramientas de soldadura
+
+## Paso 1: Configuración del hardware 🚀
+
+1. Conecta el ESP32 y el sensor MPU6050 según el esquema de conexión proporcionado en el archivo de configuración.
+
+2. Conecta los motores Nema 17 al Driver A4988 y luego al ESP32, teniendo en cuenta la configuración de tu exoesqueleto.
+
+## Paso 2: Configuración del entorno de desarrollo 💻
+
+1. Instala el IDE de Arduino y el complemento PlatformIO para Visual Studio Code.
+
+2. Crea un nuevo proyecto en PlatformIO y selecciona el framework Arduino y el ESP32 como placa de destino.
+
+## Paso 3: Instalación de bibliotecas 📚
+
+1. Instala las siguientes bibliotecas desde el administrador de bibliotecas de PlatformIO:
+   - `Wire.h` (para la comunicación I2C)
+   - `MPU6050.h` (para el sensor MPU6050)
+   - `PID_v1.h` (para el controlador PID)
+
+## Paso 4: Implementación del código 📝
+
+Utiliza el siguiente código como base para tu proyecto. Asegúrate de personalizarlo según la configuración específica de tu exoesqueleto y ajustar los parámetros del controlador PID según sea necesario.
+
+```cpp
+#include <Arduino.h>
+#include <Wire.h>
+#include <MPU6050.h>
+#include <PID_v1.h>
+
+// Definir los pines de los motores
+const int motorCintura1Pin1 = 2;
+const int motorCintura1Pin2 = 3;
+const int motorCintura2Pin1 = 4;
+const int motorCintura2Pin2 = 5;
+const int motorRodilla1Pin1 = 6;
+const int motorRodilla1Pin2 = 7;
+const int motorRodilla2Pin1 = 8;
+const int motorRodilla2Pin2 = 9;
+
+// Definir los pines de los sensores
+MPU6050 mpu;
+
+// Constantes para el equilibrio
+const int anguloObjetivoCintura = 90; // Ángulo objetivo para la cintura
+const int anguloObjetivoRodilla = 90; // Ángulo objetivo para las rodillas
+const double Kp = 2.0; // Constante proporcional del PID
+const double Ki = 5.0; // Constante integral del PID
+const double Kd = 1.0; // Constante derivativa del PID
+
+double inputCintura, outputCintura, setpointCintura;
+double inputRodilla, outputRodilla, setpointRodilla;
+PID pidCintura(&inputCintura, &outputCintura, &setpointCintura, Kp, Ki, Kd, DIRECT);
+PID pidRodilla(&inputRodilla, &outputRodilla, &setpointRodilla, Kp, Ki, Kd, DIRECT);
+
+void setup() {
+  // Inicializar el puerto serie
+  Serial.begin(9600);
+
+  // Inicializar el sensor MPU6050
+  Wire.begin();
+  mpu.initialize();
+
+  // Configurar los pines de los motores como salida
+  pinMode(motorCintura1Pin1, OUTPUT);
+  pinMode(motorCintura1Pin2, OUTPUT);
+  pinMode(motorCintura2Pin1, OUTPUT);
+  pinMode(motorCintura2Pin2, OUTPUT);
+  pinMode(motorRodilla1Pin1, OUTPUT);
+  pinMode(motorRodilla1Pin2, OUTPUT);
+  pinMode(motorRodilla2Pin1, OUTPUT);
+  pinMode(motorRodilla2Pin2, OUTPUT);
+  
+  // Configurar el PID
+  pidCintura.SetMode(AUTOMATIC);
+  pidRodilla.SetMode(AUTOMATIC);
+
+  // Establecer los valores de setpoint
+  setpointCintura = anguloObjetivoCintura;
+  setpointRodilla = anguloObjetivoRodilla;
+}
+
+void loop() {
+  // Leer los valores del sensor MPU6050
+  int16_t ax, ay, az, gx, gy, gz;
+  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  
+  // Calcular el ángulo de inclinación en la cintura y las rodillas
+  double anguloCintura = atan2(-ay, -az) * 180.0 / M_PI;
+  double anguloRodilla = atan2(-ax, -az) * 180.0 / M_PI;
+
+  // Actualizar los valores de entrada del PID
+  inputCintura = anguloCintura;
+  inputRodilla = anguloRodilla;
+
+  // Calcular la salida del PID
+  pidCintura.Compute();
+  pidRodilla.Compute();
+  
+  // Ajustar los motores según la salida del PID
+  ajustarMotorCintura(outputCintura);
+  ajustarMotorRodilla(outputRodilla);
+}
+
+void ajustarMotorCintura(double velocidad) {
+  // Ajustar la velocidad y la dirección de los motores de la cintura
+  // Implementar un algoritmo de control PID aquí
+  // Este es un ejemplo simple donde se ajustan los motores de forma proporcional a la salida del PID
+  if (velocidad > 0) {
+    digitalWrite(motorCintura1Pin1, HIGH);
+    digitalWrite(motorCintura1Pin2, LOW);
+    digitalWrite(motorCintura2Pin1, HIGH);
+    digitalWrite(motorCintura2Pin2, LOW);
+  } else {
+    digitalWrite(motorCintura1Pin1, LOW);
+    digitalWrite(motorCintura1Pin2, HIGH);
+    digitalWrite(motorCintura2Pin1, LOW);
+    digitalWrite(motorCintura2Pin2, HIGH);
+  }
+}
+
+void ajustarMotorRodilla(double velocidad) {
+  // Ajustar la velocidad y la dirección de los motores de las rodillas
+  // Implementar un algoritmo de control PID aquí
+  // Este es un ejemplo simple donde se ajustan los motores de forma proporcional a la salida del PID
+  if (velocidad > 0) {
+    digitalWrite(motorRodilla1Pin1, HIGH);
+    digitalWrite(motorRodilla1Pin2, LOW);
+    digitalWrite(motorRodilla2Pin1, HIGH);
+    digitalWrite(motorRodilla2Pin2, LOW);
+  } else {
+    digitalWrite(motorRodilla1Pin1, LOW);
+    digitalWrite(motorRodilla1Pin2, HIGH);
+    digitalWrite(motorRodilla2Pin1, LOW);
+    digitalWrite(motorRodilla2Pin2, HIGH);
+  }
+}
+```
+## Paso 5: Compilación y carga del programa ⚙️
+
+1. Compila el programa en PlatformIO y verifica que no haya errores.
+
+2. Conecta el ESP32 a tu computadora y carga el programa compilado en el ESP32. Puedes hacerlo utilizando un cable USB.
+
+## Paso 6: Pruebas y ajustes 🧪
+
+1. Prueba el exoesqueleto en condiciones controladas, verificando su capacidad para mantener el equilibrio.
+
+2. Ajusta los parámetros del controlador PID según sea necesario para mejorar el rendimiento del exoesqueleto.
