@@ -1,0 +1,9 @@
+*MATERIALES* 
+
+1 Rollo c/carretel
+30 Tuercas m2
+30 Tornillos Allen M5x10mm
+3 Motores Nema 17
+4 Drive A4988
+2 Baterías CNHL Black Serie 6s 1100mAh 22.2V 
+ó Fuente Switching Metálica 24v 10a
