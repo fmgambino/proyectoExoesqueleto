@@ -39,13 +39,13 @@ El firmware se desarrollará utilizando PlatformIO con el framework Arduino medi
 ![Diagrama de Conectividad IoT](https://github.com/fmgambino/proyectoExoesqueleto/blob/dev/img/diagramaSimplificado.png)
 
 ### Esquemático del Proyecto
-![Esquemático](https://grupoelectrostore.com/wp-content/uploads/2020/07/esquemático.png)
+![Esquemático](https://github.com/fmgambino/proyectoExoesqueleto/blob/dev/img/esquem%C3%A1tico.png?raw=true)
 
 ### Diseño  PCB LayOut´s del Proyecto
-![Esquemático](https://grupoelectrostore.com/wp-content/uploads/2020/07/diseñoPCB.png)
+![PCB](https://github.com/fmgambino/proyectoExoesqueleto/blob/dev/img/dise%C3%B1oPCB.png?raw=true)
 
 ### Modelado 3D PCB LayOut´s del Proyecto
-![Esquemático](https://grupoelectrostore.com/wp-content/uploads/2020/07/diseñoPCB_3D.png)
+![3D](https://github.com/fmgambino/proyectoExoesqueleto/blob/dev/img/dise%C3%B1oPCB_3D.png?raw=true)
 
 ## Uso del Firmware
 
