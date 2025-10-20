@@ -33,7 +33,7 @@ El firmware se desarrollará utilizando PlatformIO con el framework Arduino medi
 ## Diagramas y Esquemáticos
 
 ### Diagrama de Ingeniería Simplificado
-![Diagrama de Ingeniería Simplificado](https://raw.githubusercontent.com/fmgambino/proyectoExoesqueleto/dev/img/diagramaIng.png)
+![Diagrama de Ingeniería Simplificado](https://github.com/fmgambino/proyectoExoesqueleto/blob/dev/img/diagramaIng.png?raw=true)
 
 ### Diagrama de Conectividad IoT mediante Broker EMQX
 ![Diagrama de Conectividad IoT](https://github.com/fmgambino/proyectoExoesqueleto/blob/dev/img/diagramaSimplificado.png)
