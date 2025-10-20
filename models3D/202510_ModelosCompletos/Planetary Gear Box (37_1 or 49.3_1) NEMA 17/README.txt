@@ -1,0 +1,1 @@
+Compound Planetary Gear Box (37:1 or 49.3:1) NEMA 17, No Hardware.  by Gear_Down_For_What on Thingiverse: https://www.thingiverse.com/thing:2054378
