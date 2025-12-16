@@ -1,0 +1,66 @@
+Categoría,Referencias,Valor,Código almacén,Coste unitario
+Condensadores,C1,100nF,C92490,$0.00
+Condensadores,C2,100nF,C92490,$0.00
+Condensadores,C3,100nF,C92490,$0.00
+Condensadores,C4,10uF,C513774,$0.06
+Condensadores,C5,100nF,C92490,$0.00
+Condensadores,C6,100nF,C92490,$0.00
+Condensadores,C7,100nF,C92490,$0.00
+Condensadores,C8,470uF,C263985,$0.11
+Condensadores,C9,220uF,C294521,$0.04
+Condensadores,C10,100nF,C309030,$0.01
+Condensadores,C11,1000uF,C503217,$0.07
+Condensadores,C12,220uF,,
+Condensadores,C13,100nF,C309030,$0.01
+Condensadores,C18,220uF,C294521,$0.04
+Resistencias,R1,10k,C73809,$0.00
+Resistencias,R2,10k,C73809,$0.00
+Resistencias,R3,1k,C328340,$0.00
+Resistencias,R4,1k,C328340,$0.00
+Resistencias,R5,1k,C328340,$0.00
+Resistencias,R6,1k,C328340,$0.00
+Resistencias,R9,470,C328361,$0.00
+Resistencias,R17,1k,C328340,$0.00
+Resistencias,R40,1k,C328340,$0.00
+Resistencias,R63,1k,C328340,$0.00
+Integrados,U1,CH340C,C84681,$0.39
+Integrados,U2,ESP-32s,C473012,$3.19
+Integrados,U3,LM7812S,,
+Integrados,U6,LD1117S33,C917183,$0.13
+Integrados,U7,"LM2576-3,3",C347412,$0.72
+Integrados,U21,LD1117DT50,,
+Transistores,Q1,"PMBT3904,215",C8667,$0.01
+Transistores,Q2,"PMBT3904,215",C8667,$0.01
+Diodos,D1,1N4148W,C511885,$0.02
+Diodos,D2,SMLD12U1WT86,,
+Diodos,D5,B330A-13-F,C110485,$0.11
+Diodos,D18,LED-GREEN,C131269,$0.03
+Diodos,D19,LED-GREEN,C131269,$0.03
+Diodos,D20,B330A-13-F,C110485,$0.11
+Miscelánea,A01,CONN-SIL3,,
+Miscelánea,A02,CONN-SIL3,,
+Miscelánea,BAT2,3V,C70376,$0.06
+Miscelánea,BOOT,RST,C561523,$0.06
+Miscelánea,DC-POWER,B4BXHA,,
+Miscelánea,EN,RST,C561523,$0.06
+Miscelánea,J1,PWR_IN,Jack power,
+Miscelánea,J3,OLED 128X64,C30621,$5.90
+Miscelánea,J5,USB TYPE C,C309349,$0.50
+Miscelánea,J7,CONN-SIL2,C492401,$0.01
+Miscelánea,J9,CONN-SIL2,C492401,$0.01
+Miscelánea,JP1,JUMPER2,,
+Miscelánea,JP9,JUMPER2,,
+Miscelánea,JP10,JUMPER2,,
+Miscelánea,L1,100u,C408533,$0.55
+Miscelánea,LDR,TORCH_LDR,,
+Miscelánea,LM35,LM35,,
+Miscelánea,RV1,1k,C330455,$0.43
+Miscelánea,RV2,1k,C330455,$0.43
+Miscelánea,SATA_DIR,SATA_DATA,,
+Miscelánea,SATA_STEP,SATA_DATA,,
+Miscelánea,SMA1,SMACONN,,
+Miscelánea,S_ECG,CONNX3_MINI,,
+Miscelánea,S_EMG,CONNX3_MINI,,
+Miscelánea,S_MPU6050,B4BXHA,,
+Miscelánea,S_SPO2,B4BXHA,,
+Miscelánea,UFL1,PIN UFL SMD,,

@@ -1,0 +1,128 @@
+Categoría,Referencias,Valor,Código almacén,Coste unitario
+Condensadores,C1,47uF,C264234,$0.03
+Condensadores,C2,100nF,C77055,$0.01
+Condensadores,C3,470uF,C263985,$0.11
+Condensadores,C4,220uF,C294521,$0.04
+Condensadores,C5,100nF,C77055,$0.01
+Condensadores,C6,100nF,C77055,$0.01
+Condensadores,C7,100nF,C77055,$0.01
+Condensadores,C8,100nF,C77055,$0.01
+Condensadores,C9,100nF,C77055,$0.01
+Condensadores,C10,100nF,C77055,$0.01
+Condensadores,C11,100nF,C77055,$0.01
+Condensadores,C12,100nF,C77055,$0.01
+Condensadores,C13,220uF,C294521,$0.04
+Condensadores,C19,100nF,C77055,$0.01
+Condensadores,C22,100nF,C77055,$0.01
+Condensadores,C23,100nF,C77055,$0.01
+Condensadores,C24,100nF,C77055,$0.01
+Condensadores,C25,100nF,C77055,$0.01
+Condensadores,C34,10uF,C513774,$0.06
+Condensadores,C35,100nF,C77055,$0.01
+Resistencias,R1,680,C103775,$0.00
+Resistencias,R2,680,C103775,$0.00
+Resistencias,R3,680,C103775,$0.00
+Resistencias,R4,680,C103775,$0.00
+Resistencias,R5,10k,C73809,$0.00
+Resistencias,R6,10k,C73809,$0.00
+Resistencias,R7,10k,C73809,$0.00
+Resistencias,R8,10k,C73809,$0.00
+Resistencias,R9,10k,C73809,$0.00
+Resistencias,R10,10k,C73809,$0.00
+Resistencias,R11,10k,C73809,$0.00
+Resistencias,R12,10k,C73809,$0.00
+Resistencias,R13,1k,C328340,$0.00
+Resistencias,R14,4.7K,,
+Resistencias,R15,4.7K,,
+Resistencias,R16,4.7K,,
+Resistencias,R17,20k,C305317,$0.00
+Resistencias,R18,20k,C305317,$0.00
+Resistencias,R19,20k,C305317,$0.00
+Resistencias,R20,20k,C305317,$0.00
+Resistencias,R21,680,C103775,$0.00
+Resistencias,R22,680,C103775,$0.00
+Resistencias,R23,680,C103775,$0.00
+Resistencias,R24,680,C103775,$0.00
+Resistencias,R25,4.7K,,
+Resistencias,R26,4.7K,,
+Resistencias,R27,4.7K,,
+Resistencias,R28,10k,C73809,$0.00
+Resistencias,R29,10k,C73809,$0.00
+Resistencias,R30,1k,C328340,$0.00
+Resistencias,R31,1k,C328340,$0.00
+Resistencias,R33,1k,C328340,$0.00
+Resistencias,R34,1k,C328340,$0.00
+Resistencias,R35,4.7K,,
+Resistencias,R36,4.7K,,
+Resistencias,R51,10k,C17414,$0.00
+Resistencias,R52,1k,C25623,$0.00
+Resistencias,R53,220,C103414,$0.00
+Resistencias,R54,10k,C17414,$0.00
+Resistencias,R55,10k,C17414,$0.00
+Resistencias,R56,1k,C25623,$0.00
+Resistencias,R57,220,C103414,$0.00
+Resistencias,R58,10k,C17414,$0.00
+Resistencias,R59,10k,C17414,$0.00
+Resistencias,R60,1k,C25623,$0.00
+Resistencias,R61,220,C103414,$0.00
+Resistencias,R62,10k,C17414,$0.00
+Resistencias,R63,10k,C17414,$0.00
+Resistencias,R64,1k,C25623,$0.00
+Resistencias,R65,220,C103414,$0.00
+Resistencias,R66,10k,C17414,$0.00
+Resistencias,R71,10k,C73809,$0.00
+Resistencias,R72,10k,C73809,$0.00
+Resistencias,R73,10k,C73809,$0.00
+Resistencias,R74,10k,C73809,$0.00
+Resistencias,R84,470,C328361,$0.00
+Integrados,U1,74HC14,C6821,$0.12
+Integrados,U2,PC817XI1J,,
+Integrados,U4,PC817XI1J,,
+Integrados,U5,PC817XI1J,,
+Integrados,U6,PC817XI1J,,
+Integrados,U7,PC817XI1J,,
+Integrados,U8,DS3231SN,,
+Integrados,U9,TS78M05CP,,
+Integrados,U10,ESP-32s,C473012,$3.19
+Integrados,U11,"LM2576-3,3",C194472,$0.41
+Integrados,U12,LD1117S33,C369933,$0.07
+Integrados,U13,CH340C,C84681,$0.39
+Integrados,U14,PC817XI1J,,
+Integrados,U15,PC817XI1J,,
+Integrados,U16,PC817XI1J,,
+Integrados,U17,ULN7812 TO263,,
+Integrados,U18,AT24C512B,C81193,$0.18
+Transistores,Q1,"PMBT3904,215",C8667,$0.01
+Transistores,Q2,"PMBT3904,215",C8667,$0.01
+Transistores,Q7,FQD11P06TM,C719783,$0.40
+Transistores,Q8,FQD11P06TM,C719783,$0.40
+Transistores,Q9,FQD11P06TM,C719783,$0.40
+Transistores,Q10,FQD11P06TM,C719783,$0.40
+Diodos,D00,LED smd 0603,C131269,$0.03
+Diodos,D01,LED smd 0603,C131269,$0.03
+Diodos,D02,LED smd 0603,C131269,$0.03
+Diodos,D03,LED smd 0603,C131269,$0.03
+Diodos,D9,LED smd 0603,C131269,$0.03
+Diodos,D10,LED smd 0603,C131269,$0.03
+Diodos,D11,LED smd 0603,C131269,$0.03
+Diodos,D12,LED smd 0603,C131269,$0.03
+Diodos,D28,SS14-TP,C78082,$0.05
+Diodos,D29,B330A-13-F,C110485,$0.11
+Diodos,D66,1N4148W,C511885,$0.02
+Miscelánea,BAT1,3V,C70376,$0.06
+Miscelánea,BTN1,RST,C561519,$0.06
+Miscelánea,BTN2,RST,C561519,$0.06
+Miscelánea,F1,1A,C3130,$0.02
+Miscelánea,FUENTE,TBLOCK-M2BLK,,$0.40
+Miscelánea,J1,USB TYPE C,C309349,$0.50
+Miscelánea,J2,HLK-10M12,,
+Miscelánea,J3,TBLOCK-M4,,
+Miscelánea,J4,TBLOCK-M4,,
+Miscelánea,J6,TBLOCK-M4,,
+Miscelánea,J7,TBLOCK-M2,,$0.40
+Miscelánea,J8,TBLOCK-M3,,
+Miscelánea,L1,100u,C408533,$0.55
+Miscelánea,LCD,CONN-H4,,
+Miscelánea,PW,LED-RED,C375458,$0.02
+Miscelánea,SPI,CONN-SIL6,,
+Miscelánea,WI FI,,,
