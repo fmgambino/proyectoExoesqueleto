@@ -1,896 +1,302 @@
-(PCB modulo_Actuador_6CH_REV1
- (parser
-  (host_cad ARES)
-  (host_version 8.17 SP2)
- )
- (resolution mm 100000)
- (unit mm)
- (structure
-  (boundary (rect pcb -0.05080 -77.26680 84.96680 0.25080))
-  (boundary (path signal 0.10160 3.00000 0.00000 76.90000 0.00000))
-  (boundary (path signal 0.10160 0.00000 -3.00000 0.00000 -69.00000))
-  (boundary (path signal 0.10160 79.90000 -3.00000 79.90000 -69.00000))
-  (boundary (path signal 0.10160 3.00000 0.00000 2.38660 -0.05969 1.81934 -0.23145 1.30921 -0.50427
-   0.86719 -0.86719 0.50427 -1.30920 0.23145 -1.81934 0.05969 -2.38660 0.00000 -3.00000
-  ))
-  (boundary (path signal 0.10160 76.90000 0.00000 77.51340 -0.05969 78.08066 -0.23145
-   78.59079 -0.50427 79.03281 -0.86719 79.39573 -1.30920 79.66855 -1.81934 79.84031 -2.38660
-   79.90000 -3.00000))
-  (boundary (path signal 0.10160 3.00000 -72.00000 76.90000 -72.00000))
-  (boundary (path signal 0.10160 79.90000 -69.00000 79.84031 -69.61340 79.66855 -70.18066
-   79.39573 -70.69080 79.03281 -71.13281 78.59079 -71.49573 78.08066 -71.76855 77.51340 -71.94031
-   76.90000 -72.00000))
-  (boundary (path signal 0.10160 0.00000 -69.00000 0.05969 -69.61340 0.23145 -70.18066
-   0.50427 -70.69080 0.86719 -71.13281 1.30921 -71.49573 1.81934 -71.76855 2.38660 -71.94031
-   3.00000 -72.00000))
-  (flip_style mirror_first)
-  (layer TOP (type signal) (direction horizontal))
-  (layer I1 (type signal) (direction off))
-  (layer I2 (type signal) (direction off))
-  (layer I3 (type signal) (direction off))
-  (layer I4 (type signal) (direction off))
-  (layer I5 (type signal) (direction off))
-  (layer I6 (type signal) (direction off))
-  (layer I7 (type signal) (direction off))
-  (layer I8 (type signal) (direction off))
-  (layer I9 (type signal) (direction off))
-  (layer I10 (type signal) (direction off))
-  (layer I11 (type signal) (direction off))
-  (layer I12 (type signal) (direction off))
-  (layer I13 (type signal) (direction off))
-  (layer I14 (type signal) (direction off))
-  (layer BOT (type signal) (direction vertical))
-  (grid via  0.63500)
-  (grid wire 0.63500)
-  (control
-   (via_at_smd off)
-   (off_grid on)
-  )
-  (via
-   $VIA#0_SIGNAL
-   (spare
-    $VIA#0_POWER
-    PS5
-   )
-  )
-  (rule
-   (width 0.25400)
-   (clearance 0.38100)
-   (clearance 0.25400 (type wire_via))
-   (clearance 0.25400 (type wire_smd))
-   (clearance 0.25400 (type wire_pin))
-   (clearance 0.25400 (type wire_wire))
-   (clearance 0.25400 (type via_pin))
-   (clearance 0.25400 (type via_via))
-   (clearance 0.25400 (type via_smd))
-  )
- )
- (placement
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U1 (place U1 28.60000 -22.00000 front 0
-  ))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U2 (place U2 28.60000 -40.60000 front 0
-  ))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U3 (place U3 50.30000 -22.00000 front 0
-  ))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U4 (place U4 50.00000 -40.70000 front 0
-  ))
-  (component SATA_DATA_SATA_DIR (place SATA_DIR 26.26000 -12.06000 front 90))
-  (component SATA_DATA_SATA_STEP (place SATA_STEP 49.90000 -12.00000 front 90))
-  (component "CONN-SIL4_J1" (place J1 19.10000 -58.40000 front 0))
-  (component "CONN-SIL4_J2" (place J2 35.38000 -58.50000 front 0))
-  (component "CONN-SIL4_J3" (place J3 51.38000 -58.60000 front 0))
-  (component "CONN-SIL4_J4" (place J4 19.22000 -65.70000 front 0))
-  (component "CONN-SIL4_DC-POWER" (place "DC-POWER" 6.00000 -30.96000 front -90))
-  (component "CONN-SIL4_J5" (place J5 35.40000 -65.70000 front 0))
-  (component "CONN-SIL4_J6" (place J6 51.40000 -65.60000 front 0))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U5 (place U5 72.40000 -22.00000 front 0
-  ))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U6 (place U6 72.40000 -40.70000 front 0
-  ))
- )
- (library
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U1 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U2 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U3 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U4 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image SATA_DATA_SATA_DIR (side front)
-   (outline (rect TOP -1.90000 -13.35500 11.03500 4.73500))
-   (pin PS2 (rotate 90) 0 0.00000 0.00000)
-   (pin PS2 (rotate 90) 1 0.00000 -1.27000)
-   (pin PS2 (rotate 90) 2 0.00000 -2.54000)
-   (pin PS2 (rotate 90) 3 0.00000 -3.81000)
-   (pin PS2 (rotate 90) 4 0.00000 -5.08000)
-   (pin PS2 (rotate 90) 5 0.00000 -6.35000)
-   (pin PS2 (rotate 90) 6 0.00000 -7.62000)
-   (pin PS3 (rotate 90) 7 2.36000 -10.17994)
-   (pin PS3 (rotate 90) 8 2.36000 2.56000)
-  )
-  (image SATA_DATA_SATA_STEP (side front)
-   (outline (rect TOP -1.90000 -13.35500 11.03500 4.73500))
-   (pin PS2 (rotate 90) 0 0.00000 0.00000)
-   (pin PS2 (rotate 90) 1 0.00000 -1.27000)
-   (pin PS2 (rotate 90) 2 0.00000 -2.54000)
-   (pin PS2 (rotate 90) 3 0.00000 -3.81000)
-   (pin PS2 (rotate 90) 4 0.00000 -5.08000)
-   (pin PS2 (rotate 90) 5 0.00000 -6.35000)
-   (pin PS2 (rotate 90) 6 0.00000 -7.62000)
-   (pin PS3 (rotate 90) 7 2.36000 -10.17994)
-   (pin PS3 (rotate 90) 8 2.36000 2.56000)
-  )
-  (image "CONN-SIL4_J1" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J2" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J3" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J4" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_DC-POWER" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J5" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J6" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U5 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U6 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (padstack PS0 (absolute on)
-   (shape (rect TOP -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I1 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I2 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I3 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I4 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I5 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I6 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I7 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I8 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I9 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I10 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I11 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I12 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I13 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I14 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect BOT -0.54093 -0.54093 0.54093 0.54093))
-  )
-  (padstack PS1 (absolute on)
-   (shape (circle TOP 1.53000 0 0))
-   (shape (circle I1 1.53000 0 0))
-   (shape (circle I2 1.53000 0 0))
-   (shape (circle I3 1.53000 0 0))
-   (shape (circle I4 1.53000 0 0))
-   (shape (circle I5 1.53000 0 0))
-   (shape (circle I6 1.53000 0 0))
-   (shape (circle I7 1.53000 0 0))
-   (shape (circle I8 1.53000 0 0))
-   (shape (circle I9 1.53000 0 0))
-   (shape (circle I10 1.53000 0 0))
-   (shape (circle I11 1.53000 0 0))
-   (shape (circle I12 1.53000 0 0))
-   (shape (circle I13 1.53000 0 0))
-   (shape (circle I14 1.53000 0 0))
-   (shape (circle BOT 1.53000 0 0))
-  )
-  (padstack PS2 (absolute on) (shape (rect TOP -0.45000 -1.00000 0.45000 1.00000)))
-  (padstack PS3 (absolute on)
-   (shape (circle TOP 2.33000 0 0))
-   (shape (circle I1 2.33000 0 0))
-   (shape (circle I2 2.33000 0 0))
-   (shape (circle I3 2.33000 0 0))
-   (shape (circle I4 2.33000 0 0))
-   (shape (circle I5 2.33000 0 0))
-   (shape (circle I6 2.33000 0 0))
-   (shape (circle I7 2.33000 0 0))
-   (shape (circle I8 2.33000 0 0))
-   (shape (circle I9 2.33000 0 0))
-   (shape (circle I10 2.33000 0 0))
-   (shape (circle I11 2.33000 0 0))
-   (shape (circle I12 2.33000 0 0))
-   (shape (circle I13 2.33000 0 0))
-   (shape (circle I14 2.33000 0 0))
-   (shape (circle BOT 2.33000 0 0))
-  )
-  (padstack PS4 (absolute on)
-   (shape (rect TOP -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I1 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I2 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I3 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I4 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I5 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I6 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I7 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I8 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I9 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I10 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I11 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I12 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I13 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I14 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect BOT -1.01600 -1.01600 1.01600 1.01600))
-  )
-  (padstack PS5 (absolute on)
-   (shape (circle TOP 3.81000 0 0))
-   (shape (circle I1 3.81000 0 0))
-   (shape (circle I2 3.81000 0 0))
-   (shape (circle I3 3.81000 0 0))
-   (shape (circle I4 3.81000 0 0))
-   (shape (circle I5 3.81000 0 0))
-   (shape (circle I6 3.81000 0 0))
-   (shape (circle I7 3.81000 0 0))
-   (shape (circle I8 3.81000 0 0))
-   (shape (circle I9 3.81000 0 0))
-   (shape (circle I10 3.81000 0 0))
-   (shape (circle I11 3.81000 0 0))
-   (shape (circle I12 3.81000 0 0))
-   (shape (circle I13 3.81000 0 0))
-   (shape (circle I14 3.81000 0 0))
-   (shape (circle BOT 3.81000 0 0))
-  )
-  (padstack $VIA#0_SIGNAL (absolute on)
-   (shape (circle TOP 0.76200 0 0))
-   (shape (circle I1 0.76200 0 0))
-   (shape (circle I2 0.76200 0 0))
-   (shape (circle I3 0.76200 0 0))
-   (shape (circle I4 0.76200 0 0))
-   (shape (circle I5 0.76200 0 0))
-   (shape (circle I6 0.76200 0 0))
-   (shape (circle I7 0.76200 0 0))
-   (shape (circle I8 0.76200 0 0))
-   (shape (circle I9 0.76200 0 0))
-   (shape (circle I10 0.76200 0 0))
-   (shape (circle I11 0.76200 0 0))
-   (shape (circle I12 0.76200 0 0))
-   (shape (circle I13 0.76200 0 0))
-   (shape (circle I14 0.76200 0 0))
-   (shape (circle BOT 0.76200 0 0))
-  )
-  (padstack $VIA#0_POWER (absolute on)
-   (shape (circle TOP 0.76200 0 0))
-   (shape (circle I1 0.76200 0 0))
-   (shape (circle I2 0.76200 0 0))
-   (shape (circle I3 0.76200 0 0))
-   (shape (circle I4 0.76200 0 0))
-   (shape (circle I5 0.76200 0 0))
-   (shape (circle I6 0.76200 0 0))
-   (shape (circle I7 0.76200 0 0))
-   (shape (circle I8 0.76200 0 0))
-   (shape (circle I9 0.76200 0 0))
-   (shape (circle I10 0.76200 0 0))
-   (shape (circle I11 0.76200 0 0))
-   (shape (circle I12 0.76200 0 0))
-   (shape (circle I13 0.76200 0 0))
-   (shape (circle I14 0.76200 0 0))
-   (shape (circle BOT 0.76200 0 0))
-  )
- )
- (network
-  (net "#00001"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-4 U1-5)
-  )
-  (net "#00002"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-11 J1-0)
-  )
-  (net "#00003"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-10 J1-1)
-  )
-  (net "#00004"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-12 J1-2)
-  )
-  (net "#00005"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-13 J1-3)
-  )
-  (net "#00026"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-4 U2-5)
-  )
-  (net "#00027"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-11 J2-0)
-  )
-  (net "#00028"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-10 J2-1)
-  )
-  (net "#00029"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-12 J2-2)
-  )
-  (net "#00030"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-13 J2-3)
-  )
-  (net "#00038"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-4 U3-5)
-  )
-  (net "#00039"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-11 J3-0)
-  )
-  (net "#00040"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-10 J3-1)
-  )
-  (net "#00041"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-12 J3-2)
-  )
-  (net "#00042"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-13 J3-3)
-  )
-  (net "#00050"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-4 U4-5)
-  )
-  (net "#00051"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-11 J4-0)
-  )
-  (net "#00052"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-10 J4-1)
-  )
-  (net "#00053"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-12 J4-2)
-  )
-  (net "#00054"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-13 J4-3)
-  )
-  (net "#00070"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U5-4 U5-5)
-  )
-  (net "#00071"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J5-0 U5-11)
-  )
-  (net "#00072"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J5-1 U5-10)
-  )
-  (net "#00073"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J5-2 U5-12)
-  )
-  (net "#00074"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J5-3 U5-13)
-  )
-  (net "#00082"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U6-4 U6-5)
-  )
-  (net "#00083"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J6-0 U6-11)
-  )
-  (net "#00084"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J6-1 U6-10)
-  )
-  (net "#00085"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J6-2 U6-12)
-  )
-  (net "#00086"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins J6-3 U6-13)
-  )
-  (net "+12V"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-9 U2-9 U3-9 U4-9 SATA_DIR-6 SATA_STEP-6 "DC-POWER"-1 U5-9 U6-9)
-  )
-  (net "+5V"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-    (pins U1-1 U1-2 U1-3 U2-1 U2-2 U2-3 U3-1 U3-2 U3-3 U4-1 U4-2 U4-3 "DC-POWER"-3 U5-1
-    U5-2 U5-3 U6-1 U6-2 U6-3)
-  )
-  (net "DIR1"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-7 SATA_DIR-0)
-  )
-  (net "DIR2"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-7 SATA_DIR-1)
-  )
-  (net "DIR3"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-7 SATA_DIR-2 U5-7)
-  )
-  (net "DIR4"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-7 SATA_DIR-3 U6-7)
-  )
-  (net "DIR5"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_DIR-4)
-  )
-  (net "DIR6"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_DIR-5)
-  )
-  (net "GND"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_POWER
-    )
-   )
-    (pins U1-0 U1-8 U1-14 U1-15 U2-0 U2-8 U2-14 U2-15 U3-0 U3-8 U3-14 U3-15 U4-0 U4-8
-     U4-14 U4-15 SATA_DIR-7 SATA_DIR-8 SATA_STEP-7 SATA_STEP-8 "DC-POWER"-0 "DC-POWER"-2
-    U5-0 U5-8 U5-14 U5-15 U6-0 U6-8 U6-14 U6-15)
-  )
-  (net "STEP1"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-6 SATA_STEP-0)
-  )
-  (net "STEP2"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-6 SATA_STEP-1)
-  )
-  (net "STEP3"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-6 SATA_STEP-2 U5-6)
-  )
-  (net "STEP4"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-6 SATA_STEP-3 U6-6)
-  )
-  (net "STEP5"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_STEP-4)
-  )
-  (net "STEP6"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_STEP-5)
-  )
-  (class POWER
-   "GND"
-   (rule
-    (width 0.25400)
-    (clearance 0.38100)
-    (clearance 0.25400 (type wire_via))
-    (clearance 0.25400 (type wire_smd))
-    (clearance 0.25400 (type wire_pin))
-    (clearance 0.25400 (type wire_wire))
-    (clearance 0.25400 (type via_pin))
-    (clearance 0.25400 (type via_via))
-    (clearance 0.25400 (type via_smd))
-   )
-  )
-  (class SIGNAL
-   "#00001"
-   "#00002"
-   "#00003"
-   "#00004"
-   "#00005"
-   "#00026"
-   "#00027"
-   "#00028"
-   "#00029"
-   "#00030"
-   "#00038"
-   "#00039"
-   "#00040"
-   "#00041"
-   "#00042"
-   "#00050"
-   "#00051"
-   "#00052"
-   "#00053"
-   "#00054"
-   "#00070"
-   "#00071"
-   "#00072"
-   "#00073"
-   "#00074"
-   "#00082"
-   "#00083"
-   "#00084"
-   "#00085"
-   "#00086"
-   "+12V"
-   "+5V"
-   "DIR1"
-   "DIR2"
-   "DIR3"
-   "DIR4"
-   "DIR5"
-   "DIR6"
-   "STEP1"
-   "STEP2"
-   "STEP3"
-   "STEP4"
-   "STEP5"
-   "STEP6"
-   "{NC}"
-   "{VOID}"
-   (rule
-    (width 0.25400)
-    (clearance 0.38100)
-    (clearance 0.25400 (type wire_via))
-    (clearance 0.25400 (type wire_smd))
-    (clearance 0.25400 (type wire_pin))
-    (clearance 0.25400 (type wire_wire))
-    (clearance 0.25400 (type via_pin))
-    (clearance 0.25400 (type via_via))
-    (clearance 0.25400 (type via_smd))
-   )
-  )
- )
- (wiring
-  (via PS5 3.00000 -3.00000 (net {NC-1}) (type protect))
-  (via PS5 76.90000 -69.00000 (net {NC-2}) (type protect))
-  (via PS5 3.00000 -69.00000 (net {NC-3}) (type protect))
-  (via PS5 76.90000 -3.00000 (net {NC-4}) (type protect))
- )
+-- ISM Robosoft v11 - Patch final de base de datos
+-- Ejecutar completo en Supabase SQL Editor.
+
+begin;
+
+-- 1) Limpiar RPC duplicados de inventario para evitar: could not choose best candidate function.
+drop function if exists public.admin_update_inventory_asset(uuid, text, text, text, text, text, text, text, text, text, text, text);
+drop function if exists public.admin_update_inventory_asset(uuid, text, uuid, uuid, text, uuid, text, text, text, uuid, uuid, text);
+drop function if exists public.admin_update_inventory_asset(uuid, text, uuid, uuid, text, uuid, text, text, uuid, uuid, uuid, text);
+
+create or replace function public.admin_update_inventory_asset(
+  p_asset_id uuid,
+  p_barcode text default null,
+  p_brand text default null,
+  p_category text default null,
+  p_condition_note text default null,
+  p_location_code text default null,
+  p_location_detail text default null,
+  p_name text default null,
+  p_serial_number text default null,
+  p_status text default null,
+  p_supplier text default null,
+  p_zone text default null
 )
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_category_id uuid;
+  v_brand_id uuid;
+  v_supplier_id uuid;
+  v_location_id uuid;
+  v_status_id uuid;
+  v_catalog_id uuid;
+begin
+  if p_asset_id is null then
+    raise exception 'p_asset_id es obligatorio';
+  end if;
+
+  if nullif(trim(coalesce(p_category,'')), '') is not null then
+    insert into public.inventory_categories(name) values (trim(p_category))
+    on conflict (name) do update set updated_at = now()
+    returning id into v_category_id;
+  end if;
+
+  if nullif(trim(coalesce(p_brand,'')), '') is not null then
+    insert into public.inventory_brands(name) values (trim(p_brand))
+    on conflict (name) do update set name = excluded.name
+    returning id into v_brand_id;
+  end if;
+
+  if nullif(trim(coalesce(p_supplier,'')), '') is not null then
+    insert into public.inventory_suppliers(name) values (trim(p_supplier))
+    on conflict (name) do update set name = excluded.name
+    returning id into v_supplier_id;
+  end if;
+
+  if nullif(trim(coalesce(p_location_code,'')), '') is not null then
+    select id into v_location_id from public.inventory_locations where code = trim(p_location_code) or name = trim(p_location_code) limit 1;
+    if v_location_id is null then
+      insert into public.inventory_locations(code, name) values (trim(p_location_code), trim(p_location_code)) returning id into v_location_id;
+    end if;
+  end if;
+
+  if nullif(trim(coalesce(p_status,'')), '') is not null then
+    select id into v_status_id from public.inventory_status_catalog
+    where code = lower(regexp_replace(trim(p_status), '\s+', '_', 'g')) or name = trim(p_status) or frontend_status = trim(p_status)
+    limit 1;
+  end if;
+
+  select catalog_item_id into v_catalog_id from public.inventory_assets where id = p_asset_id;
+  if v_catalog_id is not null then
+    update public.inventory_catalog_items
+      set name = coalesce(nullif(trim(p_name), ''), name),
+          category_id = coalesce(v_category_id, category_id),
+          brand_id = coalesce(v_brand_id, brand_id),
+          supplier_id = coalesce(v_supplier_id, supplier_id),
+          updated_at = now()
+    where id = v_catalog_id;
+  end if;
+
+  update public.inventory_assets
+    set barcode = coalesce(nullif(trim(p_barcode), ''), barcode),
+        serial_number = nullif(trim(coalesce(p_serial_number, serial_number)), ''),
+        condition_note = coalesce(nullif(trim(p_condition_note), ''), condition_note),
+        current_location_id = coalesce(v_location_id, current_location_id),
+        status_id = coalesce(v_status_id, status_id),
+        location_detail = coalesce(nullif(trim(p_location_detail), ''), location_detail),
+        zone = coalesce(nullif(trim(p_zone), ''), zone),
+        updated_at = now()
+  where id = p_asset_id;
+
+  return p_asset_id;
+end;
+$$;
+
+grant execute on function public.admin_update_inventory_asset(uuid,text,text,text,text,text,text,text,text,text,text,text) to authenticated;
+
+-- 2) Roles/permisos: docentes sin usuarios ni ABM de inventario. GestiÃ³n de prÃ©stamos y notificaciones para todos.
+insert into public.permissions(code, name, module) values
+('loan.read','Ver prÃ©stamos','loanManagement'),
+('loan.create','Crear solicitudes de prÃ©stamo','loanManagement'),
+('notifications.read','Ver notificaciones','notifications'),
+('notifications.send','Enviar notificaciones','notifications')
+on conflict (code) do update set name = excluded.name, module = excluded.module;
+
+-- Quitar permisos de usuarios y ediciÃ³n de inventario a docentes/alumnos.
+delete from public.role_permissions rp
+using public.roles r, public.permissions p
+where rp.role_id = r.id and rp.permission_id = p.id
+  and r.code in ('teacher','student')
+  and p.code in ('users.read','users.manage','inventory.manage','roles.manage');
+
+-- Asegurar permisos bÃ¡sicos a todos los perfiles.
+insert into public.role_permissions(role_id, permission_id)
+select r.id, p.id
+from public.roles r
+join public.permissions p on p.code in ('inventory.read','inventory.loan','loan.read','loan.create','notifications.read')
+where r.code in ('administrator','teacher','student')
+on conflict do nothing;
+
+-- Admin conserva gestiÃ³n completa.
+insert into public.role_permissions(role_id, permission_id)
+select r.id, p.id
+from public.roles r
+join public.permissions p on p.code in ('users.read','users.manage','roles.manage','inventory.manage','inventory.approve','loan.read','loan.create','notifications.read','notifications.send')
+where r.code = 'administrator'
+on conflict do nothing;
+
+-- 3) Notificaciones reales.
+create table if not exists public.notifications (
+  id uuid primary key default gen_random_uuid(),
+  recipient_profile_id uuid references public.profiles(id) on delete cascade,
+  title text not null,
+  message text not null,
+  section text default 'notifications',
+  read_at timestamptz,
+  created_by uuid references public.profiles(id),
+  created_at timestamptz default now()
+);
+
+create index if not exists notifications_recipient_created_idx on public.notifications(recipient_profile_id, created_at desc);
+
+create or replace view public.notifications_frontend_view as
+select n.id, n.recipient_profile_id, n.title, n.message, n.section, n.read_at, n.created_at
+from public.notifications n
+where n.recipient_profile_id = auth.uid() or exists (
+  select 1 from public.profiles p join public.roles r on r.id = p.role_id
+  where p.id = auth.uid() and r.code = 'administrator'
+);
+
+grant select, insert, update on public.notifications to authenticated;
+grant select on public.notifications_frontend_view to authenticated;
+
+create or replace function public.notify_role(p_role_code text, p_title text, p_message text, p_section text default 'notifications')
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  insert into public.notifications(recipient_profile_id, title, message, section, created_by)
+  select p.id, p_title, p_message, p_section, auth.uid()
+  from public.profiles p join public.roles r on r.id = p.role_id
+  where p.is_active is true and r.code = p_role_code;
+end;
+$$;
+
+grant execute on function public.notify_role(text,text,text,text) to authenticated;
+
+-- 4) PrÃ©stamos reales conectados a Supabase.
+alter table public.inventory_loans add column if not exists use_date date;
+alter table public.inventory_loans add column if not exists from_time time;
+alter table public.inventory_loans add column if not exists to_time time;
+
+create or replace view public.loans_frontend_view as
+select
+  l.id,
+  l.requester_profile_id as requester_id,
+  coalesce(p.full_name, 'Sin solicitante') as requester,
+  coalesce(t.name, 'Sin equipo') as team,
+  coalesce(l.use_date::text, l.requested_at::date::text) as requested_at,
+  coalesce(to_char(l.from_time,'HH24:MI'), '') as from_time,
+  coalesce(to_char(l.to_time,'HH24:MI'), '') as to_time,
+  coalesce(array_agg(coalesce(a.asset_code, a.barcode) order by a.asset_code) filter (where a.id is not null), array[]::text[]) as items,
+  coalesce(l.notes, '-') as notes,
+  l.status,
+  case l.status
+    when 'abierto' then 'Pendiente'
+    when 'aprobado' then 'Aprobado'
+    when 'rechazado' then 'Rechazado'
+    when 'cerrado' then 'Devuelto'
+    when 'cancelado' then 'Rechazado'
+    else initcap(l.status)
+  end as status_label,
+  l.created_at
+from public.inventory_loans l
+left join public.profiles p on p.id = l.requester_profile_id
+left join public.teams t on t.id = l.team_id
+left join public.inventory_loan_items li on li.loan_id = l.id
+left join public.inventory_assets a on a.id = li.asset_id
+group by l.id, p.full_name, t.name;
+
+grant select on public.loans_frontend_view to authenticated;
+
+create or replace function public.create_loan_request(
+  p_team text,
+  p_use_date date,
+  p_from_time time,
+  p_to_time time,
+  p_items text[],
+  p_notes text default null
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_loan_id uuid;
+  v_team_id uuid;
+  v_code text;
+  v_item text;
+  v_asset_id uuid;
+begin
+  if auth.uid() is null then
+    raise exception 'No autorizado';
+  end if;
+
+  select id into v_team_id from public.teams where name = p_team limit 1;
+  v_code := 'PRE-' || to_char(now(), 'YYYYMMDDHH24MISS') || '-' || substr(auth.uid()::text, 1, 4);
+
+  insert into public.inventory_loans(
+    loan_code, requester_profile_id, team_id, requested_at, use_date, from_time, to_time, notes, status, created_by
+  ) values (
+    v_code, auth.uid(), v_team_id, now(), p_use_date, p_from_time, p_to_time, p_notes, 'abierto', auth.uid()
+  ) returning id into v_loan_id;
+
+  foreach v_item in array coalesce(p_items, array[]::text[]) loop
+    select id into v_asset_id from public.inventory_assets where asset_code = v_item or barcode = v_item limit 1;
+    if v_asset_id is not null then
+      insert into public.inventory_loan_items(loan_id, asset_id, quantity, notes) values (v_loan_id, v_asset_id, 1, p_notes);
+    end if;
+  end loop;
+
+  insert into public.notifications(recipient_profile_id, title, message, section, created_by)
+  select p.id, 'Nueva solicitud de prÃ©stamo', coalesce(req.full_name,'Un usuario') || ' solicitÃ³ ' || array_to_string(p_items, ', ') || ' para ' || coalesce(p_team,'equipo/curso') || '.', 'loanManagement', auth.uid()
+  from public.profiles p
+  join public.roles r on r.id = p.role_id and r.code = 'administrator'
+  left join public.profiles req on req.id = auth.uid()
+  where p.is_active is true;
+
+  return v_loan_id;
+end;
+$$;
+
+grant execute on function public.create_loan_request(text,date,time,time,text[],text) to authenticated;
+
+create or replace function public.admin_update_loan_status(p_loan_id uuid, p_status_label text)
+returns void language plpgsql security definer set search_path = public as $$
+declare
+  v_status text;
+  v_requester uuid;
+begin
+  v_status := case p_status_label
+    when 'Aprobado' then 'aprobado'
+    when 'Rechazado' then 'rechazado'
+    when 'Devuelto' then 'cerrado'
+    else 'abierto'
+  end;
+  update public.inventory_loans set status = v_status, updated_at = now() where id = p_loan_id returning requester_profile_id into v_requester;
+  if v_requester is not null then
+    insert into public.notifications(recipient_profile_id, title, message, section, created_by)
+    values (v_requester, 'Solicitud de prÃ©stamo actualizada', 'Tu solicitud fue marcada como ' || p_status_label || '.', 'loanManagement', auth.uid());
+  end if;
+end;
+$$;
+
+grant execute on function public.admin_update_loan_status(uuid,text) to authenticated;
+
+-- 5) Notificaciones automÃ¡ticas para altas de inventario, cursos/equipos/recursos cuando existan tablas.
+create or replace function public.notify_inventory_asset_insert()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare v_name text;
+begin
+  select name into v_name from public.inventory_catalog_items where id = new.catalog_item_id;
+  insert into public.notifications(recipient_profile_id, title, message, section, created_by)
+  select p.id, 'Ingreso de inventario', 'Se registrÃ³: ' || coalesce(v_name, new.asset_code, new.barcode), 'inventory', auth.uid()
+  from public.profiles p where p.is_active is true;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_notify_inventory_asset_insert on public.inventory_assets;
+create trigger trg_notify_inventory_asset_insert after insert on public.inventory_assets
+for each row execute function public.notify_inventory_asset_insert();
+
+-- 6) Refrescar schema cache.
+notify pgrst, 'reload schema';
+
+commit;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      INDX( 	 $zG           (   @  è       Ü A   E   Ü        ><#    ` P     =<#    ¬&Œ)tÚÜ¬&Œ)tÚÜ¬&Œ)tÚÜH¶.,tÚÜ                        . v s c o d e W<#    h R     =<#    »v)tÚÜ»v)tÚÜ»v)tÚÜ»v)tÚÜ        Ž               a p p . h t m l d     X<#    ` N     =<#    »v)tÚÜ’þ)tÚÜ’þ)tÚÜ˜œS*tÚÜ                        a s s e t s . _<#    ` P     =<#    uBŽ)tÚÜuBŽ)tÚÜuBŽ)tÚÜuBŽ)tÚÜ       “               a u t h . j s `<#    x d     =<#    uBŽ)tÚÜuBŽ)tÚÜuBŽ)tÚÜuBŽ)tÚ à       à                c o n f i g . e x a m p l e . j s     a<#    h V     =<#    uBŽ)tÚÜuBŽ)tÚÜuBŽ)tÚÜuBŽ)tÚÜ       n              
+ i n d e x . h t m l   b<#    X F     =<#    uBŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ˜œS*tÚÜ                        j s A p<#    € j     =<#    FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ      Š               m a n i f e s t . w e b m a n i f e s t #    @<#    h T     =<#    ¬&Œ)tÚÜÑ[Œ)tÚÜÑ[Œ)tÚÜÑ[Œ)tÚÜ       ž	              	 R E A D M E . m d     A<#    ˆ x     =<#    Ñ[Œ)tÚÜÑ[Œ)tÚÜÑ[Œ)tÚÜÑ[Œ)tÚÜ       ß               R E A D M E _ C O N F I G _ L O G I N _ V 9 _ 6 . m d B<#      Ž     =<#    Ñ[Œ)tÚÜÑ[Œ)tÚÜÑ[Œ)tÚÜÑ[Œ)tÚÜ       D              & R E A D M E _ C R E A R _ U S U A R I O S _ E D G E _ F U N C T I O N . m d   C<#    ˜ „     =<#    Ñ[Œ)tÚÜlƒŒ)tÚÜlƒŒ)tÚÜlƒŒ)tÚÜ       ‹              ! R E A D M E _ F I X _ C R E A R _ U S U A R I O S _ V 9 _ 9 . m d     D<#    ˆ r     =<#    lƒŒ)tÚÜlƒŒ)tÚÜlƒŒ)tÚÜlƒŒ)tÚÜ˜      “               R E  D M E _ F I X _ L O G I N _ V 9 _ 7 . m d       E<#    € j     =<#    ‰ªŒ)tÚÜ‰ªŒ)tÚÜ‰ªŒ)tÚÜ‰ªŒ)tÚÜˆ                     R E A D M E _ P A T C H _ V 9 _ 4 . m d       F<#    ˆ x     =<#    ‰ªŒ)tÚÜ‰ªŒ)tÚÜ‰ªŒ)tÚÜ‰ªŒ)tÚÜ       ¹               R E A D M E _ S E R V I C E _ R O L E _ V 9 _ 4 . m d G<#    ˆ v     =<#    ‰ªŒ)tÚÜ‰ªŒ)tÚÜ‰ªŒ)tÚÜ‰ªŒ)tÚÜ       –               R E A D M E _ V 1 0 _ C O R R E C C I O N E S . m d   H<#    ˆ x     =<#    ‰ªŒ)tÚÜìÒŒ)tÚÜìÒŒ)tÚÜìÒŒ)tÚÜ      h               R E A D M E _ V 1 1 _ I N S T R U C C I O N E S . m d                z     =<#    ìÒŒ)tÚÜìÒŒ)tÚÜìÒŒ)tÚÜìÒŒ)tÚÜ       e               R E A D M E _ V 1 3 _ N O T I F I C A C I O N E S . m d       K<#           =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       u              ' R E A D M E _ V 1 4 _ I N V E N T A R I O _ N O T I F I C A C I O N E S . m d L<#    ˆ x     =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       b               R E A D M E _ V 1 5 _ I N S T R U C C I O N  S . m d M<#     €     =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       é               R E A D M E _ V 1 6 _ C O N D I C I O N E S _ C O L O R . m d N<#           =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       Æ              ' R E A D M E _ V 1 7 _ E Q U I P O S _ R O L E S _ C O N D I C I O N E S . m d O<#    ˆ x     =<#    ")tÚÜ")tÚÜ")tÚÜ")tÚÜ                      R E A D M E _ V 1 8 _ I N S T R U C C I O N E S . m d P<#    ˆ x     =<#    ")tÚÜ")tÚÜ")tÚÜ")tÚÜ      5               R E A D M E _ V 1 9 _ I N S T R U C C I O N E S . m d Q<#    x h     =<#    ")tÚÜ")tÚÜ")tÚÜ")tÚÜ       •               R E A D M E _ V 2 0 _ F I N A L . m d R<#     ~     =<#    ")tÚÜvI)tÚÜvI)tÚÜvI)tÚÜ¨      £               R E A D M E _ V 2 2 _ C O R R E C C I O N _ F I N A L . m d   S<#    x h     =<#    vI)tÚÜvI)tÚÜvI)tÚÜvI)tÚÜ¨      ¦               R E A D M E _ V 2 3 _ F I N A L . m d T<#      Œ     =<#    vI)tÚÜvI)tÚÜvI)tÚÜvI)tÚ        Õ              % R E A D M E _ V 2 4 _ C O R R E C C I O N E S _ I M P O R T A D O R . m d     U<#    È ´     =<#    ip)tÚÜ»v)tÚÜ»v)tÚÜ»v)tÚÜ       *              9 R E A D M E _ V 2 5 _ R E F A C T O R _ U S U A R I O S _ N O T I F I C A C I O N E S _ I N V E N T A R I O . m d     V<#     €     =<#    »v)tÚÜ»v)tÚÜ»v)tÚÜ»v)tÚÜ       ¹               R E A D M E _ V 2 7 _ R E F A C T O R _ C O M P L E T O . m d                                                              INDX( 	 ÉŽzG          (     è              Ü            J<#     z     =<#    ìÒŒ)tÚÜìÒŒ)tÚÜìÒŒ)tÚÜìÒŒ)tÚÜ       e               R E A D M E _ V 1 3 _ N O T I F I C A C I O N E S . m d       K<#           =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       u              ' R E A D M E _ V 1 4 _ I N V E N T A R I O _ N O T I F I C A C I O N E S . m d L<#    ˆ x     =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       b               R E A D M E _ V 1 5 _ I N S T R U C C I O N E S . m d M<#     €     =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       é               R E A D M E _ V 1 6 _ C O N D I C I O N E S _ C O L O R . m d N<#           =<#    ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ]úŒ)tÚÜ       Æ              ' R E A D M E _ V 1 7 _ E Q U I P O S _ R O L E S _ C O N D I C I O N E S . m d O<#    ˆ x     =<#    ")tÚÜ")tÚÜ")tÚÜ")tÚÜ                      R E A D M E _ V 1 8 _ I N S T R U C C I O N E S . m d P<#    ˆ x     =<#    ")tÚÜ")tÚÜ")tÚÜ")tÚÜ       5              R E A D M E _ V 1 9 _ I N S T R U C C I O N E S . m d Q<#    x h     =<#    ")tÚÜ")tÚÜ")tÚÜ")tÚÜ       •               R E A D M E _ V 2 0 _ F I N A L . m d R<#     ~     =<#    ")tÚÜvI)tÚÜvI)tÚÜvI)tÚÜ¨      £               R E A D M E _ V 2 2 _ C O R R E C C I O N _ F I N A L . m d   S<#    x h     =<#    vI)tÚÜvI)tÚÜvI)tÚÜvI)tÚÜ¨      ¦               R E A D M E _ V 2 3 _ F I N A L . m d T<#      Œ     =<#    vI)tÚÜvI)tÚÜvI)tÚÜvI)tÚÜ       Õ             % R E A D M E _ V 2 4 _ C O R R E C C I O N E S _ I M P O R T A D O R . m d     U<#    È ´     =<#    ip)tÚÜ»v)tÚÜ»v)tÚÜ»v)tÚÜ       *              9 R E A D M E _ V 2 5 _ R E F A C T O R _ U S U A R I O S _ N O T I F I C A C I O N E S _ I N V E N T A R I O . m d     V<#     €     =<#    »v)tÚÜ»v)tÚÜ»v)tÚÜ»v)tÚÜ       ¹               R E A D M E _ V 2 7 _ R E F A C T O R _ C O M P L E T O . m d q<#    p ^     =<#    FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ       ü	              r e c u p e r a r . h t m l   r<#    p Z     =<#    FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ       w               r e c u p e r a r . j s       s<#    p \     =<#    FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ       ¯               r e g i s t r o . h t m l     t<#    h X     =<#    FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ       ñ               r e g i s t r o . j s u<#    x h     =<#    FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ       2               r e s e t - p a s s w o r d . h t m l v<#    x d     =<#    FÊŽ)tÚ FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ       Ð               r e s e t - p a s s w o r d . j s     w<#    h V     =<#    FÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜFÊŽ)tÚÜ        ú–              
+ s t y l e s . c s s   x<#    h R     =<#    FÊŽ)tÚÜ3ŽÍ)tÚÜ3ŽÍ)tÚÜÃS*tÚÜ                        s u p a b a s e       ‘<#    ˜ ˆ     =<#    ì½ß)tÚÜì½ß)tÚÜì½ß)tÚÜì½ß)tÚÜ       º              # s u p a b a s e _ e m a i l _ t e m p l a t e _ i n v i t e . h t m l ’<#    ` L     =<#    ì½ß)tÚÜì½ß)tÚÜì½ß)tÚÜì½ß)tÚÜ      Ï               s w . j s                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 INDX( 	 QwG           (      è       Ü                    Ã:#    ` N     Â:#    û!u)tÚÜû!u)tÚÜû!u)tÚÜû!u)tÚÜ P     §O              a p p . j s   Ä:#    ` P     Â:#    û!u)tÚÜû!u)tÚÜû!u)tÚÜû!u)tÚÜ°       ®                a u t h . j s Å:#    x d     Â:#    û!u)tÚÜû!u)tÚÜû!u)tÚÜû!u)tÚÜà       à                c o n f i g . e x a m p l e . j s     Æ:#    h T     Â:#    û!u)tÚÜû!u)tÚÜû!u)tÚÜû!u)tÚÜH      C              	 c o n f i g . j s     Ç:# 

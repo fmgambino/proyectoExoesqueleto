@@ -1,0 +1,215 @@
+#include <Arduino.h>
+#include <Wire.h>
+#include <WiFi.h>
+#include <LittleFS.h>
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SH110X.h>
+#include <Adafruit_MPU6050.h>
+#include <Adafruit_Sensor.h>
+#include <AccelStepper.h>
+#include <math.h>
+
+// ========================= CONFIGURACION =========================
+#define WIFI_SSID "BIOTRON_EXO"
+#define WIFI_PASS "12345678"
+#define SDA_PIN 21
+#define SCL_PIN 22
+#define OLED_ADDR 0x3C
+#define MPU1_ADDR 0x68
+#define MPU2_ADDR 0x69
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+
+// Entradas analogicas biomédicas / temperatura. Ajustar a tu PCB.
+#define ECG_PIN 34
+#define EMG_PIN 35
+#define SPO2_PIN 32
+#define BODY_TEMP_PIN 33
+#define LM35_PIN 36
+
+// Pines STEP/DIR para 4 NEMA17. Ajustar a drivers reales.
+#define LH_STEP 14
+#define LH_DIR  27
+#define RH_STEP 26
+#define RH_DIR  25
+#define LK_STEP 19
+#define LK_DIR  18
+#define RK_STEP 5
+#define RK_DIR  17
+#define ENABLE_PIN 16
+
+#define SERIAL_BAUD 115200
+#define WS_PERIOD_MS 50
+#define OLED_PERIOD_MS 700
+#define CONTROL_PERIOD_MS 10
+#define STEP_ANGLE_DEG 1.2f
+#define MICROSTEPS 16.0f
+#define STEPS_PER_DEG (MICROSTEPS / STEP_ANGLE_DEG)
+#define MAX_JOINT_DEG 95.0f
+#define MIN_JOINT_DEG -95.0f
+#define SAFE_TILT_DEG 18.0f
+
+// IMPORTANTE: esta demo mueve motores. Usar true solo en banco de pruebas, sin persona.
+#define ENABLE_MOTION false
+
+Adafruit_SH1106G display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+Adafruit_MPU6050 mpu1, mpu2;
+AsyncWebServer server(80);
+AsyncWebSocket ws("/ws");
+
+AccelStepper mLH(AccelStepper::DRIVER, LH_STEP, LH_DIR);
+AccelStepper mRH(AccelStepper::DRIVER, RH_STEP, RH_DIR);
+AccelStepper mLK(AccelStepper::DRIVER, LK_STEP, LK_DIR);
+AccelStepper mRK(AccelStepper::DRIVER, RK_STEP, RK_DIR);
+
+struct Joints { float lh=70, rh=70, lk=-82, rk=-82, la=12, ra=12; } joints;
+struct Bio { int bpm=72, spo2=97, ecg=520, emg=160; float body=36.6f, amb=24.0f, cpu=45.0f; } bio;
+
+enum State { IDLE, SITTING, STAND_UP, WALK_FWD, WALK_BACK, WALK_RIGHT, WALK_LEFT, STOPPED } state = SITTING;
+uint32_t t0=0,lastWs=0,lastOled=0,lastCtl=0;
+bool demoData=true;
+int oledScreen=0;
+
+float deg2steps(float deg){ return deg * STEPS_PER_DEG; }
+float lim(float v){ return constrain(v, MIN_JOINT_DEG, MAX_JOINT_DEG); }
+void targetMotors(){
+  if(!ENABLE_MOTION) return;
+  mLH.moveTo((long)deg2steps(lim(joints.lh))); mRH.moveTo((long)deg2steps(lim(joints.rh)));
+  mLK.moveTo((long)deg2steps(lim(joints.lk))); mRK.moveTo((long)deg2steps(lim(joints.rk)));
+}
+void runMotors(){ if(ENABLE_MOTION){ mLH.run(); mRH.run(); mLK.run(); mRK.run(); } }
+
+float readTempC(int pin){ float mv = analogReadMilliVolts(pin); return mv / 10.0f; } // LM35: 10mV/°C
+int readAnalogFiltered(int pin, float alpha=0.15f){ static float v[40]; int idx = pin % 40; v[idx] = v[idx]*(1-alpha) + analogRead(pin)*alpha; return (int)v[idx]; }
+
+void readSensors(){
+  bio.ecg = readAnalogFiltered(ECG_PIN, .18f);
+  bio.emg = abs(readAnalogFiltered(EMG_PIN, .24f)-1850);
+  int spoRaw = readAnalogFiltered(SPO2_PIN, .08f);
+  bio.spo2 = constrain(map(spoRaw, 900, 3000, 94, 99), 80, 100);
+  bio.body = readTempC(BODY_TEMP_PIN);
+  bio.amb = readTempC(LM35_PIN);
+  #ifdef __cplusplus
+  bio.cpu = temperatureRead();
+  #endif
+  bio.bpm = constrain(65 + (bio.ecg % 18), 40, 160);
+}
+
+void simulateSensors(float s){
+  bio.bpm = 72 + roundf(7*sinf(s*.8f));
+  bio.spo2 = 97 + roundf(sinf(s*.25f));
+  bio.body = 36.6f + .15f*sinf(s*.1f);
+  bio.amb = 24.0f + .8f*sinf(s*.06f);
+  bio.cpu = 48.0f + 3.0f*sinf(s*.2f);
+  bio.ecg = 520 + 210*sinf(s*8.0f) + 40*sinf(s*25.0f);
+  bio.emg = 180 + 120*fabsf(sinf(s*5.3f));
+}
+
+void setSitting(){ joints = {70,70,-82,-82,12,12}; targetMotors(); }
+void setStanding(){ joints = {0,0,0,0,0,0}; targetMotors(); }
+
+void updateSequence(){
+  float s = (millis()-t0)/1000.0f;
+  if(state==SITTING){ setSitting(); return; }
+  if(state==STAND_UP){
+    float p = constrain(s/4.0f,0,1);
+    joints.lh=joints.rh=70*(1-p); joints.lk=joints.rk=-82*(1-p); joints.la=joints.ra=12*(1-p);
+    if(p>=1){ state=WALK_FWD; t0=millis(); }
+  } else if(state==WALK_FWD || state==WALK_BACK || state==WALK_RIGHT || state==WALK_LEFT){
+    float elapsed=s; int block=(int)(elapsed/6.0f); float local=fmodf(elapsed,6.0f); float gait=sinf(local*PI); float side=sinf(local*PI*.5f);
+    if(state==WALK_FWD){ joints.lh= gait*18; joints.rh=-gait*18; joints.lk=-gait*24; joints.rk=gait*24; }
+    if(state==WALK_BACK){ joints.lh=-gait*14; joints.rh=gait*14; joints.lk=gait*20; joints.rk=-gait*20; }
+    if(state==WALK_RIGHT){ joints.lh= side*10; joints.rh=-side*10; joints.lk=-gait*16; joints.rk=gait*16; }
+    if(state==WALK_LEFT){ joints.lh=-side*10; joints.rh=side*10; joints.lk=-gait*16; joints.rk=gait*16; }
+    joints.la=6*sinf(local*PI*2); joints.ra=-joints.la;
+    if(elapsed>=6.0f){
+      if(state==WALK_FWD) state=WALK_BACK; else if(state==WALK_BACK) state=WALK_RIGHT; else if(state==WALK_RIGHT) state=WALK_LEFT; else { state=IDLE; setStanding(); }
+      t0=millis();
+    }
+  }
+  targetMotors();
+}
+
+const char* stateName(){ switch(state){case SITTING:return "SITTING";case STAND_UP:return "STAND_UP";case WALK_FWD:return "WALK_FWD";case WALK_BACK:return "WALK_BACK";case WALK_RIGHT:return "WALK_RIGHT";case WALK_LEFT:return "WALK_LEFT";case STOPPED:return "STOPPED";default:return "IDLE";} }
+
+void sendTelemetry(){
+  char msg[520];
+  snprintf(msg,sizeof(msg),
+    "{\"mode\":\"%s\",\"bpm\":%d,\"spo2\":%d,\"bodyTemp\":%.1f,\"ambTemp\":%.1f,\"cpuTemp\":%.1f,\"ecg\":%d,\"emg\":%d,\"joints\":{\"lh\":%.1f,\"rh\":%.1f,\"lk\":%.1f,\"rk\":%.1f,\"la\":%.1f,\"ra\":%.1f}}",
+    stateName(), bio.bpm,bio.spo2,bio.body,bio.amb,bio.cpu,bio.ecg,bio.emg,joints.lh,joints.rh,joints.lk,joints.rk,joints.la,joints.ra);
+  ws.textAll(msg);
+}
+
+void oledLogo(){
+  display.clearDisplay(); display.setTextColor(SH110X_WHITE);
+  display.setTextSize(2); display.setCursor(16,8); display.print("BIOTRON");
+  display.setTextSize(1); display.setCursor(10,33); display.print("Bioingenieria y");
+  display.setCursor(8,45); display.print("Exoesqueletos");
+  display.setCursor(27,56); display.print("Pediatricos"); display.display();
+}
+void oledProject(){
+  display.clearDisplay(); display.setTextSize(1); display.setTextColor(SH110X_WHITE); display.setCursor(0,0);
+  display.println("Proyecto de"); display.println("Bioingenieria"); display.println("Carrera Ing."); display.println("Electronica"); display.println("UTN - FRT"); display.display();
+}
+void oledAuthors(){
+  display.clearDisplay(); display.setTextSize(1); display.setTextColor(SH110X_WHITE); display.setCursor(0,0);
+  display.println("Diseno y Desarrollo:"); display.println(); display.println("Angel Leguina"); display.println("Mario Angelillo"); display.display();
+}
+void oledBio(){
+  display.clearDisplay(); display.setTextSize(1); display.setTextColor(SH110X_WHITE); display.setCursor(0,0);
+  display.printf("BPM:%d  SpO2:%d%%\n", bio.bpm, bio.spo2);
+  display.printf("Cuerpo: %.1f C\n", bio.body);
+  display.printf("Amb LM35: %.1f C\n", bio.amb);
+  display.printf("CPU: %.1f C\n", bio.cpu);
+  display.printf("ECG:%d EMG:%d\n", bio.ecg, bio.emg);
+  display.print(stateName()); display.display();
+}
+void updateOled(){
+  uint32_t now=millis();
+  if(now<3500) { oledLogo(); return; }
+  if(now<7000) { oledProject(); return; }
+  if(now<10500){ oledAuthors(); return; }
+  oledBio();
+}
+
+void onWs(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len){
+  if(type!=WS_EVT_DATA) return;
+  String cmd; for(size_t i=0;i<len;i++) cmd+=(char)data[i]; cmd.trim(); cmd.toUpperCase();
+  if(cmd=="START"){ state=STAND_UP; t0=millis(); }
+  else if(cmd=="SIT"){ state=SITTING; t0=millis(); setSitting(); }
+  else if(cmd=="STOP"){ state=STOPPED; setStanding(); }
+  else if(cmd=="DEMO"){ demoData=true; }
+  else if(cmd=="REAL"){ demoData=false; }
+}
+
+void setup(){
+  Serial.begin(SERIAL_BAUD);
+  Wire.begin(SDA_PIN,SCL_PIN);
+  analogReadResolution(12);
+  pinMode(ENABLE_PIN, OUTPUT); digitalWrite(ENABLE_PIN, ENABLE_MOTION ? LOW : HIGH);
+  AccelStepper* motors[]={&mLH,&mRH,&mLK,&mRK};
+  for(auto m:motors){ m->setMaxSpeed(650); m->setAcceleration(380); }
+  display.begin(OLED_ADDR,true); oledLogo();
+  mpu1.begin(MPU1_ADDR); mpu2.begin(MPU2_ADDR);
+  LittleFS.begin(true);
+  WiFi.mode(WIFI_AP_STA);
+  WiFi.softAP(WIFI_SSID,WIFI_PASS);
+  ws.onEvent(onWs); server.addHandler(&ws);
+  server.serveStatic("/", LittleFS, "/").setDefaultFile("index.html");
+  server.onNotFound([](AsyncWebServerRequest *request){ request->redirect("/"); });
+  server.begin();
+  setSitting();
+  Serial.print("AP IP: "); Serial.println(WiFi.softAPIP());
+}
+
+void loop(){
+  uint32_t now=millis();
+  if(now-lastCtl>=CONTROL_PERIOD_MS){ lastCtl=now; updateSequence(); }
+  runMotors();
+  if(demoData) simulateSensors(now/1000.0f); else readSensors();
+  if(now-lastWs>=WS_PERIOD_MS){ lastWs=now; sendTelemetry(); ws.cleanupClients(); }
+  if(now-lastOled>=OLED_PERIOD_MS){ lastOled=now; updateOled(); }
+}

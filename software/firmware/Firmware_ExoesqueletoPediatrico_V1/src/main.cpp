@@ -1,120 +1,96 @@
-#include <WiFi.h>
-#include <BLEDevice.h>
-#include <Stepper.h>
+al);
+  window.Swal.fire = (...args) => {
+    const dialog = document.getElementById('adminDialog');
+    const adminOpen = dialog && dialog.open;
+    let options;
+    if (args.length === 1 && typeof args[0] === 'object' && args[0] !== null) {
+      options = { ...args[0] };
+    } else {
+      options = { title: args[0], html: args[1], icon: args[2] };
+    }
+    if (adminOpen && !options.target) {
+      const previousDidOpen = options.didOpen;
+      options.target = dialog;
+      options.heightAuto = false;
+      options.scrollbarPadding = false;
+      options.customClass = {
+        ...(options.customClass || {}),
+        container: `${options.customClass?.container || ''} admin-swal-container`.trim(),
+        popup: `${options.customClass?.popup || ''} admin-swal-popup`.trim()
+      };
+      options.didOpen = (popup) => {
+        popup?.focus?.();
+        if (typeof previousDidOpen === 'function') previousDidOpen(popup);
+      };
+    }
+    return originalFire(options);
+  };
+}
 
-// Definición de pines para los motores paso a paso
-#define MOTOR_1_STEP_PIN 2
-#define MOTOR_1_DIR_PIN 3
-#define MOTOR_2_STEP_PIN 4
-#define MOTOR_2_DIR_PIN 5
+function initSupabase() {
+  const { SUPABASE_URL, SUPABASE_ANON_KEY } = window.APP_CONFIG || {};
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
 
-// Definición de pines para los sensores musculares ECG EMG AD8832
-#define EMG_SENSOR_PIN_LEFT 36
-#define EMG_SENSOR_PIN_RIGHT 35
+function showMapError(title, message) {
+  const mapEl = $('map');
+  if (mapEl) mapEl.innerHTML = `<div class="map-error"><strong>${title}</strong><p>${message}</p></div>`;
+  Swal.fire(title, message, 'error');
+}
 
-// Definición de constantes para la configuración de los motores paso a paso
-#define STEPS_PER_REVOLUTION 200
-#define MOTOR_SPEED 200 // Velocidad en pasos por segundo
-
-// Declaración de objetos Stepper para controlar los motores
-Stepper stepperMotorLeft(STEPS_PER_REVOLUTION, MOTOR_1_STEP_PIN, MOTOR_1_DIR_PIN);
-Stepper stepperMotorRight(STEPS_PER_REVOLUTION, MOTOR_2_STEP_PIN, MOTOR_2_DIR_PIN);
-
-// Umbrales para la detección de actividad muscular
-#define THRESHOLD 1.0
-
-// Función para inicializar la conexión WiFi
-void setupWiFi() {
-  // Configuración de la red WiFi
-  const char* ssid = "TuSSID";
-  const char* password = "TuPassword";
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Conectando a WiFi...");
+function loadGoogleMaps() {
+  const key = window.APP_CONFIG?.GOOGLE_MAPS_API_KEY;
+  if (!key || key.includes('TU_GOOGLE')) {
+    showMapError('Falta configurar Google Maps', 'Abrí config.js y cargá GOOGLE_MAPS_API_KEY con una clave válida.');
+    return Promise.reject(new Error('Missing Google Maps API key'));
   }
+  if (window.google?.maps?.importLibrary) return Promise.resolve();
+  if (googleMapsPromise) return googleMapsPromise;
 
-  Serial.println("Conectado a WiFi");
+  googleMapsPromise = new Promise((resolve, reject) => {
+    window.__satHDPGoogleReady = () => resolve();
+    const oldScript = document.getElementById('googleMapsScript');
+    if (oldScript) oldScript.remove();
+
+    const script = document.createElement('script');
+    script.id = 'googleMapsScript';
+    script.async = true;
+    script.defer = true;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&libraries=places&loading=async&callback=__satHDPGoogleReady`;
+    script.onerror = () => {
+      const msg = 'No se pudo cargar Google Maps. Revisá que Maps JavaScript API y Places API estén habilitadas y que el referer autorizado incluya https://fmgambino.github.io/* y https://fmgambino.github.io/satHDP/*.';
+      showMapError('Google Maps no cargó', msg);
+      reject(new Error(msg));
+    };
+    document.head.appendChild(script);
+  });
+  return googleMapsPromise;
 }
 
-// Función para inicializar la conexión BLE (Bluetooth Low Energy)
-void setupBLE() {
-  // Inicialización básica de BLE
-  BLEDevice::init("ExoesqueletoPediatrico");
-  BLEServer *pServer = BLEDevice::createServer();
-  // Configuración adicional puede ser necesaria según los requisitos del proyecto
+async function initMap() {
+  await loadGoogleMaps();
+  const { Map } = await google.maps.importLibrary('maps');
+  map = new Map($('map'), {
+    center: window.APP_CONFIG.MAP_CENTER,
+    zoom: window.APP_CONFIG.MAP_ZOOM,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: true,
+    styles: document.documentElement.dataset.theme === 'dark' ? darkMapStyle : []
+  });
+  geocoder = new google.maps.Geocoder();
+  map.addListener('click', (e) => setSelectedLocation(e.latLng.lat(), e.latLng.lng()));
+  initLocationFilters();
+  await initGoogleAutocomplete();
+  zoomToDeviceLocation(false);
+  await loadDamageTypes();
+  await loadReports();
+  initRealtime();
 }
 
-// Función para inicializar los sensores musculares EMG
-void setupEMGSensors() {
-  pinMode(EMG_SENSOR_PIN_LEFT, INPUT);
-  pinMode(EMG_SENSOR_PIN_RIGHT, INPUT);
-}
-
-// Función para medir la actividad muscular con el sensor EMG
-float measureMuscleActivity(int sensorPin) {
-  // Leer el valor del sensor EMG
-  int emgValue = analogRead(sensorPin);
-
-  // Convertir el valor a voltaje
-  float voltage = emgValue * (3.3 / 4095.0); // 3.3V de referencia, 12 bits de resolución
-
-  // Devolver el voltaje medido
-  return voltage;
-}
-
-// Función para mover los motores paso a paso
-void moveMotors(float leftMuscleActivity, float rightMuscleActivity) {
-  if (leftMuscleActivity > THRESHOLD) {
-    // Mover motor izquierdo hacia adelante
-    stepperMotorLeft.setSpeed(MOTOR_SPEED);
-    stepperMotorLeft.step(STEPS_PER_REVOLUTION / 2);
-  }
-
-  if (rightMuscleActivity > THRESHOLD) {
-    // Mover motor derecho hacia adelante
-    stepperMotorRight.setSpeed(MOTOR_SPEED);
-    stepperMotorRight.step(STEPS_PER_REVOLUTION / 2);
-  }
-}
-
-// Función de inicialización
-void setup() {
-  // Inicialización de los pines de dirección de los motores
-  pinMode(MOTOR_1_DIR_PIN, OUTPUT);
-  pinMode(MOTOR_2_DIR_PIN, OUTPUT);
-
-  // Inicialización de la conexión WiFi
-  setupWiFi();
-
-  // Inicialización de la conexión BLE
-  setupBLE();
-
-  // Inicialización de los sensores musculares EMG
-  setupEMGSensors();
-
-  // Inicialización de la comunicación serie para depuración
-  Serial.begin(115200);
-}
-
-// Función principal de bucle
-void loop() {
-  // Medir la actividad muscular con los sensores EMG
-  float leftMuscleActivity = measureMuscleActivity(EMG_SENSOR_PIN_LEFT);
-  float rightMuscleActivity = measureMuscleActivity(EMG_SENSOR_PIN_RIGHT);
-
-  // Imprimir los valores medidos en el puerto serie
-  Serial.print("Actividad Muscular Izquierda: ");
-  Serial.print(leftMuscleActivity);
-  Serial.print(" V, Actividad Muscular Derecha: ");
-  Serial.print(rightMuscleActivity);
-  Serial.println(" V");
-  
-  // Controlar los motores en función de la actividad muscular
-  moveMotors(leftMuscleActivity, rightMuscleActivity);
-
-  // Agregar un retraso para evitar lecturas demasiado rápidas
-  delay(100);
-}
+async function initGoogleAutocomplete() {
+  try {
+    const places = await google.maps.importLibrary('places');
+    if (places.PlaceAutocompleteElement) {
+      createPlaceAutocompleteElement('searchHost', 'Buscar dirección, barrio, plaza...', false);
+      createPlace

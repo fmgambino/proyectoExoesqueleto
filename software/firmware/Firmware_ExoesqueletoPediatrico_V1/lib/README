@@ -1,46 +1,15 @@
+const DEFAULT_DAMAGE_TYPES = {
+  cano_roto: { label: 'Caño roto', emoji: '💧', color: '#38bdf8', active: true },
+  falta_asfalto: { label: 'Falta asfalto', emoji: '🛣️', color: '#94a3b8', active: true },
+  bache: { label: 'Bache', emoji: '🕳️', color: '#f59e0b', active: true },
+  poste_caido: { label: 'Poste caído', emoji: '⚡', color: '#facc15', active: true },
+  arbol_caido: { label: 'Árbol caído', emoji: '🌳', color: '#22c55e', active: true }
+};
 
-This directory is intended for project specific (private) libraries.
-PlatformIO will compile them to static libraries and link into executable file.
-
-The source code of each library should be placed in an own separate directory
-("lib/your_library_name/[here are source files]").
-
-For example, see a structure of the following two libraries `Foo` and `Bar`:
-
-|--lib
-|  |
-|  |--Bar
-|  |  |--docs
-|  |  |--examples
-|  |  |--src
-|  |     |- Bar.c
-|  |     |- Bar.h
-|  |  |- library.json (optional, custom build options, etc) https://docs.platformio.org/page/librarymanager/config.html
-|  |
-|  |--Foo
-|  |  |- Foo.c
-|  |  |- Foo.h
-|  |
-|  |- README --> THIS FILE
-|
-|- platformio.ini
-|--src
-   |- main.c
-
-and a contents of `src/main.c`:
-```
-#include <Foo.h>
-#include <Bar.h>
-
-int main (void)
-{
-  ...
-}
-
-```
-
-PlatformIO Library Dependency Finder will find automatically dependent
-libraries scanning project source files.
-
-More information about PlatformIO Library Dependency Finder
-- https://docs.platformio.org/page/librarymanager/ldf.html
+let DAMAGE_TYPES = { ...DEFAULT_DAMAGE_TYPES };
+const STATUS = { pending: 'Pendiente', analysis: 'En revisión', approved: 'Aprobado', rejected: 'Rechazado', resolved: 'Resuelto' };
+const MAX_IMAGES = 5;
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+const ALLOWED_VIDEO_HOSTS = ['youtube.com', 'youtu.be', 'tiktok.com', 'instagram.com', 'facebook.com', 'fb.watch'];
+const ARGENTINA_LOCATIONS = {
+  "Buenos Aires": ["La Plata", "Mar del Plata", "Bahía Blanca", "Tandil", "Olavarría", "Junín", "Pergamino", "San Nicolás", "Quilmes", "Morón", "Avellaneda", "Lanús", "Lomas de Zamora", "San Isidro", 

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EXO Pediátrico · 3D + Bio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <aside class="panel">
+      <div class="brand">
+        <div class="logo">EXO</div>
+        <div><h1>Exoesqueleto Pediátrico</h1><p>ESP32 · NEMA17 · BioTelemetría · 3D</p></div>
+      </div>
+      <div class="statusbar"><span id="dot"></span><b id="conn">Sin conexión</b><small id="mode">IDLE</small></div>
+
+      <section class="card">
+        <h2>Fuente de datos</h2>
+        <div class="segmented">
+          <button id="demoBtn" class="active">DEMO</button>
+          <button id="realBtn">REAL ESP32</button>
+        </div>
+        <p class="note" id="sourceText">Modo DEMO: telemetría simulada para probar sin hardware.</p>
+      </section>
+
+      <section class="card">
+        <h2>Movimiento</h2>
+        <button id="start" class="primary">Sit-to-Stand + Secuencia</button>
+        <button id="stop" class="danger">STOP / Emergencia</button>
+        <div class="sliders">
+          <label>Rotación X <output id="rxOut">0°</output><input id="rx" type="range" min="-180" max="180" value="0"></label>
+          <label>Rotación Y <output id="ryOut">0°</output><input id="ry" type="range" min="-180" max="180" value="0"></label>
+          <label>Rotación Z <output id="rzOut">0°</output><input id="rz" type="range" min="-180" max="180" value="0"></label>
+        </div>
+        <select id="wheelMode">
+          <option value="zoom">Rueda mouse: Zoom</option>
+          <option value="z" selected>Rueda mouse: Rotación Z</option>
+          <option value="y">Rueda mouse: Rotación Y</option>
+          <option value="x">Rueda mouse: Rotación X</option>
+        </select>
+      </section>
+
+      <section class="card">
+        <h2>Biomédicos</h2>
+        <div class="cards">
+          <div><b id="bpm">--</b><span>BPM / ECG</span></div>
+          <div><b id="spo2">--</b><span>SpO₂ %</span></div>
+          <div><b id="body">--</b><span>Temp cuerpo °C</span></div>
+          <div><b id="amb">--</b><span>Temp ambiente LM35 °C</span></div>
+          <div><b id="cpu">--</b><span>CPU ESP32 °C</span></div>
+          <div><b id="emg">--</b><span>EMG ADC</span></div>
+          <div><b id="ecg">--</b><span>ECG ADC</span></div>
+          <div><b id="imu">--</b><span>IMU pitch/roll</span></div>
+        </div>
+        <canvas id="bioChart" height="86"></canvas>
+      </section>
+
+      <section class="card compact"><h2>Articulaciones</h2><pre id="joints">--</pre></section>
+    </aside>
+
+    <section class="viewport">
+      <div id="scene"></div>
+      <div id="loading" class="loading">Cargando modelo 3D…</div>
+      <div class="hud">
+        <span>Mouse: orbitar</span><span>Scroll: modo seleccionado</span><span>Shift+scroll: Y</span><span>Alt+scroll: X</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EXO Pediátrico | Telemetría + Modelo 3D</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="panel">
+    <header>
+      <h1>EXO Pediátrico</h1>
+      <p>ESP32 · Modelo 3D · Señales biomédicas</p>
+    </header>
+
+    <section class="status"><span id="led"></span><b id="conn">Desconectado</b><small id="state">IDLE</small></section>
+
+    <section>
+      <h2>Modo de datos</h2>
+      <div class="toggle-row">
+        <button id="demoBtn" class="active">DEMO</button>
+        <button id="realBtn">REAL</button>
+      </div>
+      <p class="hint">DEMO usa señales simuladas. REAL lee sensores del ESP32.</p>
+    </section>
+
+    <section>
+      <h2>Movimiento</h2>
+      <button id="startBtn" class="primary">Pararse + caminatas</button>
+      <button id="seatBtn" class="neutral">Sentado 90°</button>
+      <button id="stopBtn" class="danger">STOP</button>
+      <div class="mini-grid">
+        <label>Rot X <input id="rx" type="range" min="-180" max="180" value="-12"></label>
+        <label>Rot Y <input id="ry" type="range" min="-180" max="180" value="0"></label>
+        <label>Rot Z <input id="rz" type="range" min="-180" max="180" value="0"></label>
+      </div>
+      <label class="check"><input id="wheelZ" type="checkbox" checked> Rueda del mouse rota Z</label>
+      <p class="hint">Arrastrar: orbitar · Scroll: zoom/rotación Z · Shift: Y · Alt: X</p>
+    </section>
+
+    <section>
+      <h2>Biomédicos</h2>
+      <div class="cards">
+        <div><b id="bpm">--</b><span>BPM</span></div>
+        <div><b id="spo2">--</b><span>SpO₂ %</span></div>
+        <div><b id="bodyC">--</b><span>Cuerpo °C</span></div>
+        <div><b id="ambientC">--</b><span>Ambiente °C</span></div>
+        <div><b id="cpuC">--</b><span>CPU °C</span></div>
+        <div><b id="emgV">--</b><span>EMG</span></div>
+        <div><b id="ecgV">--</b><span>ECG</span></div>
+      </div>
+      <button id="signalsBtn" class="neutral wide">Abrir gráficas ECG / EMG</button>
+    </section>
+
+    <section>
+      <h2>Articulaciones</h2>
+      <pre id="joints">--</pre>
+    </section>
+  </aside>
+
+  <main id="viewport">
+    <div class="hud"><b>Modelo 3D corregido</b><span>trolley superior, rieles negros, carcazas grises, NEMA17 y pies pediátricos</span></div>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Señales biomédicas</h2>
+        <button id="closeModal">×</button>
+      </div>
+      <div class="filters">
+        <label><input id="showECG" type="checkbox" checked> ECG</label>
+        <label><input id="showEMG" type="checkbox" checked> EMG</label>
+        <label>Filtro
+          <select id="filterMode">
+            <option value="raw">Crudo</option>
+            <option value="smooth">Suavizado</option>
+            <option value="hp">Alta frecuencia/contracción</option>
+          </select>
+        </label>
+      </div>
+      <canvas id="bioChart"></canvas>
+      <p class="hint">Visualización orientativa. No es dispositivo médico ni diagnóstico.</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

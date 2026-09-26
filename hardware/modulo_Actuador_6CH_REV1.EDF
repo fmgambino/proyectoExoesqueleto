@@ -1,737 +1,443 @@
-(PCB modulo_Actuador_6CH_REV1
- (parser
-  (host_cad ARES)
-  (host_version 8.15 SP1)
- )
- (resolution mm 100000)
- (unit mm)
- (structure
-  (boundary (rect pcb -0.12700 -77.26680 64.06680 0.25080))
-  (boundary (path signal 0.10160 3.00000 0.00000 56.00000 0.00000))
-  (boundary (path signal 0.10160 0.00000 -3.00000 0.00000 -69.00000))
-  (boundary (path signal 0.10160 59.00000 -3.00000 59.00000 -69.00000))
-  (boundary (path signal 0.10160 3.00000 0.00000 2.38660 -0.05969 1.81934 -0.23145 1.30921 -0.50427
-   0.86719 -0.86719 0.50427 -1.30920 0.23145 -1.81934 0.05969 -2.38660 0.00000 -3.00000
-  ))
-  (boundary (path signal 0.10160 56.00000 0.00000 56.61340 -0.05969 57.18066 -0.23145
-   57.69079 -0.50427 58.13281 -0.86719 58.49573 -1.30920 58.76855 -1.81934 58.94031 -2.38660
-   59.00000 -3.00000))
-  (boundary (path signal 0.10160 3.00000 -72.00000 56.00000 -72.00000))
-  (boundary (path signal 0.10160 59.00000 -69.00000 58.94031 -69.61340 58.76855 -70.18066
-   58.49573 -70.69080 58.13281 -71.13281 57.69079 -71.49573 57.18066 -71.76855 56.61340 -71.94031
-   56.00000 -72.00000))
-  (boundary (path signal 0.10160 0.00000 -69.00000 0.05969 -69.61340 0.23145 -70.18066
-   0.50427 -70.69080 0.86719 -71.13281 1.30921 -71.49573 1.81934 -71.76855 2.38660 -71.94031
-   3.00000 -72.00000))
-  (flip_style mirror_first)
-  (layer TOP (type signal) (direction horizontal))
-  (layer I1 (type signal) (direction off))
-  (layer I2 (type signal) (direction off))
-  (layer I3 (type signal) (direction off))
-  (layer I4 (type signal) (direction off))
-  (layer I5 (type signal) (direction off))
-  (layer I6 (type signal) (direction off))
-  (layer I7 (type signal) (direction off))
-  (layer I8 (type signal) (direction off))
-  (layer I9 (type signal) (direction off))
-  (layer I10 (type signal) (direction off))
-  (layer I11 (type signal) (direction off))
-  (layer I12 (type signal) (direction off))
-  (layer I13 (type signal) (direction off))
-  (layer I14 (type signal) (direction off))
-  (layer BOT (type signal) (direction vertical))
-  (grid via  0.88900)
-  (grid wire 0.76200)
-  (control
-   (via_at_smd off)
-   (off_grid on)
-  )
-  (via
-   $VIA#0_SIGNAL
-   (spare
-    $VIA#0_POWER
-    PS5
-   )
-  )
-  (rule
-   (width 0.25400)
-   (clearance 0.38100)
-   (clearance 0.25400 (type wire_via))
-   (clearance 0.25400 (type wire_smd))
-   (clearance 0.25400 (type wire_pin))
-   (clearance 0.25400 (type wire_wire))
-   (clearance 0.25400 (type via_pin))
-   (clearance 0.25400 (type via_via))
-   (clearance 0.25400 (type via_smd))
-  )
- )
- (placement
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U1 (place U1 28.60000 -22.00000 front 0
-  ))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U2 (place U2 28.60000 -40.60000 front 0
-  ))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U3 (place U3 50.30000 -22.00000 front 0
-  ))
-  (component A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U4 (place U4 50.00000 -40.70000 front 0
-  ))
-  (component SATA_DATA_SATA_DIR (place SATA_DIR 13.76000 -11.36000 front 90))
-  (component SATA_DATA_SATA_STEP (place SATA_STEP 37.40000 -11.40000 front 90))
-  (component "CONN-SIL4_J1" (place J1 18.80000 -58.50000 front 0))
-  (component "CONN-SIL4_J2" (place J2 33.88000 -58.50000 front 0))
-  (component "CONN-SIL4_J3" (place J3 18.88000 -65.50000 front 0))
-  (component "CONN-SIL4_J4" (place J4 34.42000 -65.50000 front 0))
-  (component "CONN-SIL4_DC-POWER" (place "DC-POWER" 6.00000 -30.96000 front -90))
- )
- (library
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U1 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U2 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U3 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image A4988_MODULE_STEPPER_MOTOR_DRIVER_CARRIE_U4 (side front)
-   (outline (rect TOP -19.32500 -14.24500 1.54500 2.25000))
-   (pin PS0 (rotate -90) 0 0.00000 0.00000)
-   (pin PS1 (rotate -90) 1 -2.54000 0.00000)
-   (pin PS1 (rotate -90) 2 -5.08000 0.00000)
-   (pin PS1 (rotate -90) 3 -7.62000 0.00000)
-   (pin PS1 (rotate -90) 4 -10.16000 0.00000)
-   (pin PS1 (rotate -90) 5 -12.70000 0.00000)
-   (pin PS1 (rotate -90) 6 -15.24000 0.00000)
-   (pin PS1 (rotate -90) 7 -17.78000 0.00000)
-   (pin PS1 (rotate -90) 8 -17.78000 -12.70000)
-   (pin PS1 (rotate -90) 9 -15.24000 -12.70000)
-   (pin PS1 (rotate -90) 10 -12.70000 -12.70000)
-   (pin PS1 (rotate -90) 11 -10.16000 -12.70000)
-   (pin PS1 (rotate -90) 12 -7.62000 -12.70000)
-   (pin PS1 (rotate -90) 13 -5.08000 -12.70000)
-   (pin PS1 (rotate -90) 14 -2.54000 -12.70000)
-   (pin PS1 (rotate -90) 15 0.00000 -12.70000)
-  )
-  (image SATA_DATA_SATA_DIR (side front)
-   (outline (rect TOP -1.90000 -13.35500 11.03500 4.73500))
-   (pin PS2 (rotate 90) 0 0.00000 0.00000)
-   (pin PS2 (rotate 90) 1 0.00000 -1.27000)
-   (pin PS2 (rotate 90) 2 0.00000 -2.54000)
-   (pin PS2 (rotate 90) 3 0.00000 -3.81000)
-   (pin PS2 (rotate 90) 4 0.00000 -5.08000)
-   (pin PS2 (rotate 90) 5 0.00000 -6.35000)
-   (pin PS2 (rotate 90) 6 0.00000 -7.62000)
-   (pin PS3 (rotate 90) 7 2.36000 -10.17994)
-   (pin PS3 (rotate 90) 8 2.36000 2.56000)
-  )
-  (image SATA_DATA_SATA_STEP (side front)
-   (outline (rect TOP -1.90000 -13.35500 11.03500 4.73500))
-   (pin PS2 (rotate 90) 0 0.00000 0.00000)
-   (pin PS2 (rotate 90) 1 0.00000 -1.27000)
-   (pin PS2 (rotate 90) 2 0.00000 -2.54000)
-   (pin PS2 (rotate 90) 3 0.00000 -3.81000)
-   (pin PS2 (rotate 90) 4 0.00000 -5.08000)
-   (pin PS2 (rotate 90) 5 0.00000 -6.35000)
-   (pin PS2 (rotate 90) 6 0.00000 -7.62000)
-   (pin PS3 (rotate 90) 7 2.36000 -10.17994)
-   (pin PS3 (rotate 90) 8 2.36000 2.56000)
-  )
-  (image "CONN-SIL4_J1" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J2" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J3" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_J4" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (image "CONN-SIL4_DC-POWER" (side front)
-   (outline (rect TOP -1.32080 -1.32080 8.94080 1.32080))
-   (pin PS4 (rotate 0) 0 0.00000 0.00000)
-   (pin PS4 (rotate 0) 1 2.54000 0.00000)
-   (pin PS4 (rotate 0) 2 5.08000 0.00000)
-   (pin PS4 (rotate 0) 3 7.62000 0.00000)
-  )
-  (padstack PS0 (absolute on)
-   (shape (rect TOP -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I1 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I2 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I3 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I4 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I5 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I6 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I7 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I8 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I9 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I10 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I11 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I12 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I13 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect I14 -0.54093 -0.54093 0.54093 0.54093))
-   (shape (rect BOT -0.54093 -0.54093 0.54093 0.54093))
-  )
-  (padstack PS1 (absolute on)
-   (shape (circle TOP 1.53000 0 0))
-   (shape (circle I1 1.53000 0 0))
-   (shape (circle I2 1.53000 0 0))
-   (shape (circle I3 1.53000 0 0))
-   (shape (circle I4 1.53000 0 0))
-   (shape (circle I5 1.53000 0 0))
-   (shape (circle I6 1.53000 0 0))
-   (shape (circle I7 1.53000 0 0))
-   (shape (circle I8 1.53000 0 0))
-   (shape (circle I9 1.53000 0 0))
-   (shape (circle I10 1.53000 0 0))
-   (shape (circle I11 1.53000 0 0))
-   (shape (circle I12 1.53000 0 0))
-   (shape (circle I13 1.53000 0 0))
-   (shape (circle I14 1.53000 0 0))
-   (shape (circle BOT 1.53000 0 0))
-  )
-  (padstack PS2 (absolute on) (shape (rect TOP -0.45000 -1.00000 0.45000 1.00000)))
-  (padstack PS3 (absolute on)
-   (shape (circle TOP 2.33000 0 0))
-   (shape (circle I1 2.33000 0 0))
-   (shape (circle I2 2.33000 0 0))
-   (shape (circle I3 2.33000 0 0))
-   (shape (circle I4 2.33000 0 0))
-   (shape (circle I5 2.33000 0 0))
-   (shape (circle I6 2.33000 0 0))
-   (shape (circle I7 2.33000 0 0))
-   (shape (circle I8 2.33000 0 0))
-   (shape (circle I9 2.33000 0 0))
-   (shape (circle I10 2.33000 0 0))
-   (shape (circle I11 2.33000 0 0))
-   (shape (circle I12 2.33000 0 0))
-   (shape (circle I13 2.33000 0 0))
-   (shape (circle I14 2.33000 0 0))
-   (shape (circle BOT 2.33000 0 0))
-  )
-  (padstack PS4 (absolute on)
-   (shape (rect TOP -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I1 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I2 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I3 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I4 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I5 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I6 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I7 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I8 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I9 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I10 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I11 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I12 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I13 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect I14 -1.01600 -1.01600 1.01600 1.01600))
-   (shape (rect BOT -1.01600 -1.01600 1.01600 1.01600))
-  )
-  (padstack PS5 (absolute on)
-   (shape (circle TOP 3.81000 0 0))
-   (shape (circle I1 3.81000 0 0))
-   (shape (circle I2 3.81000 0 0))
-   (shape (circle I3 3.81000 0 0))
-   (shape (circle I4 3.81000 0 0))
-   (shape (circle I5 3.81000 0 0))
-   (shape (circle I6 3.81000 0 0))
-   (shape (circle I7 3.81000 0 0))
-   (shape (circle I8 3.81000 0 0))
-   (shape (circle I9 3.81000 0 0))
-   (shape (circle I10 3.81000 0 0))
-   (shape (circle I11 3.81000 0 0))
-   (shape (circle I12 3.81000 0 0))
-   (shape (circle I13 3.81000 0 0))
-   (shape (circle I14 3.81000 0 0))
-   (shape (circle BOT 3.81000 0 0))
-  )
-  (padstack $VIA#0_SIGNAL (absolute on)
-   (shape (circle TOP 0.76200 0 0))
-   (shape (circle I1 0.76200 0 0))
-   (shape (circle I2 0.76200 0 0))
-   (shape (circle I3 0.76200 0 0))
-   (shape (circle I4 0.76200 0 0))
-   (shape (circle I5 0.76200 0 0))
-   (shape (circle I6 0.76200 0 0))
-   (shape (circle I7 0.76200 0 0))
-   (shape (circle I8 0.76200 0 0))
-   (shape (circle I9 0.76200 0 0))
-   (shape (circle I10 0.76200 0 0))
-   (shape (circle I11 0.76200 0 0))
-   (shape (circle I12 0.76200 0 0))
-   (shape (circle I13 0.76200 0 0))
-   (shape (circle I14 0.76200 0 0))
-   (shape (circle BOT 0.76200 0 0))
-  )
-  (padstack $VIA#0_POWER (absolute on)
-   (shape (circle TOP 0.76200 0 0))
-   (shape (circle I1 0.76200 0 0))
-   (shape (circle I2 0.76200 0 0))
-   (shape (circle I3 0.76200 0 0))
-   (shape (circle I4 0.76200 0 0))
-   (shape (circle I5 0.76200 0 0))
-   (shape (circle I6 0.76200 0 0))
-   (shape (circle I7 0.76200 0 0))
-   (shape (circle I8 0.76200 0 0))
-   (shape (circle I9 0.76200 0 0))
-   (shape (circle I10 0.76200 0 0))
-   (shape (circle I11 0.76200 0 0))
-   (shape (circle I12 0.76200 0 0))
-   (shape (circle I13 0.76200 0 0))
-   (shape (circle I14 0.76200 0 0))
-   (shape (circle BOT 0.76200 0 0))
-  )
- )
- (network
-  (net "#00001"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-4 U1-5)
-  )
-  (net "#00002"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-11 J1-0)
-  )
-  (net "#00003"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-10 J1-1)
-  )
-  (net "#00004"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-12 J1-2)
-  )
-  (net "#00005"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-13 J1-3)
-  )
-  (net "#00026"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-4 U2-5)
-  )
-  (net "#00027"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-11 J2-0)
-  )
-  (net "#00028"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-10 J2-1)
-  )
-  (net "#00029"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-12 J2-2)
-  )
-  (net "#00030"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-13 J2-3)
-  )
-  (net "#00038"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-4 U3-5)
-  )
-  (net "#00039"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-11 J3-0)
-  )
-  (net "#00040"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-10 J3-1)
-  )
-  (net "#00041"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-12 J3-2)
-  )
-  (net "#00042"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-13 J3-3)
-  )
-  (net "#00050"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-4 U4-5)
-  )
-  (net "#00051"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-11 J4-0)
-  )
-  (net "#00052"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-10 J4-1)
-  )
-  (net "#00053"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-12 J4-2)
-  )
-  (net "#00054"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-13 J4-3)
-  )
-  (net "+12V"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-9 U2-9 U3-9 U4-9 SATA_DIR-6 SATA_STEP-6 "DC-POWER"-1)
-  )
-  (net "+5V"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-1 U1-2 U1-3 U2-1 U2-2 U2-3 U3-1 U3-2 U3-3 U4-1 U4-2 U4-3 "DC-POWER"-3)
-  )
-  (net "DIR1"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-7 SATA_DIR-0)
-  )
-  (net "DIR2"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-7 SATA_DIR-1)
-  )
-  (net "DIR3"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-7 SATA_DIR-2)
-  )
-  (net "DIR4"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-7 SATA_DIR-3)
-  )
-  (net "DIR5"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_DIR-4)
-  )
-  (net "DIR6"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_DIR-5)
-  )
-  (net "GND"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_POWER
-    )
-   )
-    (pins U1-0 U1-8 U1-14 U1-15 U2-0 U2-8 U2-14 U2-15 U3-0 U3-8 U3-14 U3-15 U4-0 U4-8
-     U4-14 U4-15 SATA_DIR-7 SATA_DIR-8 SATA_STEP-7 SATA_STEP-8 "DC-POWER"-0 "DC-POWER"-2
-   )
-  )
-  (net "STEP1"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U1-6 SATA_STEP-0)
-  )
-  (net "STEP2"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U2-6 SATA_STEP-1)
-  )
-  (net "STEP3"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U3-6 SATA_STEP-2)
-  )
-  (net "STEP4"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins U4-6 SATA_STEP-3)
-  )
-  (net "STEP5"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_STEP-4)
-  )
-  (net "STEP6"
-   (circuit
-    (use_layer TOP BOT)
-    (use_via
-     $VIA#0_SIGNAL
-    )
-   )
-   (pins SATA_STEP-5)
-  )
-  (class POWER
-   "GND"
-   (rule
-    (width 0.25400)
-    (clearance 0.38100)
-    (clearance 0.25400 (type wire_via))
-    (clearance 0.25400 (type wire_smd))
-    (clearance 0.25400 (type wire_pin))
-    (clearance 0.25400 (type wire_wire))
-    (clearance 0.25400 (type via_pin))
-    (clearance 0.25400 (type via_via))
-    (clearance 0.25400 (type via_smd))
-   )
-  )
-  (class SIGNAL
-   "#00001"
-   "#00002"
-   "#00003"
-   "#00004"
-   "#00005"
-   "#00026"
-   "#00027"
-   "#00028"
-   "#00029"
-   "#00030"
-   "#00038"
-   "#00039"
-   "#00040"
-   "#00041"
-   "#00042"
-   "#00050"
-   "#00051"
-   "#00052"
-   "#00053"
-   "#00054"
-   "+12V"
-   "+5V"
-   "DIR1"
-   "DIR2"
-   "DIR3"
-   "DIR4"
-   "DIR5"
-   "DIR6"
-   "STEP1"
-   "STEP2"
-   "STEP3"
-   "STEP4"
-   "STEP5"
-   "STEP6"
-   "{NC}"
-   "{VOID}"
-   (rule
-    (width 0.25400)
-    (clearance 0.38100)
-    (clearance 0.25400 (type wire_via))
-    (clearance 0.25400 (type wire_smd))
-    (clearance 0.25400 (type wire_pin))
-    (clearance 0.25400 (type wire_wire))
-    (clearance 0.25400 (type via_pin))
-    (clearance 0.25400 (type via_via))
-    (clearance 0.25400 (type via_smd))
-   )
-  )
- )
- (wiring
-  (via PS5 3.00000 -3.00000 (net {NC-1}) (type protect))
-  (via PS5 56.00000 -69.00000 (net {NC-2}) (type protect))
-  (via PS5 3.00000 -69.00000 (net {NC-3}) (type protect))
-  (via PS5 56.00000 -3.00000 (net {NC-4}) (type protect))
- )
-)
+window.sb = (() => {
+  const cfg = window.APP_CONFIG || {};
+  const enabled = Boolean(
+    cfg.SUPABASE_URL &&
+    cfg.SUPABASE_ANON_KEY &&
+    !cfg.SUPABASE_ANON_KEY.includes('PEGAR_AQUI') &&
+    !cfg.SUPABASE_URL.includes('TU-PROYECTO') &&
+    window.supabase
+  );
+  const client = enabled ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY, {
+    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+  }) : null;
+
+  const roleLabel = { administrator: 'Administrador', teacher: 'Docente', student: 'Alumno' };
+  const roleCodeFromLabel = { Administrador: 'administrator', Docente: 'teacher', Alumno: 'student' };
+
+function getPublicBaseUrl() {
+  const raw = (cfg.SITE_URL || '').trim().replace(/\/$/, '');
+  const loc = window.location;
+  const dir = loc.pathname.replace(/[^/]*$/, '').replace(/\/$/, '');
+  if (loc.hostname === '127.0.0.1' || loc.hostname === 'localhost') return `${loc.origin}${dir}`.replace(/\/$/, '');
+  if (raw) return raw;
+  return `${loc.origin}${dir}`.replace(/\/$/, '');
+}
+
+  function assertClient() {
+    if (!client) throw new Error('Supabase no está configurado. Pegá tu ANON KEY en config.js.');
+    return client;
+  }
+  function normalizeProfile(row) {
+    const code = row?.roles?.code || row?.role_code || (row?.role_name === 'Administrador' ? 'administrator' : row?.role_name === 'Docente' ? 'teacher' : row?.role_name === 'Alumno' ? 'student' : 'student');
+    return {
+      id: row.id,
+      name: row.full_name || row.name || 'Usuario',
+      full_name: row.full_name || row.name || 'Usuario',
+      role: roleLabel[code] || row?.roles?.name || 'Alumno',
+      role_code: code,
+      email: row.email || '',
+      whatsapp: row.whatsapp || '-',
+      dni: row.dni || '-',
+      status: row.is_active === false ? 'Inactivo' : 'Activo',
+      avatar_url: row.avatar_url || './assets/avatar-default.svg',
+      birth_date: row.birth_date || '',
+      title: row.title || '',
+      certificates: row.certificates || '',
+      mentor_id: row.mentor_id || row.teacher_id || null,
+      mentor_backup_id: row.mentor_backup_id || null,
+      student_ids: row.student_ids || []
+    };
+  }
+  function normalizeCurrentUser(row) {
+    const profile = normalizeProfile(row);
+    const code = profile.role_code || (profile.role === 'Administrador' ? 'administrator' : profile.role === 'Docente' ? 'teacher' : profile.role === 'Alumno' ? 'student' : 'student');
+    return { ...profile, role: code, role_label: roleLabel[code] || profile.role || 'Alumno' };
+  }
+
+  function normalizeInventory(row) {
+    return {
+      id: row.id,
+      code: row.code || row.asset_code || '-',
+      item: row.item || row.name || '-',
+      type: row.type || 'Equipo',
+      serial: row.serial || row.serial_number || '',
+      barcode: row.barcode || '-',
+      status: row.status || 'Disponible',
+      condition: row.condition || row.condition_note || 'Sin observaciones',
+      assignedTo: row.assigned_to || row.assignedTo || '-',
+      requestedAt: row.requested_at || '-',
+      returnedAt: row.returned_at || '-',
+      teacher: row.teacher || '-',
+      location: row.location || '-',
+      category: row.category || row.category_name || '',
+      brand: row.brand || row.brand_name || '',
+      supplier: row.supplier || row.supplier_name || row.company || '',
+      location_detail: row.location_detail || row.locacion || '',
+      zone: row.zone || row.zona || ''
+    };
+  }
+
+  return {
+    enabled,
+    client,
+    isReady: () => enabled,
+    async signIn(email, password) {
+      const { data, error } = await assertClient().auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      return data;
+    },
+    async signOut() {
+      if (!client) return;
+      return client.auth.signOut();
+    },
+    async getSession() {
+      if (!client) return { data: { session: null } };
+      return client.auth.getSession();
+    },
+async sendPasswordReset(email) {
+  const base = getPublicBaseUrl();
+  const cleanEmail = String(email || '').trim().toLowerCase();
+  let { data, error } = await assertClient().auth.resetPasswordForEmail(cleanEmail, { redirectTo: `${base}/reset-password.html` });
+  if (error && /Unable to process request|500/i.test(error.message || '')) {
+    ({ data, error } = await assertClient().auth.resetPasswordForEmail(cleanEmail));
+  }
+  if (error) throw error;
+  return data;
+},
+    async updatePassword(password) {
+      const { data, error } = await assertClient().auth.updateUser({ password });
+      if (error) throw error;
+      return data;
+    },
+    async registerInactive(payload) {
+      const email = String(payload.email || '').trim().toLowerCase();
+      const roleCode = roleCodeFromLabel[payload.role] || payload.role || 'student';
+      const base = getPublicBaseUrl();
+      const { data, error } = await assertClient().auth.signUp({
+        email,
+        password: payload.password,
+        options: { emailRedirectTo: `${base}/index.html`, data: { full_name: payload.full_name || payload.name, role_code: roleCode, requested_role: roleCode } }
+      });
+      if (error) throw error;
+      try { await client.rpc('admin_upsert_profile_by_email', { p_email: email, p_full_name: payload.full_name || payload.name, p_role_code: roleCode, p_dni: null, p_whatsapp: null, p_birth_date: null, p_title: null, p_avatar_url: './assets/avatar-default.svg', p_is_active: false }); } catch (_) {}
+      await client.auth.signOut().catch(() => {});
+      return data;
+    },
+    async inviteUserByAdmin(payload) {
+      const email = String(payload.email || '').trim().toLowerCase();
+      const roleCode = roleCodeFromLabel[payload.role] || payload.role || 'student';
+      const base = getPublicBaseUrl();
+      const body = { ...payload, email, role_code: roleCode, redirect_to: `${base}/reset-password.html` };
+      const functionNames = ['admin-create-user', 'rapid-service'];
+      const errors = [];
+      for (const fnName of functionNames) {
+        try {
+          const { data, error } = await assertClient().functions.invoke(fnName, { body });
+          if (error) throw error;
+          if (data?.error) throw new Error(data.error);
+          return data;
+        } catch (fnError) {
+          errors.push(`${fnName}: ${fnError.message || fnError}`);
+        }
+      }
+      throw new Error('No se pudo invocar la Edge Function para crear usuarios. Verificá que exista admin-create-user o rapid-service, que esté deployada y que los secrets SERVICE_ROLE_KEY / SUPABASE_ANON_KEY / SUPABASE_URL estén cargados. Detalle: ' + errors.join(' | '));
+    },
+
+    async fetchProfile() {
+      if (!client) return null;
+      const { data: { user }, error: userError } = await client.auth.getUser();
+      if (userError) throw userError;
+      if (!user) return null;
+      try { await client.rpc('ensure_current_user_profile'); } catch (_) {}
+      const { data, error } = await client
+        .from('profiles')
+        .select('*, roles:role_id(name, code), courses:student_course_id(name), divisions:student_division_id(name), subjects:teacher_subject_id(name)')
+        .eq('id', user.id)
+        .maybeSingle();
+      if (error) throw error;
+      if (!data) return normalizeCurrentUser({ id: user.id, full_name: user.email?.split('@')[0], email: user.email, role_code: 'administrator' });
+      return normalizeCurrentUser({ ...data, email: user.email });
+    },
+    async listProfiles() {
+      const { data, error } = await assertClient()
+        .from('users_abm_view')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      return (data || []).map(normalizeProfile);
+    },
+    async updateProfile(id, payload) {
+      const body = {
+        full_name: payload.full_name || payload.name,
+        dni: payload.dni || null,
+        whatsapp: payload.whatsapp || null,
+        title: payload.title || null,
+        is_active: payload.status !== 'Inactivo'
+      };
+      Object.keys(body).forEach(k => body[k] === undefined && delete body[k]);
+      const { error } = await assertClient().from('profiles').update(body).eq('id', id);
+      if (error) throw error;
+    },
+    async signUpUser(payload) {
+      return this.inviteUserByAdmin(payload);
+    },
+    async upsertUserProfile(payload) {
+      const email = String(payload.email || '').trim().toLowerCase();
+      const roleCode = roleCodeFromLabel[payload.role] || payload.role || 'student';
+      const { data, error } = await assertClient().rpc('admin_upsert_profile_by_email', {
+        p_email: email,
+        p_full_name: payload.full_name || payload.name,
+        p_role_code: roleCode,
+        p_dni: payload.dni || null,
+        p_whatsapp: payload.whatsapp || null,
+        p_birth_date: payload.birth_date || null,
+        p_title: roleCode === 'student' ? null : (payload.title || null),
+        p_avatar_url: payload.avatar_url || './assets/avatar-default.svg',
+        p_is_active: payload.status !== 'Inactivo'
+      });
+      if (error) throw error;
+      return data;
+    },
+    async deleteProfile(id) {
+      const { error } = await assertClient().rpc('admin_delete_profile', { p_profile_id: String(id) });
+      if (error) throw error;
+    },
+    async updateProfileFull(id, payload) {
+      const roleCode = roleCodeFromLabel[payload.role] || payload.role || null;
+      let roleId = null;
+      if (roleCode) {
+        const { data: role, error: roleError } = await assertClient().from('roles').select('id').eq('code', roleCode).maybeSingle();
+        if (roleError) throw roleError;
+        roleId = role?.id || null;
+      }
+      const body = {
+        full_name: payload.full_name || payload.name,
+        role_id: roleId || undefined,
+        dni: payload.dni || null,
+        whatsapp: payload.whatsapp || null,
+        avatar_url: payload.avatar_url || undefined,
+        birth_date: payload.birth_date || null,
+        title: (roleCode === 'student') ? null : (payload.title || null),
+        is_active: payload.status !== 'Inactivo',
+        updated_at: new Date().toISOString()
+      };
+      Object.keys(body).forEach(k => body[k] === undefined && delete body[k]);
+      const { error } = await assertClient().from('profiles').update(body).eq('id', String(id));
+      if (error) throw error;
+    },
+    async updateMyAvatar(avatarUrl) {
+      const { data: { user }, error: userError } = await assertClient().auth.getUser();
+      if (userError) throw userError;
+      if (!user) throw new Error('No hay sesión activa');
+      const { error } = await assertClient().from('profiles').update({ avatar_url: avatarUrl, updated_at: new Date().toISOString() }).eq('id', user.id);
+      if (error) throw error;
+    },
+    async listTeams() {
+      const { data, error } = await assertClient().rpc('admin_list_teams_full');
+      if (error) throw error;
+      return (data || []).map(t => ({
+        id: t.id, name: t.name, project: t.project || '', description: t.description || '',
+        mentor_id: t.mentor_id || null, mentor_backup_id: t.mentor_backup_id || null, student_ids: t.student_ids || [],
+        teachers: t.teachers || [], students: Array.isArray(t.student_ids) ? t.student_ids.length : (t.students || 0), courses: t.courses || [], divisions: t.divisions || []
+      }));
+    },
+    async saveTeam(payload) {
+      const { data, error } = await assertClient().rpc('admin_save_team_full', {
+        p_team_id: payload.id || null,
+        p_name: payload.name,
+        p_project: payload.project || null,
+        p_description: payload.description || null,
+        p_mentor_id: payload.mentor_id || null,
+        p_mentor_backup_id: payload.mentor_backup_id || null,
+        p_student_ids: payload.student_ids || []
+      });
+      if (error) throw error;
+      return data;
+    },
+    async deleteTeam(id) {
+      const { error } = await assertClient().rpc('admin_delete_team', { p_team_id: String(id) });
+      if (error) throw error;
+    },
+
+    async listRoles() {
+      const { data, error } = await assertClient().from('roles').select('id, code, name, description, role_permissions(permissions(code))').order('name');
+      if (error) throw error;
+      return (data || []).map(r => ({ id:r.id, code:r.code, name:r.name, description:r.description, permissions:(r.role_permissions || []).map(x => x.permissions?.code).filter(Boolean) }));
+    },
+    async saveRole(payload) {
+      const cleanCode = String(payload.code || '').trim().toLowerCase().replace(/\s+/g, '_');
+      const row = { code: cleanCode, name: payload.name, description: payload.description || null, is_system: ['administrator','teacher','student'].includes(cleanCode), updated_at: new Date().toISOString() };
+      if (payload.id && /^[0-9a-f-]{36}$/i.test(String(payload.id))) row.id = payload.id;
+      const { data: role, error } = await assertClient().from('roles').upsert(row, { onConflict:'code' }).select('id').single();
+      if (error) throw error;
+      const roleId = role.id;
+      await assertClient().from('role_permissions').delete().eq('role_id', roleId);
+      if (payload.permissions?.length) {
+        const { data: perms, error: permsError } = await assertClient().from('permissions').select('id, code').in('code', payload.permissions);
+        if (permsError) throw permsError;
+        const rows = (perms || []).map(p => ({ role_id: roleId, permission_id: p.id }));
+        if (rows.length) { const { error: rpError } = await assertClient().from('role_permissions').insert(rows); if (rpError) throw rpError; }
+      }
+    },
+    async deleteRole(id) {
+      const { error } = await assertClient().from('roles').delete().eq('id', id).eq('is_system', false);
+      if (error) throw error;
+    },
+    async listInventoryConditions() {
+      const { data, error } = await assertClient()
+        .from('inventory_conditions')
+        .select('id, name, color, sort_order, is_active')
+        .eq('is_active', true)
+        .order('sort_order', { ascending: true })
+        .order('name', { ascending: true });
+      if (error) throw error;
+      return (data || []).map(c => ({ id: c.id, name: c.name, color: c.color || '#64748b' }));
+    },
+    async saveInventoryCondition(name, color = '#64748b') {
+      const cleanName = String(name || '').trim().replace(/\s+/g, ' ');
+      const cleanColor = /^#[0-9a-f]{6}$/i.test(String(color || '').trim()) ? String(color).trim() : '#64748b';
+      if (!cleanName) throw new Error('Ingresá el nombre de la condición');
+      const { data: existing, error: findError } = await assertClient()
+        .from('inventory_conditions')
+        .select('id')
+        .ilike('name', cleanName)
+        .maybeSingle();
+      if (findError) throw findError;
+      if (existing?.id) {
+        const { error } = await assertClient()
+          .from('inventory_conditions')
+          .update({ color: cleanColor, is_active: true, updated_at: new Date().toISOString() })
+          .eq('id', existing.id);
+        if (error) throw error;
+        return existing.id;
+      }
+      const { data, error } = await assertClient()
+        .from('inventory_conditions')
+        .insert({ name: cleanName, color: cleanColor, is_active: true })
+        .select('id')
+        .single();
+      if (error) throw error;
+      return data?.id;
+    },
+    async updateInventoryAsset(id, payload) {
+      const { error } = await assertClient().rpc('admin_update_inventory_asset', {
+        p_asset_id: id,
+        p_name: payload.item,
+        p_category: payload.category || payload.type || 'General',
+        p_serial_number: payload.serial || null,
+        p_barcode: payload.barcode || null,
+        p_status: payload.status || 'Disponible',
+        p_condition_note: payload.condition || null,
+        p_location_code: payload.location_code || null,
+        p_brand: payload.brand || null,
+        p_supplier: payload.supplier || null,
+        p_location_detail: payload.location_detail || null,
+        p_zone: payload.zone || null
+      });
+      if (error) throw error;
+    },
+    async listTeams() {
+      const { data, error } = await assertClient().from('teams_frontend_view').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      return (data || []).map(t => ({ id:t.id, name:t.name, students:t.students || 0, teachers:t.teachers || [], courses:t.courses || [], divisions:t.divisions || [], project:t.project || t.description || '-' }));
+    },
+    async listLoans() {
+      const { data, error } = await assertClient().from('loans_frontend_view').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      return (data || []).map(l => ({ id:l.id, requester_id:l.requester_id || l.requester_profile_id, requester:l.requester || '-', team:l.team || '-', date:(l.requested_at||l.use_date||'').slice(0,10), from:l.from_time || '-', to:l.to_time || '-', items:l.items || [], notes:l.notes || '-', status:l.status_label || l.status }));
+    },
+    async updateLoanStatus(id, status) {
+      const { error } = await assertClient().rpc('admin_update_loan_status', { p_loan_id: id, p_status_label: status });
+      if (error) throw error;
+    },
+    async createLoanRequest(payload) {
+      const { data, error } = await assertClient().rpc('create_loan_request', {
+        p_team: payload.course,
+        p_use_date: payload.date,
+        p_from_time: payload.from,
+        p_to_time: payload.to,
+        p_items: payload.selected || [],
+        p_notes: payload.notes || null
+      });
+      if (error) throw error;
+      return data;
+    },
+    async sendNotification(payload) {
+      const { error } = await assertClient().rpc('send_notification', {
+        p_title: payload.title,
+        p_message: payload.message,
+        p_target: payload.target,
+        p_recipient_ids: payload.recipientIds || [],
+        p_section: payload.section || 'notifications'
+      });
+      if (error) throw error;
+    },
+
+    async listNotifications() {
+      const { data, error } = await assertClient()
+        .from('notifications_frontend_view')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      return (data || []).map(n => ({ id:n.id, title:n.title, message:n.message, unread: !n.read_at, section:n.section || 'notifications', created_at:n.created_at }));
+    },
+
+    async markNotificationRead(id) {
+      const { error } = await assertClient()
+        .from('notifications')
+        .update({ read_at: new Date().toISOString() })
+        .eq('id', id);
+      if (error) throw error;
+    },
+
+    async listInventory() {
+      const { data, error } = await assertClient()
+        .from('inventory_frontend_view')
+        .select('*')
+        .eq('is_active', true)
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      return (data || []).map(normalizeInventory);
+    },
+    async createInventoryAsset(payload) {
+      const argsFull = {
+        p_name: payload.item,
+        p_category: payload.category || payload.type || 'General',
+        p_asset_code: payload.code || null,
+        p_serial_number: payload.serial || null,
+        p_barcode: payload.barcode || null,
+        p_location_code: payload.location_code || 'LAB-ROB',
+        p_condition_note: payload.condition || null,
+        p_brand: payload.brand || null,
+        p_supplier: payload.supplier || null,
+        p_location_detail: payload.location_detail || null,
+        p_zone: payload.zone || null
+      };
+      let res = await assertClient().rpc('admin_create_inventory_asset', argsFull);
+      if (res.error && String(res.error.message || '').toLowerCase().includes('schema cache')) {
+        await new Promise(r => setTimeout(r, 800));
+        res = await assertClient().rpc('admin_create_inventory_asset', argsFull);
+      }
+      if (res.error) {
+        const argsBasic = {
+          p_name: payload.item,
+          p_category: payload.category || payload.type || 'General',
+          p_asset_code: payload.code || null,
+          p_serial_number: payload.serial || null,
+          p_barcode: payload.barcode || null,
+          p_location_code: payload.location_code || 'LAB-ROB',
+          p_condition_note: payload.condition || null
+        };
+        const fallback = await assertClient().rpc('admin_create_inventory_asset', argsBasic);
+        if (fallback.error) throw fallback.error;
+        return fallback.data;
+      }
+      return res.data;
+    },
+    async softDeleteInventoryAsset(id) {
+      const { error } = await assertClient().from('inventory_assets').update({ is_active: false }).eq('id', id);
+      if (error) throw error;
+    }
+  };
+})();
+                                                                                                                                                                                                                                                                           

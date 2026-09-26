@@ -1,0 +1,12 @@
+# Writing all output to: D:\00 ELECTRONICA GAMBINO\01 CLIENTES\150 EXOESQUELETO\proyectoExoesqueleto\hardware\proteus8_17\20260502exoesqueletoPediatrico_REV4.log
+set pad_wire_necking on
+bus diagonal
+fanout 5
+route 50
+clean 2
+route 50 16
+clean 2
+filter 5
+recorner diagonal
+status_file
+

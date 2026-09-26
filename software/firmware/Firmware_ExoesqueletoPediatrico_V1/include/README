@@ -1,39 +1,41 @@
+s” alimentada desde imágenes de reclamos.
 
-This directory is intended for project header files.
+## Cambiar imagen o video de fondo de la landing
 
-A header file is a file containing C declarations and macro definitions
-to be shared between several project source files. You request the use of a
-header file in your project source file (C, C++, etc) located in `src` folder
-by including it, with the C preprocessing directive `#include'.
+### Imagen
+Editá `styles.css`:
 
-```src/main.c
-
-#include "header.h"
-
-int main (void)
-{
- ...
+```css
+.hero-section {
+  --hero-image: linear-gradient(...), url('assets/hero-bg.svg');
 }
 ```
 
-Including a header file produces the same results as copying the header file
-into each source file that needs it. Such copying would be time-consuming
-and error-prone. With a header file, the related declarations appear
-in only one place. If they need to be changed, they can be changed in one
-place, and programs that include the header file will automatically use the
-new version when next recompiled. The header file eliminates the labor of
-finding and changing all the copies as well as the risk that a failure to
-find one copy will result in inconsistencies within a program.
+Podés reemplazar `assets/hero-bg.svg` por `assets/hero-bg.jpg` o cualquier imagen propia.
 
-In C, the usual convention is to give header files names that end with `.h'.
-It is most portable to use only letters, digits, dashes, and underscores in
-header file names, and at most one dot.
+### Video
+En `index.html`, buscá:
 
-Read more about using header files in official GCC documentation:
+```html
+<!-- <video class="hero-video" autoplay muted loop playsinline src="assets/hero-bg.mp4"></video> -->
+```
 
-* Include Syntax
-* Include Operation
-* Once-Only Headers
-* Computed Includes
+Quitá los comentarios y subí tu video como:
 
-https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html
+```text
+assets/hero-bg.mp4
+```
+
+## Base de datos
+
+No necesitás una columna nueva para URL de imagen: se guarda en `reports.image_urls` junto con las imágenes subidas. Ejecutá igualmente `database/database.sql` si venís de una versión anterior para asegurar columnas, políticas y Storage.
+
+## v8 - Slider, landing y Cafecito
+
+- El bloque **“Así se ven las calles”** ahora usa un slider interactivo con imágenes o video de los reclamos.
+- Desde el **Panel Administrador > Slider de evidencia** podés cambiar efecto: `Slide`, `Fade` o `Zoom`, tiempo en milisegundos y autoplay.
+- Se agregó sección **“Quién impulsa esta iniciativa”**.
+- Se agregó botón **Cafecito** en header y footer.
+- El popup del marcador muestra imagen principal 500x500px, antigüedad, fecha de reporte y estado con borde/color.
+
+Para persistir la configuración del slider en Sup

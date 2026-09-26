@@ -1,37 +1,34 @@
+ning id into v_category_id;
 
-____________________________________________________________________________________________
-ELECTRA Version  2.0.8
-Design        = 202409_exoesqueletoPediatrico_REV1.EDF
-Report Time   = 12:13:05
-Nets          =       67
-Components    =       57
-Connections   =      143
-Vias          =       74
-Routed Length =   2936.4 mm
-Signal Layers =       16
-Power Layers  =        0
-Total Pins    =      284
-Completion    =  100.00%
-Unroutes      =        0
-Routing Time  = 00:00:28
+  if nullif(trim(coalesce(p_brand,'')), '') is not null then
+    insert into public.inventory_brands(name) values (trim(p_brand)) on conflict(name) do update set name=excluded.name returning id into v_brand_id;
+  end if;
+  if nullif(trim(coalesce(p_supplier,'')), '') is not null then
+    insert into public.inventory_suppliers(name) values (trim(p_supplier)) on conflict(name) do update set name=excluded.name returning id into v_supplier_id;
+  end if;
+  select id into v_status_id from public.inventory_status_catalog where frontend_status='Disponible' limit 1;
+  insert into public.inventory_locations(code, name, is_active)
+  values (coalesce(nullif(trim(p_location_code),''),'LAB-ROB'), coalesce(nullif(trim(p_location_code),''),'LAB-ROB'), true)
+  on conflict(code) do update set is_active = true returning id into v_location_id;
 
-____________________________________________________________________________________________
-|     |          |        |        |        |        |        |        |         |         |
-|  #  |   Algo   | Shorts |DRC Errs|Failures|Unwired |  Vias  |  %Red  |  Time   |  Total  |
-|_____|__________|________|________|________|________|________|________|_________|_________|
-|    0| Bus      |       0|       0|       4|     141|       9|        |  0:00:00|  0:00:00|
-|    1| Fanout   |       0|       1|       0|     141|     155|        |  0:00:03|  0:00:03|
-|    2| Fanout   |       0|       0|       0|     141|     155|        |  0:00:00|  0:00:03|
-|    3| Route    |      68|       0|       4|       4|      87|       0|  0:00:02|  0:00:05|
-|    4| Route    |      27|       1|       0|       0|      85|      58|  0:00:03|  0:00:08|
-|    5| Route    |       9|       0|       0|       0|      90|      67|  0:00:03|  0:00:11|
-|    6| Route    |       1|       0|       0|       0|      94|      88|  0:00:00|  0:00:11|
-|    7| Route    |       0|       0|       0|       0|      96|     100|  0:00:01|  0:00:12|
-|    8| Clean    |       0|       0|       6|       0|      79|        |  0:00:03|  0:00:15|
-|    9| Clean    |       0|       0|       3|       0|      77|        |  0:00:03|  0:00:18|
-|   10| Route    |       0|       0|       0|       0|      77|       0|  0:00:00|  0:00:18|
-|   11| Clean    |       0|       0|       1|       0|      73|        |  0:00:03|  0:00:21|
-|   12| Clean    |       0|       0|       2|       0|      74|        |  0:00:05|  0:00:26|
-|   13| Filter   |       0|       0|       0|       0|      74|       0|  0:00:00|  0:00:26|
-|   13| Recorner |       0|       0|       0|       0|      74|        |  0:00:00|  0:00:26|
-|_____|__________|________|________|________|________|________|________|_________|_________|
+  insert into public.inventory_catalog_items(name, category_id, brand_id, supplier_id, tracking_mode)
+  values (p_name, v_category_id, v_brand_id, v_supplier_id, 'serializado') returning id into v_catalog_id;
+
+  v_asset_code := coalesce(nullif(trim(p_asset_code),''), 'AR' || lpad(nextval('public.inventory_asset_seq')::text, 6, '0'));
+  v_barcode := coalesce(nullif(trim(p_barcode),''), 'ISMROB-' || v_asset_code);
+
+  insert into public.inventory_assets(catalog_item_id, asset_code, barcode, serial_number, status_id, condition_note, current_location_id, location_detail, zone)
+  values (v_catalog_id, v_asset_code, v_barcode, nullif(trim(coalesce(p_serial_number,'')),''), v_status_id, nullif(trim(coalesce(p_condition_note,'')),''), v_location_id, nullif(trim(coalesce(p_location_detail,'')),''), nullif(trim(coalesce(p_zone,'')),''))
+  returning id into v_asset_id;
+
+  return v_asset_id;
+end;
+$$;
+
+grant execute on function public.admin_create_inventory_asset(text,text,text,text,text,text,text,text,text,text,text) to authenticated;
+
+alter table public.inventory_conditions enable row level security;
+do $$ begin create policy inventory_conditions_select_all on public.inventory_conditions for select to anon, authenticated using (true); exception when duplicate_object then null; end $$;
+do $$ begin create policy inventory_conditions_write_auth on public.inventory_conditions for all to authenticated using (true) with check (true); exception when duplicate_object then null; end $$;
+
+grant select, i

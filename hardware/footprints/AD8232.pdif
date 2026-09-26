@@ -1,292 +1,239 @@
-;Proteus Design Interchange Format
+-- ISM Robosoft v11 - Patch final de base de datos
+-- Ejecutar completo en Supabase SQL Editor.
 
-(PDIF
-  (vendor "Labcenter Electronics")
-  (version 1 0)
-  (library
-    (part "SEN12650"
-      (family "ANA")
-      (package "MODULE_SEN12650")
-      (description "AD8232_-_Analog_Front_End_(AFE)_for_ECG,_EKG_Interface_Evaluation_Board")
-      (attribute "PKG_TYPE" "MODULE_SEN12650")
-      (attribute "MF" "SparkFun_Electronics")
-      (attribute "MAXIMUM_PACKAGE_HEIGHT" "5mm")
-      (attribute "PACKAGE" "None")
-      (attribute "PRICE" "None")
-      (attribute "CHECK_PRICES" "https://www.snapeda.com/parts/SEN-12650/SparkFun/view-part/?ref=eda")
-      (attribute "STANDARD" "Manufacturer_Recommendations")
-      (attribute "PARTREV" "V10")
-      (attribute "SNAPEDA_LINK" "https://www.snapeda.com/parts/SEN-12650/SparkFun/view-part/?ref=snap")
-      (attribute "MP" "SEN-12650")
-      (attribute "SNAPEDA_PN" "SEN-12650")
-      (attribute "AVAILABILITY" "In_Stock")
-      (attribute "MANUFACTURER" "Sparkfun_Electornics")
-      (gate
-        (swap 1)
-        (symbol "SEN12650")
-        (pin "3_3V" JP3_2 (type PP))
-        (pin "GND" JP3_1 (type PP))
-        (pin "LA" JP1_2 (type IP))
-        (pin "LO+" JP3_5 (type OP))
-        (pin "LO-" JP3_4 (type OP))
-        (pin "RA" JP1_3 (type IP))
-        (pin "RL" JP1_1 (type OP))
-        (pin "SDN" JP3_6 (type IP))
-        (pin "SIGNAL_OUT" JP3_3 (type OP))
-      )
-    )
-    (symbol "SEN12650"
-      (units THOU)
-      (graphic
-        (stroke 1)
-        (path (pt -500 500) (pt 500 500) (pt 500 -500) (pt -500 -500) (pt -500 500) (closed))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 400.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 -400.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 200.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 100.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 200.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 100.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 -100.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 -100.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 -200.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-    )
-    (symbol "PIN_R180_U_L200"
-      (units THOU)
-      (graphic
-        (stroke 6.5)
-        (path (pt 0.0 0.0) (pt -200.0 0.0))
-      )
-    )
-    (symbol "PIN_R0_U_L200"
-      (units THOU)
-      (graphic
-        (stroke 6.5)
-        (path (pt 0.0 0.0) (pt 200.0 0.0))
-      )
-    )
-    (package "MODULE_SEN12650"
-      (units THOU)
-      (layer TSLK
-        (graphic
-          (stroke 7.87)
-          (circle (pt 446.06 -29.53) (pt 453.94 -29.53))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 0.0 1100.0) (pt 1400.0 1100.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 1400.0 1100.0) (pt 1400.0 0.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 1400.0 0.0) (pt 0.0 0.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 0.0 0.0) (pt 0.0 1100.0))
-        )
-      )
-      (layer TASM
-        (graphic
-          (stroke 5.0)
-          (path (pt 0.0 0.0) (pt 1400.0 0.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 1400.0 0.0) (pt 1400.0 1100.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 1400.0 1100.0) (pt 0.0 1100.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 0.0 1100.0) (pt 0.0 0.0))
-        )
-        (graphic
-          (stroke 7.87)
-          (circle (pt 446.06 -29.53) (pt 453.94 -29.53))
-        )
-      )
-      (layer OCCA
-        (graphic
-          (stroke 1.97)
-          (path (pt -9.84 1109.84) (pt 1409.84 1109.84))
-        )
-        (graphic
-          (stroke 1.97)
-          (path (pt 1409.84 1109.84) (pt 1409.84 -9.84))
-        )
-        (graphic
-          (stroke 1.97)
-          (path (pt 1409.84 -9.84) (pt -9.84 -9.84))
-        )
-        (graphic
-          (stroke 1.97)
-          (path (pt -9.84 -9.84) (pt -9.84 1109.84))
-        )
-      )
-      (leg DRILL1 (pt 100 1000) (padstack 1))
-      (leg DRILL2 (pt 1300 1000) (padstack 2))
-      (leg DRILL3 (pt 100 100) (padstack 3))
-      (leg DRILL4 (pt 1300 100) (padstack 4))
-      (leg JP1_1 (pt 50 600) (padstack 5))
-      (leg JP1_2 (pt 50 700) (padstack 6))
-      (leg JP1_3 (pt 50 800) (padstack 7))
-      (leg JP3_1 (pt 450 50) (padstack 8))
-      (leg JP3_2 (pt 550 50) (padstack 9))
-      (leg JP3_3 (pt 650 50) (padstack 10))
-      (leg JP3_4 (pt 750 50) (padstack 11))
-      (leg JP3_5 (pt 850 50) (padstack 12))
-      (leg JP3_6 (pt 950 50) (padstack 13))
-      (padstack 1
-        (hole 130)
-        (plated false)
-        (pad (layer TCOP) (round 0))
-        (pad (layer INNER) (round 0))
-        (pad (layer BCOP) (round 0))
-      )
-      (padstack 2
-        (hole 130)
-        (plated false)
-        (pad (layer TCOP) (round 0))
-        (pad (layer INNER) (round 0))
-        (pad (layer BCOP) (round 0))
-      )
-      (padstack 3
-        (hole 130)
-        (plated false)
-        (pad (layer TCOP) (round 0))
-        (pad (layer INNER) (round 0))
-        (pad (layer BCOP) (round 0))
-      )
-      (padstack 4
-        (hole 130)
-        (plated false)
-        (pad (layer TCOP) (round 0))
-        (pad (layer INNER) (round 0))
-        (pad (layer BCOP) (round 0))
-      )
-      (padstack 5
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-      (padstack 6
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-      (padstack 7
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-      (padstack 8
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (square 60.0))
-        (pad (layer INNER) (square 60.0))
-        (pad (layer BCOP) (square 60.0))
-        (pad (layer TRES) (square 63.94))
-        (pad (layer BRES) (square 63.94))
-      )
-      (padstack 9
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-      (padstack 10
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-      (padstack 11
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-      (padstack 12
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-      (padstack 13
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.0))
-        (pad (layer INNER) (round 60.0))
-        (pad (layer BCOP) (round 60.0))
-        (pad (layer TRES) (round 63.94))
-        (pad (layer BRES) (round 63.94))
-      )
-    )
-  )
+begin;
+
+-- 1) Limpiar RPC duplicados de inventario para evitar: could not choose best candidate function.
+drop function if exists public.admin_update_inventory_asset(uuid, text, text, text, text, text, text, text, text, text, text, text);
+drop function if exists public.admin_update_inventory_asset(uuid, text, uuid, uuid, text, uuid, text, text, text, uuid, uuid, text);
+drop function if exists public.admin_update_inventory_asset(uuid, text, uuid, uuid, text, uuid, text, text, uuid, uuid, uuid, text);
+
+create or replace function public.admin_update_inventory_asset(
+  p_asset_id uuid,
+  p_barcode text default null,
+  p_brand text default null,
+  p_category text default null,
+  p_condition_note text default null,
+  p_location_code text default null,
+  p_location_detail text default null,
+  p_name text default null,
+  p_serial_number text default null,
+  p_status text default null,
+  p_supplier text default null,
+  p_zone text default null
 )
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_category_id uuid;
+  v_brand_id uuid;
+  v_supplier_id uuid;
+  v_location_id uuid;
+  v_status_id uuid;
+  v_catalog_id uuid;
+begin
+  if p_asset_id is null then
+    raise exception 'p_asset_id es obligatorio';
+  end if;
+
+  if nullif(trim(coalesce(p_category,'')), '') is not null then
+    insert into public.inventory_categories(name) values (trim(p_category))
+    on conflict (name) do update set updated_at = now()
+    returning id into v_category_id;
+  end if;
+
+  if nullif(trim(coalesce(p_brand,'')), '') is not null then
+    insert into public.inventory_brands(name) values (trim(p_brand))
+    on conflict (name) do update set name = excluded.name
+    returning id into v_brand_id;
+  end if;
+
+  if nullif(trim(coalesce(p_supplier,'')), '') is not null then
+    insert into public.inventory_suppliers(name) values (trim(p_supplier))
+    on conflict (name) do update set name = excluded.name
+    returning id into v_supplier_id;
+  end if;
+
+  if nullif(trim(coalesce(p_location_code,'')), '') is not null then
+    select id into v_location_id from public.inventory_locations where code = trim(p_location_code) or name = trim(p_location_code) limit 1;
+    if v_location_id is null then
+      insert into public.inventory_locations(code, name) values (trim(p_location_code), trim(p_location_code)) returning id into v_location_id;
+    end if;
+  end if;
+
+  if nullif(trim(coalesce(p_status,'')), '') is not null then
+    select id into v_status_id from public.inventory_status_catalog
+    where code = lower(regexp_replace(trim(p_status), '\s+', '_', 'g')) or name = trim(p_status) or frontend_status = trim(p_status)
+    limit 1;
+  end if;
+
+  select catalog_item_id into v_catalog_id from public.inventory_assets where id = p_asset_id;
+  if v_catalog_id is not null then
+    update public.inventory_catalog_items
+      set name = coalesce(nullif(trim(p_name), ''), name),
+          category_id = coalesce(v_category_id, category_id),
+          brand_id = coalesce(v_brand_id, brand_id),
+          supplier_id = coalesce(v_supplier_id, supplier_id),
+          updated_at = now()
+    where id = v_catalog_id;
+  end if;
+
+  update public.inventory_assets
+    set barcode = coalesce(nullif(trim(p_barcode), ''), barcode),
+        serial_number = nullif(trim(coalesce(p_serial_number, serial_number)), ''),
+        condition_note = coalesce(nullif(trim(p_condition_note), ''), condition_note),
+        current_location_id = coalesce(v_location_id, current_location_id),
+        status_id = coalesce(v_status_id, status_id),
+        location_detail = coalesce(nullif(trim(p_location_detail), ''), location_detail),
+        zone = coalesce(nullif(trim(p_zone), ''), zone),
+        updated_at = now()
+  where id = p_asset_id;
+
+  return p_asset_id;
+end;
+$$;
+
+grant execute on function public.admin_update_inventory_asset(uuid,text,text,text,text,text,text,text,text,text,text,text) to authenticated;
+
+-- 2) Roles/permisos: docentes sin usuarios ni ABM de inventario. Gestión de préstamos y notificaciones para todos.
+insert into public.permissions(code, name, module) values
+('loan.read','Ver préstamos','loanManagement'),
+('loan.create','Crear solicitudes de préstamo','loanManagement'),
+('notifications.read','Ver notificaciones','notifications'),
+('notifications.send','Enviar notificaciones','notifications')
+on conflict (code) do update set name = excluded.name, module = excluded.module;
+
+-- Quitar permisos de usuarios y edición de inventario a docentes/alumnos.
+delete from public.role_permissions rp
+using public.roles r, public.permissions p
+where rp.role_id = r.id and rp.permission_id = p.id
+  and r.code in ('teacher','student')
+  and p.code in ('users.read','users.manage','inventory.manage','roles.manage');
+
+-- Asegurar permisos básicos a todos los perfiles.
+insert into public.role_permissions(role_id, permission_id)
+select r.id, p.id
+from public.roles r
+join public.permissions p on p.code in ('inventory.read','inventory.loan','loan.read','loan.create','notifications.read')
+where r.code in ('administrator','teacher','student')
+on conflict do nothing;
+
+-- Admin conserva gestión completa.
+insert into public.role_permissions(role_id, permission_id)
+select r.id, p.id
+from public.roles r
+join public.permissions p on p.code in ('users.read','users.manage','roles.manage','inventory.manage','inventory.approve','loan.read','loan.create','notifications.read','notifications.send')
+where r.code = 'administrator'
+on conflict do nothing;
+
+-- 3) Notificaciones reales.
+create table if not exists public.notifications (
+  id uuid primary key default gen_random_uuid(),
+  recipient_profile_id uuid references public.profiles(id) on delete cascade,
+  title text not null,
+  message text not null,
+  section text default 'notifications',
+  read_at timestamptz,
+  created_by uuid references public.profiles(id),
+  created_at timestamptz default now()
+);
+
+create index if not exists notifications_recipient_created_idx on public.notifications(recipient_profile_id, created_at desc);
+
+create or replace view public.notifications_frontend_view as
+select n.id, n.recipient_profile_id, n.title, n.message, n.section, n.read_at, n.created_at
+from public.notifications n
+where n.recipient_profile_id = auth.uid() or exists (
+  select 1 from public.profiles p join public.roles r on r.id = p.role_id
+  where p.id = auth.uid() and r.code = 'administrator'
+);
+
+grant select, insert, update on public.notifications to authenticated;
+grant select on public.notifications_frontend_view to authenticated;
+
+create or replace function public.notify_role(p_role_code text, p_title text, p_message text, p_section text default 'notifications')
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  insert into public.notifications(recipient_profile_id, title, message, section, created_by)
+  select p.id, p_title, p_message, p_section, auth.uid()
+  from public.profiles p join public.roles r on r.id = p.role_id
+  where p.is_active is true and r.code = p_role_code;
+end;
+$$;
+
+grant execute on function public.notify_role(text,text,text,text) to authenticated;
+
+-- 4) Préstamos reales conectados a Supabase.
+alter table public.inventory_loans add column if not exists use_date date;
+alter table public.inventory_loans add column if not exists from_time time;
+alter table public.inventory_loans add column if not exists to_time time;
+
+create or replace view public.loans_frontend_view as
+select
+  l.id,
+  l.requester_profile_id as requester_id,
+  coalesce(p.full_name, 'Sin solicitante') as requester,
+  coalesce(t.name, 'Sin equipo') as team,
+  coalesce(l.use_date::text, l.requested_at::date::text) as requested_at,
+  coalesce(to_char(l.from_time,'HH24:MI'), '') as from_time,
+  coalesce(to_char(l.to_time,'HH24:MI'), '') as to_time,
+  coalesce(array_agg(coalesce(a.asset_code, a.barcode) order by a.asset_code) filter (where a.id is not null), array[]::text[]) as items,
+  coalesce(l.notes, '-') as notes,
+  l.status,
+  case l.status
+    when 'abierto' then 'Pendiente'
+    when 'aprobado' then 'Aprobado'
+    when 'rechazado' then 'Rechazado'
+    when 'cerrado' then 'Devuelto'
+    when 'cancelado' then 'Rechazado'
+    else initcap(l.status)
+  end as status_label,
+  l.created_at
+from public.inventory_loans l
+left join public.profiles p on p.id = l.requester_profile_id
+left join public.teams t on t.id = l.team_id
+left join public.inventory_loan_items li on li.loan_id = l.id
+left join public.inventory_assets a on a.id = li.asset_id
+group by l.id, p.full_name, t.name;
+
+grant select on public.loans_frontend_view to authenticated;
+
+create or replace function public.create_loan_request(
+  p_team text,
+  p_use_date date,
+  p_from_time time,
+  p_to_time time,
+  p_items text[],
+  p_notes text default null
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_loan_id uuid;
+  v_team_id uuid;
+  v_code text;
+  v_item text;
+  v_asset_id uuid;
+begin
+  if auth.uid() is null then
+    raise exception 'No autorizado';
+  end if;
+
+  select id into v_team_id from public.teams where name = p_team limit 1;
+  v_code := 'PRE-' || to_char(now(), 'YYYYMMDDHH24MISS') || '-' || substr(auth.uid()::text, 1, 4);
+
+  insert into public.inventory_loans(
+    loan_code, requester_profile_id, team_id, requested_at, use_date, from_time, to_time, notes, status, created_by
+  ) values (
+    v_code, auth.uid(), v_team_id, now(), p_use_date, p_from_time, p_to_time, p_notes, 'abierto', auth.uid()
+  ) returning id into v_loan_id;
+
+  foreach v_item in array coalesce(p_items, array[]::text[]) loop
+    select id into v_asset_id from public.inventory_assets where asset_code = v_item or barcode = v_item limit 1;
+    if 

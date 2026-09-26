@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #151515; color: #f2f2f2; }
+#app { width: 100vw; height: 100vh; position: relative; }
+#scene { display: block; width: 100%; height: 100%; }
+.panel { position: absolute; z-index: 10; top: 18px; left: 18px; max-width: 390px; padding: 18px; border-radius: 18px; background: rgba(20,20,20,.72); backdrop-filter: blur(10px); box-shadow: 0 20px 60px rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.12); }
+h1 { margin: 0 0 8px; font-size: 22px; }
+p { margin: 0 0 14px; line-height: 1.35; color: #d8d8d8; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; }
+button { border: 0; border-radius: 12px; padding: 10px 12px; color: white; background: #5b5b5b; cursor: pointer; }
+button:hover { background: #737373; }
+label { font-size: 13px; color: #ddd; }
+input { vertical-align: middle; }
+small { color: #bfbfbf; }
+@media (max-width: 700px) { .panel { right: 12px; left: 12px; max-width: none; } }

@@ -1,0 +1,67 @@
+'use strict';
+let scene,camera,renderer,root,exo={},ws=null,demo=true,running=false,t=0,ecgChart,emgChart;
+const hist={x:[],ecg:[],emg:[],ecgf:[],emgf:[]};
+const $=id=>document.getElementById(id); const deg=v=>v*Math.PI/180; const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function mat(c,rough=.58,metal=.18){return new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:metal});}
+function box(n,s,p,c=0x555b60){const o=new THREE.Mesh(new THREE.BoxGeometry(...s),mat(c));o.name=n;o.position.set(...p);o.castShadow=o.receiveShadow=true;return o}
+function cyl(n,r,d,p,rot=[0,0,0],c=0x7b858a){const o=new THREE.Mesh(new THREE.CylinderGeometry(r,r,d,48),mat(c,.48,.25));o.name=n;o.position.set(...p);o.rotation.set(...rot);o.castShadow=o.receiveShadow=true;return o}
+function addWire(parent,pts,color){const g=new THREE.BufferGeometry().setFromPoints(pts.map(p=>new THREE.Vector3(...p)));const l=new THREE.Line(g,new THREE.LineBasicMaterial({color}));parent.add(l);return l}
+function roundedFoot(parent){parent.add(box('talonera',[.54,.22,.58],[0,0,.02],0x818b90));parent.add(box('plantilla trasera',[.48,.08,.65],[0,-.13,.23],0x7e898d));parent.add(box('plantilla delantera',[.64,.075,.92],[0,-.13,.85],0x7e898d));parent.add(cyl('punta redondeada',.32,.08,[0,-.13,1.32],[Math.PI/2,0,0],0x7e898d));parent.add(box('tope lateral L',[.08,.18,.42],[-.32,0,.50],0x89949a));parent.add(box('tope lateral R',[.08,.18,.42],[.32,0,.50],0x89949a));}
+function makeLeg(side){const s=side==='L'?-1:1, hip=new THREE.Group();hip.position.set(s*1.06,1.78,0);root.add(hip);
+  hip.add(cyl('cadera carcasa circular',.32,.24,[0,0,0],[Math.PI/2,0,0],0x8b969a)); hip.add(box('NEMA17 cadera',[.38,.38,.48],[s*.49,0,0],0x101318)); hip.add(box('tapa motor cadera',[.28,.28,.035],[s*.75,0,0],0xd8dde0));
+  const thighPivot=new THREE.Group();hip.add(thighPivot); thighPivot.add(box('perfil aluminio muslo',[.16,1.32,.16],[0,-.68,0],0x040506)); thighPivot.add(box('abrazadera muslo superior',[.34,.22,.24],[0,-.32,0],0x89949a)); thighPivot.add(box('correa muslo',[.76,.10,.14],[0,-.60,.04],0xb6bec2));
+  const knee=new THREE.Group();knee.position.set(0,-1.34,0);thighPivot.add(knee); knee.add(cyl('rodilla carcasa circular',.31,.25,[0,0,0],[Math.PI/2,0,0],0x7d878b)); knee.add(box('NEMA17 rodilla',[.38,.38,.48],[s*.49,0,0],0x101318)); knee.add(box('tapa motor rodilla',[.28,.28,.035],[s*.75,0,0],0xd8dde0));
+  const shinPivot=new THREE.Group();knee.add(shinPivot); shinPivot.add(box('perfil aluminio tibia',[.16,1.24,.16],[0,-.61,0],0x040506)); shinPivot.add(box('correa tibia',[.70,.10,.14],[0,-.35,.04],0xb6bec2)); shinPivot.add(box('guia gris tibia',[.24,.18,.20],[0,-.85,.01],0x919a9e));
+  const ankle=new THREE.Group();ankle.position.set(0,-1.23,0);shinPivot.add(ankle); ankle.add(box('base tobillo',[.44,.38,.30],[0,0,0],0x818b90)); ankle.add(cyl('perno tobillo',.07,.58,[0,0,0],[0,0,Math.PI/2],0x2d2d2d));
+  const foot=new THREE.Group();foot.position.set(0,-.16,.15);ankle.add(foot); roundedFoot(foot);
+  addWire(hip,[[s*.18,.05,.10],[s*.1,-.78,.10],[s*.1,-1.23,.10],[s*.20,-1.92,.10]],0xff315b); addWire(hip,[[s*.12,.05,.13],[s*.18,-.78,.13],[s*.15,-1.23,.13],[s*.25,-1.92,.13]],0x168bff);
+  return{hip,thighPivot,knee,shinPivot,ankle,foot};}
+function buildModel(){const view=$('view'); scene=new THREE.Scene(); scene.background=new THREE.Color(0x0b1724); camera=new THREE.PerspectiveCamera(42,view.clientWidth/view.clientHeight,.1,100); camera.position.set(3.8,2.6,6.2); camera.lookAt(0,1.55,0);
+  renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(view.clientWidth,view.clientHeight); renderer.shadowMap.enabled=true; view.appendChild(renderer.domElement);
+  scene.add(new THREE.HemisphereLight(0xb9ddff,0x203040,1.4)); const d=new THREE.DirectionalLight(0xffffff,1.8); d.position.set(3,5,4); d.castShadow=true; scene.add(d); const grid=new THREE.GridHelper(7,18,0x27435f,0x1a2b3f); grid.position.y=0; scene.add(grid);
+  root=new THREE.Group(); root.scale.setScalar(.74); root.position.set(0,1.05,0); scene.add(root);
+  root.add(box('placa trolley trasera',[1.50,1.70,.18],[0,2.24,-.34],0x020305)); root.add(box('bandeja trolley',[2.70,.18,.78],[0,1.35,-.04],0x020305)); root.add(box('lateral trolley L',[.16,1.18,.16],[-.52,2.86,-.27],0x111)); root.add(box('lateral trolley R',[.16,1.18,.16],[.52,2.86,-.27],0x111)); root.add(box('manija superior',[1.17,.15,.16],[0,3.47,-.27],0x111)); root.add(cyl('agarre manija',.09,1.16,[0,3.58,-.27],[0,0,Math.PI/2],0x1b1b1b));
+  root.add(box('travesano perfil negro',[3.0,.12,.12],[0,1.26,.06],0x050608)); root.add(box('soporte inclinado L',[.12,.62,.12],[-1.34,1.55,.02],0x050608)); root.add(box('soporte inclinado R',[.12,.62,.12],[1.34,1.55,.02],0x050608)); root.add(cyl('rueda L',.18,.12,[-.38,1.08,.35],[Math.PI/2,0,0],0x222)); root.add(cyl('rueda R',.18,.12,[.38,1.08,.35],[Math.PI/2,0,0],0x222));
+  exo.L=makeLeg('L'); exo.R=makeLeg('R'); setPose('sit'); centerModel();}
+function centerModel(){
+  root.updateMatrixWorld(true);
+  const box3=new THREE.Box3().setFromObject(root);
+  const c=box3.getCenter(new THREE.Vector3());
+  root.position.x-=c.x; root.position.z-=c.z;
+  root.position.y+=Math.max(0, -box3.min.y + .08);
+}
+function setPose(p){let hip=0,knee=0,ank=0;if(p==='sit'){hip=70;knee=-90;ank=12}else if(p==='stand'){hip=0;knee=0;ank=0}applyJoints({lh:hip,rh:hip,lk:knee,rk:knee,la:ank,ra:ank});}
+function applyJoints(j){['L','R'].forEach(S=>{const l=exo[S],pre=S==='L'?'l':'r';l.thighPivot.rotation.x=deg(j[pre+'h']||0);l.shinPivot.rotation.x=deg(j[pre+'k']||0);l.ankle.rotation.x=deg(j[pre+'a']||0);});$('joints').textContent=`Cadera L ${(+j.lh||0).toFixed(1)}°  Cadera R ${(+j.rh||0).toFixed(1)}°\nRodilla L ${(+j.lk||0).toFixed(1)}°  Rodilla R ${(+j.rk||0).toFixed(1)}°\nTobillo L ${(+j.la||0).toFixed(1)}°  Tobillo R ${(+j.ra||0).toFixed(1)}°`;}
+function gauss(x,mu,sigma){const z=(x-mu)/sigma;return Math.exp(-0.5*z*z)}
+function ecgSim(t){
+  // ECG AD8232 simulado: morfologia P-QRS-T tipo SignalScope.
+  // Escala visible: 0..1000 mV relativos, centro ~500, RR ~0.83 s (72 BPM).
+  const rr=0.833;
+  const beat=((t%rr)+rr)%rr;
+  const x=beat/rr;
+  const wander=22*Math.sin(2*Math.PI*0.18*t)+7*Math.sin(2*Math.PI*0.045*t);
+  const noise=3.5*Math.sin(2*Math.PI*38*t)+2.2*Math.sin(2*Math.PI*73*t);
+  let v=500+wander+noise;
+  v += 24*gauss(x,.155,.020);      // onda P pequeña
+  v -= 60*gauss(x,.304,.010);      // Q
+  v += 505*gauss(x,.326,.0065);    // R muy angosta y alta
+  v -= 82*gauss(x,.347,.012);      // S
+  v += 78*gauss(x,.625,.050);      // T redondeada
+  v -= 28*gauss(x,.760,.090);      // leve retorno bajo baseline
+  return clamp(v,0,1000)
+}
+function emgSim(t){const burst=Math.pow(Math.abs(Math.sin(t*2.15)),5);const carrier=Math.abs(Math.sin(t*47)+.55*Math.sin(t*83)+.25*Math.sin(t*139));return clamp(120+720*burst*carrier+45*Math.abs(Math.sin(t*17)),0,1000)}
+function demoData(){let phase=(t%24);let p=Math.min(1,phase/4);let sitting=phase<4?1-p:0;let h=70*sitting,k=-90*sitting;let move=Math.max(0,phase-4);let gait=Math.sin(move*Math.PI*1.05);let lat=move>12?Math.sin((move-12)*Math.PI*.9)*12:0;return{mode:'DEMO',bpm:72+Math.round(6*Math.sin(t*.45)),spo2:97+Math.round(Math.sin(t*.25)),bodyTemp:36.6+.15*Math.sin(t*.1),ambTemp:24+.8*Math.sin(t*.06),cpuTemp:49+2.5*Math.sin(t*.2),ecg:ecgSim(t),emg:emgSim(t),joints:{lh:h+gait*16+lat,rh:h-gait*16-lat,lk:k-gait*22,rk:k+gait*22,la:6*Math.sin(t*3),ra:-6*Math.sin(t*3)}}}
+function filt(arr,v,a=.15){return arr.length?arr[arr.length-1]*(1-a)+v*a:v}
+function updateTelemetry(d){document.body.classList.toggle('online',!demo);$('conn').textContent=demo?'Demo simulada':'Conectado';$('modeLabel').textContent=d.mode||'RUN';['bpm','spo2','bodyTemp','ambTemp','cpuTemp','emg','ecg'].forEach(id=>{if(d[id]!=null)$(id).textContent=Number(d[id]).toFixed(id.includes('Temp')?1:0)});if(d.joints)applyJoints(d.joints);hist.x.push((hist.x.length*.05).toFixed(1));hist.ecg.push((d.ecg||0));hist.emg.push((d.emg||0));hist.ecgf.push(filt(hist.ecgf,d.ecg||0,.58));hist.emgf.push(filt(hist.emgf,d.emg||0,.2));while(hist.x.length>220){Object.values(hist).forEach(a=>a.shift())}updateCharts();}
+function initCharts(){
+ const common={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{labels:{color:'#eaf'}},tooltip:{enabled:true}},scales:{x:{title:{display:true,text:'Tiempo [s]',color:'#bcd'},ticks:{color:'#bcd',maxTicksLimit:10},grid:{color:'#16283d'}},y:{ticks:{color:'#bcd'},grid:{color:'#20354e'}}}};
+ ecgChart=new Chart($('ecgChart'),{type:'line',data:{labels:hist.x,datasets:[{label:'ECG AD8232 filtrado [mV rel.]',data:hist.ecgf,borderColor:'#00e676',backgroundColor:'rgba(0,230,118,.08)',borderWidth:2,pointRadius:0,tension:.05}]},options:{...common,scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'ECG [mV rel.]',color:'#bcd'},min:0,max:1000,ticks:{color:'#bcd',stepSize:100}}}}});
+ emgChart=new Chart($('emgChart'),{type:'line',data:{labels:hist.x,datasets:[{label:'EMG filtrado [mV]',data:hist.emgf,borderColor:'#ffb300',backgroundColor:'rgba(255,179,0,.08)',borderWidth:2,pointRadius:0,tension:.18}]},options:{...common,scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'EMG [mV]',color:'#bcd'},min:0,max:1000,ticks:{color:'#bcd',stepSize:100}}}}});
+}
+function updateCharts(){if(!ecgChart)return;ecgChart.data.labels=hist.x;emgChart.data.labels=hist.x;$('ecgBlock').classList.toggle('hidden',!$('showEcg').checked);$('emgBlock').classList.toggle('hidden',!$('showEmg').checked);ecgChart.data.datasets[0].hidden=!$('showEcg').checked;emgChart.data.datasets[0].hidden=!$('showEmg').checked;ecgChart.data.datasets[0].data=hist.ecgf;emgChart.data.datasets[0].data=hist.emgf;ecgChart.update('none');emgChart.update('none');}
+function animate(){requestAnimationFrame(animate);t+=.016;if(demo){const data=demoData();updateTelemetry(data);if(running)applyJoints(data.joints);}root.rotation.x=deg(+$('rotX').value);root.rotation.y=deg(+$('rotY').value);root.rotation.z=deg(+$('rotZ').value);renderer.render(scene,camera)}
+function wsConnect(){try{ws=new WebSocket(`ws://${location.host}/ws`);ws.onopen=()=>{demo=false;setModeButtons();send('REAL')};ws.onclose=()=>{if(!demo)setTimeout(wsConnect,1200)};ws.onmessage=e=>{try{updateTelemetry(JSON.parse(e.data))}catch{}}}catch(e){console.warn(e)}}
+function send(cmd){if(ws&&ws.readyState===1)ws.send(cmd)}function setModeButtons(){$('demoBtn').classList.toggle('active',demo);$('realBtn').classList.toggle('active',!demo)}
+function bind(){window.addEventListener('resize',()=>{renderer.setSize($('view').clientWidth,$('view').clientHeight);camera.aspect=$('view').clientWidth/$('view').clientHeight;camera.updateProjectionMatrix()});let drag=false,lx=0,ly=0;renderer.domElement.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY});window.addEventListener('pointerup',()=>drag=false);window.addEventListener('pointermove',e=>{if(!drag)return;$('rotY').value=clamp(+$('rotY').value+(e.clientX-lx)*.45,-180,180);$('rotX').value=clamp(+$('rotX').value+(e.clientY-ly)*.45,-180,180);lx=e.clientX;ly=e.clientY});renderer.domElement.addEventListener('wheel',e=>{e.preventDefault();if(e.altKey)$('rotX').value=clamp(+$('rotX').value+e.deltaY*.08,-180,180);else if(e.shiftKey)$('rotY').value=clamp(+$('rotY').value+e.deltaY*.08,-180,180);else if($('wheelZ').checked)$('rotZ').value=clamp(+$('rotZ').value+e.deltaY*.08,-180,180);else{camera.position.z=clamp(camera.position.z+e.deltaY*.005,2.2,9);camera.lookAt(0,1.55,0)}},{passive:false});$('demoBtn').onclick=()=>{demo=true;send('DEMO');setModeButtons()};$('realBtn').onclick=()=>{demo=false;setModeButtons();wsConnect()};$('startBtn').onclick=()=>{running=true;send('START')};$('sitBtn').onclick=()=>{running=false;setPose('sit');send('SIT')};$('stopBtn').onclick=()=>{running=false;send('STOP')};$('openCharts').onclick=()=>{$('modal').classList.add('open');setTimeout(updateCharts,50)};$('closeCharts').onclick=()=>{$('modal').classList.remove('open')};$('clearCharts').onclick=()=>{Object.keys(hist).forEach(k=>hist[k]=[]);updateCharts()};$('showEcg').onchange=updateCharts;$('showEmg').onchange=updateCharts;}
+window.addEventListener('DOMContentLoaded',()=>{buildModel();initCharts();bind();setModeButtons();setPose('sit');animate();});

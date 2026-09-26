@@ -1,34 +1,67 @@
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
 
-____________________________________________________________________________________________
-ELECTRA Version  2.0.8
-Design        = modulo_Actuador_6CH_REV1.EDF
-Report Time   = 14:04:28
-Nets          =       41
-Components    =       11
-Connections   =       67
-Vias          =       13
-Routed Length =   1224.6 mm
-Signal Layers =       16
-Power Layers  =        0
-Total Pins    =      204
-Completion    =  100.00%
-Unroutes      =        0
-Routing Time  = 00:00:07
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
 
-____________________________________________________________________________________________
-|     |          |        |        |        |        |        |        |         |         |
-|  #  |   Algo   | Shorts |DRC Errs|Failures|Unwired |  Vias  |  %Red  |  Time   |  Total  |
-|_____|__________|________|________|________|________|________|________|_________|_________|
-|    0| Bus      |       0|       0|       0|      64|       4|        |  0:00:00|  0:00:00|
-|    1| Fanout   |       0|       0|       0|      64|      14|        |  0:00:00|  0:00:00|
-|    2| Route    |      26|       3|       1|       1|      10|       0|  0:00:01|  0:00:01|
-|    3| Route    |       9|       0|       0|       0|      12|      68|  0:00:02|  0:00:03|
-|    4| Route    |       0|       0|       0|       0|      15|     100|  0:00:00|  0:00:03|
-|    5| Clean    |       0|       0|       1|       0|      12|        |  0:00:01|  0:00:04|
-|    6| Clean    |       0|       0|       0|       0|      13|        |  0:00:01|  0:00:05|
-|    7| Route    |       0|       0|       0|       0|      13|       0|  0:00:00|  0:00:05|
-|    8| Clean    |       0|       0|       0|       0|      12|        |  0:00:01|  0:00:06|
-|    9| Clean    |       0|       0|       0|       0|      13|        |  0:00:01|  0:00:07|
-|   10| Filter   |       0|       0|       0|       0|      13|       0|  0:00:00|  0:00:07|
-|   10| Recorner |       0|       0|       0|       0|      13|        |  0:00:00|  0:00:07|
-|_____|__________|________|________|________|________|________|________|_________|_________|
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)

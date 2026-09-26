@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "exo_pediatrico_v8_ecg_realista",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"ocaml.sandbox": {
+			"kind": "global"
+		},
+		"liveServer.settings.multiRootWorkspaceName": "exo_pediatrico_v3_compilable"
+	}
+}

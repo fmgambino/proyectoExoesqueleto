@@ -1,376 +1,326 @@
-;Proteus Design Interchange Format
+-- ISM Robosoft v9.4 - Patch final Supabase
+-- Ejecutar completo en Supabase > SQL Editor.
+-- Corrige: vistas dependientes, RPC admin_update_inventory_asset, condiciones, permisos base y recarga schema cache.
 
-(PDIF
-  (vendor "Labcenter Electronics")
-  (version 1 0)
-  (library
-    (part "A4988_STEPPER_MOTOR_DRIVER_CARRIER"
-      (family "ANA")
-      (package "MODULE_A4988_STEPPER_MOTOR_DRIVER_CARRIE")
-      (description "Stepper_motor_controler;_IC:_A4988;_1A;_Uin_mot:_8÷35V")
-      (attribute "PKG_TYPE" "MODULE_A4988_STEPPER_MOTOR_DRIVER_CARRIE")
-      (attribute "MF" "Pololu")
-      (attribute "DESCRIPTION" "_Stepper_motor_controler;_IC:_A4988;_1A;_Uin_mot:_8÷35V_")
-      (attribute "PACKAGE" "None")
-      (attribute "PRICE" "None")
-      (attribute "PACKAGE" "None")
-      (attribute "CHECK_PRICES" "https://www.snapeda.com/parts/A4988%20STEPPER%20MOTOR%20DRIVER%20CARRIER/Pololu/view-part/?ref=eda")
-      (attribute "PRICE" "None")
-      (attribute "SNAPEDA_LINK" "https://www.snapeda.com/parts/A4988%20STEPPER%20MOTOR%20DRIVER%20CARRIER/Pololu/view-part/?ref=snap")
-      (attribute "MP" "A4988_STEPPER_MOTOR_DRIVER_CARRIER")
-      (attribute "AVAILABILITY" "Not_in_stock")
-      (attribute "AVAILABILITY" "Unavailable")
-      (attribute "DESCRIPTION" "______________________________________________________Stepper_Motor_Driver______________________________________________")
-      (gate
-        (swap 1)
-        (symbol "A4988_STEPPER_MOTOR_DRIVER_CARRIER")
-        (pin "!ENABLE" 1 (type IP))
-        (pin "!RESET" 5 (type IP))
-        (pin "!SLEEP" 6 (type IP))
-        (pin "1A" 12 (type OP))
-        (pin "1B" 11 (type OP))
-        (pin "2A" 13 (type OP))
-        (pin "2B" 14 (type OP))
-        (pin "DIR" 8 (type IP))
-        (pin "GND" 9 (type PP))
-        (pin "GND__1" 15 (type PP))
-        (pin "MS1" 2 (type IP))
-        (pin "MS2" 3 (type IP))
-        (pin "MS3" 4 (type IP))
-        (pin "STEP" 7 (type IP))
-        (pin "VDD" 10 (type PP))
-        (pin "VMOT" 16 (type PP))
-      )
-    )
-    (symbol "A4988_STEPPER_MOTOR_DRIVER_CARRIER"
-      (units THOU)
-      (graphic
-        (stroke 1)
-        (path (pt -500 700) (pt 500 700) (pt 500 -800) (pt -500 -800) (pt -500 700) (closed))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 300.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 200.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 100.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 300.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 200.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 100.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 0.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 -100.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 -600.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 -700.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 -300.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 -400.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 -500.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R0_U_L200") (pt -700.0 0.0) (rot 0) (mir 0) (visible true))
-        (name (pt 239.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE LEFT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 600.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-      (terminal
-        (body (symbol "PIN_R180_U_L200") (pt 700.0 500.0) (rot 0) (mir 0) (visible true))
-        (name (pt -239.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-        (number (pt -39.37 0.0) (rot 0) (just MIDDLE RIGHT) (visible true))
-      )
-    )
-    (symbol "PIN_R0_U_L200"
-      (units THOU)
-      (graphic
-        (stroke 6.5)
-        (path (pt 0.0 0.0) (pt 200.0 0.0))
-      )
-    )
-    (symbol "PIN_R180_U_L200"
-      (units THOU)
-      (graphic
-        (stroke 6.5)
-        (path (pt 0.0 0.0) (pt -200.0 0.0))
-      )
-    )
-    (package "MODULE_A4988_STEPPER_MOTOR_DRIVER_CARRIE"
-      (units THOU)
-      (layer TSLK
-        (graphic
-          (stroke 5.0)
-          (path (pt -300.0 400.0) (pt 300.0 400.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 300.0 400.0) (pt 300.0 -400.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 300.0 -400.0) (pt -300.0 -400.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt -300.0 -400.0) (pt -300.0 400.0))
-        )
-        (graphic
-          (stroke 7.87)
-          (circle (pt -334.65 372.05) (pt -326.77 372.05))
-        )
-      )
-      (layer TASM
-        (graphic
-          (stroke 5.0)
-          (path (pt -300.0 400.0) (pt 300.0 400.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 300.0 400.0) (pt 300.0 -400.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt 300.0 -400.0) (pt -300.0 -400.0))
-        )
-        (graphic
-          (stroke 5.0)
-          (path (pt -300.0 -400.0) (pt -300.0 400.0))
-        )
-        (graphic
-          (stroke 7.87)
-          (circle (pt -334.65 372.05) (pt -326.77 372.05))
-        )
-      )
-      (layer OCCA
-        (graphic
-          (stroke 1.97)
-          (path (pt -309.84 409.84) (pt -309.84 -409.84))
-        )
-        (graphic
-          (stroke 1.97)
-          (path (pt -309.84 -409.84) (pt 309.84 -409.84))
-        )
-        (graphic
-          (stroke 1.97)
-          (path (pt 309.84 -409.84) (pt 309.84 409.84))
-        )
-        (graphic
-          (stroke 1.97)
-          (path (pt 309.84 409.84) (pt -309.84 409.84))
-        )
-      )
-      (leg 1 (pt -250 350) (padstack 1))
-      (leg 2 (pt -250 250) (padstack 2))
-      (leg 3 (pt -250 150) (padstack 3))
-      (leg 4 (pt -250 50) (padstack 4))
-      (leg 5 (pt -250 -50) (padstack 5))
-      (leg 6 (pt -250 -150) (padstack 6))
-      (leg 7 (pt -250 -250) (padstack 7))
-      (leg 8 (pt -250 -350) (padstack 8))
-      (leg 9 (pt 250 -350) (padstack 9))
-      (leg 10 (pt 250 -250) (padstack 10))
-      (leg 11 (pt 250 -150) (padstack 11))
-      (leg 12 (pt 250 -50) (padstack 12))
-      (leg 13 (pt 250 50) (padstack 13))
-      (leg 14 (pt 250 150) (padstack 14))
-      (leg 15 (pt 250 250) (padstack 15))
-      (leg 16 (pt 250 350) (padstack 16))
-      (padstack 1
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (square 60.24))
-        (pad (layer INNER) (square 60.24))
-        (pad (layer BCOP) (square 60.24))
-        (pad (layer TRES) (square 64.17))
-        (pad (layer BRES) (square 64.17))
-      )
-      (padstack 2
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 3
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 4
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 5
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 6
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 7
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 8
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 9
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 10
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 11
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 12
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 13
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 14
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 15
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (padstack 16
-        (hole 40)
-        (plated true)
-        (pad (layer TCOP) (round 60.24))
-        (pad (layer INNER) (round 60.24))
-        (pad (layer BCOP) (round 60.24))
-        (pad (layer TRES) (round 64.17))
-        (pad (layer BRES) (round 64.17))
-      )
-      (model A4988_STEPPER_MOTOR_DRIVER_CARRIER.step
-        (euler 0 0 0)
-        (offset 0 0 0)
-      )
-    )
-  )
+create extension if not exists pgcrypto;
+create extension if not exists unaccent;
+create sequence if not exists public.inventory_asset_seq;
+
+insert into public.roles (code, name, description, is_system)
+values
+  ('administrator','Administrador','Control total del sistema', true),
+  ('teacher','Docente','Gestión docente', true),
+  ('student','Alumno','Acceso alumno', true)
+on conflict (code) do update set name = excluded.name, description = excluded.description, updated_at = now();
+
+insert into public.permissions (code, name, module)
+values
+  ('users.read','Ver usuarios','users'),
+  ('users.manage','Gestionar usuarios','users'),
+  ('roles.manage','Gestionar roles','roles'),
+  ('inventory.read','Ver inventario','inventory'),
+  ('inventory.manage','Gestionar inventario','inventory'),
+  ('inventory.loan','Solicitar préstamos','inventory'),
+  ('inventory.approve','Aprobar préstamos','inventory')
+on conflict (code) do update set name = excluded.name, module = excluded.module;
+
+insert into public.role_permissions (role_id, permission_id)
+select r.id, p.id
+from public.roles r
+join public.permissions p on (
+  (r.code = 'administrator') or
+  (r.code = 'teacher' and p.code in ('users.read','inventory.read','inventory.loan','inventory.approve')) or
+  (r.code = 'student' and p.code in ('inventory.read','inventory.loan'))
 )
+on conflict do nothing;
+
+insert into public.inventory_status_catalog (code, name, frontend_status, is_available, sort_order)
+values
+  ('disponible','Disponible','Disponible', true, 10),
+  ('prestado','Prestado','Prestado', false, 20),
+  ('en_mantenimiento','En mantenimiento','En mantenimiento', false, 30)
+on conflict (code) do update set name = excluded.name, frontend_status = excluded.frontend_status, is_available = excluded.is_available;
+
+insert into public.inventory_locations (code, name, is_active)
+values
+  ('LAB-ROB','Laboratorio de Robótica', true),
+  ('DEP-01','Depósito', true),
+  ('TALLER','Taller revisión', true)
+on conflict (code) do update set name = excluded.name, is_active = true, updated_at = now();
+
+insert into public.inventory_conditions (name, color, sort_order, is_active)
+values
+  ('Nuevo','#3b82f6',10,true),
+  ('Usado','#6366f1',20,true),
+  ('Reparado','#22c55e',30,true),
+  ('Falta piezas','#f59e0b',40,true),
+  ('Defectuoso','#ef4444',50,true),
+  ('Usado, completo','#8b5cf6',60,true),
+  ('Usado, dañado, falta piezas','#ef4444',70,true)
+on conflict (name) do update set color = excluded.color, is_active = true, updated_at = now();
+
+-- IMPORTANTE: CASCADE elimina vistas dependientes antiguas para poder recrearlas sin error 2BP01.
+drop view if exists public.inventory_assets_frontend_view cascade;
+drop view if exists public.inventory_frontend_view cascade;
+drop view if exists public.users_abm_view cascade;
+
+create view public.users_abm_view as
+select
+  p.id,
+  p.full_name,
+  au.email,
+  p.whatsapp,
+  p.dni,
+  p.birth_date,
+  p.avatar_url,
+  p.title,
+  p.is_active,
+  p.created_at,
+  r.name as role_name,
+  r.code as role_code
+from public.profiles p
+left join auth.users au on au.id = p.id
+left join public.roles r on r.id = p.role_id;
+
+grant select on public.users_abm_view to authenticated;
+
+create view public.inventory_frontend_view as
+select
+  a.id,
+  a.asset_code as code,
+  a.asset_code,
+  a.barcode,
+  a.serial_number,
+  ci.name,
+  ci.name as item,
+  case when ci.tracking_mode = 'consumible' then 'Insumo' else 'Equipo' end as type,
+  coalesce(sc.frontend_status, sc.name, 'Disponible') as status,
+  a.condition_note,
+  a.condition_note as condition,
+  a.location_detail,
+  a.zone,
+  coalesce(l.name, '-') as location,
+  c.name as category_name,
+  c.name as category,
+  b.name as brand_name,
+  b.name as brand,
+  s.name as supplier_name,
+  s.name as supplier,
+  a.is_active,
+  a.created_at,
+  a.updated_at
+from public.inventory_assets a
+join public.inventory_catalog_items ci on ci.id = a.catalog_item_id
+left join public.inventory_categories c on c.id = ci.category_id
+left join public.inventory_brands b on b.id = ci.brand_id
+left join public.inventory_suppliers s on s.id = ci.supplier_id
+left join public.inventory_status_catalog sc on sc.id = a.status_id
+left join public.inventory_locations l on l.id = a.current_location_id;
+
+-- Alias por compatibilidad con versiones anteriores.
+create view public.inventory_assets_frontend_view as select * from public.inventory_frontend_view;
+
+grant select on public.inventory_frontend_view to authenticated, anon;
+grant select on public.inventory_assets_frontend_view to authenticated, anon;
+
+create or replace function public.admin_upsert_profile_by_email(
+  p_email text,
+  p_full_name text,
+  p_role_code text default 'student',
+  p_dni text default null,
+  p_whatsapp text default null,
+  p_birth_date date default null,
+  p_title text default null,
+  p_avatar_url text default './assets/avatar-default.svg',
+  p_is_active boolean default false
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public, auth
+as $$
+declare
+  v_user_id uuid;
+  v_role_id uuid;
+begin
+  select id into v_user_id from auth.users where lower(email) = lower(p_email) limit 1;
+  if v_user_id is null then
+    raise exception 'No existe usuario Auth con email %', p_email;
+  end if;
+
+  select id into v_role_id from public.roles where code = coalesce(nullif(p_role_code,''), 'student') limit 1;
+  if v_role_id is null then select id into v_role_id from public.roles where code = 'student' limit 1; end if;
+
+  insert into public.profiles (id, role_id, full_name, dni, whatsapp, birth_date, title, avatar_url, is_active, updated_at)
+  values (v_user_id, v_role_id, p_full_name, nullif(p_dni,''), nullif(p_whatsapp,''), p_birth_date, nullif(p_title,''), p_avatar_url, p_is_active, now())
+  on conflict (id) do update set
+    role_id = excluded.role_id,
+    full_name = excluded.full_name,
+    dni = excluded.dni,
+    whatsapp = excluded.whatsapp,
+    birth_date = excluded.birth_date,
+    title = excluded.title,
+    avatar_url = excluded.avatar_url,
+    is_active = excluded.is_active,
+    updated_at = now();
+
+  return v_user_id;
+end;
+$$;
+
+grant execute on function public.admin_upsert_profile_by_email(text,text,text,text,text,date,text,text,boolean) to authenticated, service_role;
+
+create or replace function public.ensure_current_user_profile()
+returns void
+language plpgsql
+security definer
+set search_path = public, auth
+as $$
+declare
+  v_role uuid;
+begin
+  select id into v_role from public.roles where code = coalesce(auth.jwt() -> 'user_metadata' ->> 'role_code','student') limit 1;
+  if v_role is null then select id into v_role from public.roles where code='student' limit 1; end if;
+  insert into public.profiles (id, role_id, full_name, is_active, avatar_url)
+  values (auth.uid(), v_role, coalesce(auth.jwt() -> 'user_metadata' ->> 'full_name', auth.jwt() ->> 'email'), false, './assets/avatar-default.svg')
+  on conflict (id) do nothing;
+end;
+$$;
+
+grant execute on function public.ensure_current_user_profile() to authenticated;
+
+-- Elimina variantes previas para evitar conflicto de firma/caché PostgREST.
+drop function if exists public.admin_update_inventory_asset(uuid,text,text,text,text,text,text,text,text,text,text,text);
+drop function if exists public.admin_update_inventory_asset(uuid,uuid,uuid,text,uuid,text,text,text,uuid,uuid,text);
+drop function if exists public.admin_update_inventory_asset(uuid,text,uuid,uuid,text,uuid,text,text,uuid,uuid,text);
+
+create function public.admin_update_inventory_asset(
+  p_asset_id uuid,
+  p_barcode text default null,
+  p_brand text default null,
+  p_category text default null,
+  p_condition_note text default null,
+  p_location_code text default null,
+  p_location_detail text default null,
+  p_name text default null,
+  p_serial_number text default null,
+  p_status text default null,
+  p_supplier text default null,
+  p_zone text default null
+)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_catalog_id uuid;
+  v_category_id uuid;
+  v_brand_id uuid;
+  v_supplier_id uuid;
+  v_status_id uuid;
+  v_location_id uuid;
+  v_code text;
+begin
+  select catalog_item_id into v_catalog_id from public.inventory_assets where id = p_asset_id;
+  if v_catalog_id is null then raise exception 'No existe asset %', p_asset_id; end if;
+
+  if nullif(trim(coalesce(p_category,'')), '') is not null then
+    insert into public.inventory_categories(name) values (trim(p_category))
+    on conflict(name) do update set updated_at = now()
+    returning id into v_category_id;
+  end if;
+
+  if nullif(trim(coalesce(p_brand,'')), '') is not null then
+    insert into public.inventory_brands(name) values (trim(p_brand))
+    on conflict(name) do update set name = excluded.name
+    returning id into v_brand_id;
+  end if;
+
+  if nullif(trim(coalesce(p_supplier,'')), '') is not null then
+    insert into public.inventory_suppliers(name) values (trim(p_supplier))
+    on conflict(name) do update set name = excluded.name
+    returning id into v_supplier_id;
+  end if;
+
+  if nullif(trim(coalesce(p_status,'')), '') is not null then
+    v_code := lower(regexp_replace(unaccent(trim(p_status)), '[^a-zA-Z0-9]+', '_', 'g'));
+    insert into public.inventory_status_catalog(code, name, frontend_status, is_available)
+    values (v_code, trim(p_status), trim(p_status), trim(p_status) = 'Disponible')
+    on conflict(code) do update set name = excluded.name, frontend_status = excluded.frontend_status
+    returning id into v_status_id;
+  end if;
+
+  if nullif(trim(coalesce(p_location_code,'')), '') is not null then
+    insert into public.inventory_locations(code, name, is_active)
+    values (trim(p_location_code), case trim(p_location_code) when 'LAB-ROB' then 'Laboratorio de Robótica' when 'DEP-01' then 'Depósito' when 'TALLER' then 'Taller revisión' else trim(p_location_code) end, true)
+    on conflict(code) do update set updated_at = now(), is_active = true
+    returning id into v_location_id;
+  end if;
+
+  update public.inventory_catalog_items
+  set name = coalesce(nullif(trim(p_name), ''), name),
+      category_id = coalesce(v_category_id, category_id),
+      brand_id = coalesce(v_brand_id, brand_id),
+      supplier_id = coalesce(v_supplier_id, supplier_id),
+      updated_at = now()
+  where id = v_catalog_id;
+
+  update public.inventory_assets
+  set barcode = coalesce(nullif(trim(p_barcode), ''), barcode),
+      serial_number = coalesce(nullif(trim(p_serial_number), ''), serial_number),
+      condition_note = coalesce(nullif(trim(p_condition_note), ''), condition_note),
+      current_location_id = coalesce(v_location_id, current_location_id),
+      location_detail = coalesce(nullif(trim(p_location_detail), ''), location_detail),
+      zone = coalesce(nullif(trim(p_zone), ''), zone),
+      status_id = coalesce(v_status_id, status_id),
+      updated_at = now()
+  where id = p_asset_id;
+end;
+$$;
+
+grant execute on function public.admin_update_inventory_asset(uuid,text,text,text,text,text,text,text,text,text,text,text) to authenticated;
+
+create or replace function public.admin_create_inventory_asset(
+  p_name text,
+  p_category text default 'General',
+  p_asset_code text default null,
+  p_serial_number text default null,
+  p_barcode text default null,
+  p_location_code text default 'LAB-ROB',
+  p_condition_note text default null,
+  p_brand text default null,
+  p_supplier text default null,
+  p_location_detail text default null,
+  p_zone text default null
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_category_id uuid; v_brand_id uuid; v_supplier_id uuid; v_status_id uuid; v_location_id uuid; v_catalog_id uuid; v_asset_id uuid; v_asset_code text; v_barcode text;
+begin
+  insert into public.inventory_categories(name) values (coalesce(nullif(trim(p_category),''),'General'))
+  on conflict(name) do update set updated_at = now() returning id into v_category_id;
+
+  if nullif(trim(coalesce(p_brand,'')), '') is not null then
+    insert into public.inventory_brands(name) values (trim(p_brand)) on conflict(name) do update set name=excluded.name returning id into v_brand_id;
+  end if;
+  if nullif(trim(coalesce(p_supplier,'')), '') is not null then
+    insert into public.inventory_suppliers(name) values (trim(p_supplier)) on conflict(name) do update set name=excluded.name returning id into v_supplier_id;
+  end if;
+  select id into v_status_id from public.inventory_status_catalog where frontend_status='Disponible' limit 1;
+  insert into public.inventory_locations(code, name, is_active)
+  values (coalesce(nullif(trim(p_location_code),''),'LAB-ROB'), coalesce(nullif(trim(p_location_code),''),'LAB-ROB'), true)
+  on conflict(code) do update set is_active = true returning id into v_location_id;
+
+  insert into public.inventory_catalog_items(name, category_id, brand_id, supplier_id, tracking_mode)
+  values (p_name, v_category_id, v_brand_id, v_supplier_id, 'serializado') returning id into v_catalog_id;
+
+  v_asset_code := coalesce(nullif(trim(p_asset_code),''), 'AR' || lpad(nextval('public.inventory_asset_seq')::text, 6, '0'));
+  v_barcode := coalesce(nullif(trim(p_barcode),''), 'ISMROB-' || v_asset_code);
+
+  insert into public.inventory_assets(catalog_item_id, asset_code, barcode, serial_number, status_id, condition_note, current_location_id, location_detail, zone)
+  values (v_catalog_id, v_asset_code, v_barcode, nullif(trim(coalesce(p_serial_number,'')),''), v_status_id, nullif(trim(coalesce(p_condition_note,'')),''), v_location_id, nullif(trim(coalesce(p_location_detail,'')),''), nullif(
